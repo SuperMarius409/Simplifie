@@ -1,0 +1,32 @@
+veeery imp garden install reloadspinner
+
+
+
+global size, halign, value, color
+        screen15 = sm.get_screen("screen15")
+        if screen15.text_input != "":
+            value = screen15.text_input.text
+            if len(value) < 6:
+                size = .22
+                halign = "center"
+                color=(0, 0, 0, 1)
+            elif len(value) < 11:
+                size = .32
+                halign = "center"
+                color=(0, 0, 0, 1)
+            elif len(value) < 16:
+                size = .45
+                halign = "center"
+                color=(0, 0, 0, 1)
+            elif len(value) < 21:
+                size = .58
+                halign = "center"
+                color=(0, 0, 0, 1)
+            elif len(value) < 26:
+                size = .71
+                halign = "center"
+                color=(0, 0, 0, 1)
+            else:
+                size = .77
+                halign = "left"
+                color=(0, 0, 0, 1)

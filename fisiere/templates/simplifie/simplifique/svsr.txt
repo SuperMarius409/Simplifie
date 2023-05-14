@@ -1,0 +1,28 @@
+        BoxLayout:
+            orientation:'vertical'
+            padding: [0, dp(2)]
+            MDIconButton:
+                icon: "menu"
+                pos_hint: {"center_y": .91}
+                user_font_size: "20sp"
+                theme_text_color: "Custom"
+                text_color: rgba(0,0,0, 255)
+                on_press: nav_drawer.set_state("open")
+            MDIconButton:
+                icon: "dots-vertical"
+                pos_hint: {"center_x": .93, "center_y": .80}
+                user_font_size: "20sp"
+                theme_text_color: "Custom"
+                text_color: rgba(0,0,0, 255)
+                
+            MDBoxLayout:
+                size_hint_y: .05
+                height: dp(10)
+                padding: [dp(12),0] 
+                MDLabel:
+                    text: 'Samuel'
+                    font_size: "30sp"
+                    font_style: "Subtitle1"
+
+                    
+ ValueError: ThemeManager.primary_palette is set to an invalid option 'DeepBlue'. Must be one of: ['Red', 'Pink', 'Purple', 'DeepPurple', 'Indigo', 'Blue', 'LightBlue', 'Cyan', 'Teal', 'Green', 'LightGreen', 'Lime', 'Yellow', 'Amber', 'Orange', 'DeepOrange', 'Brown', 'Gray', 'BlueGray']
