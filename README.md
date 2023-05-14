@@ -1,5 +1,5 @@
 # Simplifie
 
-Numele echipei: Simplifie
-Scoala: Colegiul National Militar "Tudor Vladimirescu"
+Numele echipei: Simplifie \n
+Scoala: Colegiul National Militar "Tudor Vladimirescu" \n
 Pitch: [link]
