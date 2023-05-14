@@ -1,6 +1,6 @@
 # Simplifie
 
-Numele echipei: Simplifie
+Numele Echipei: Simplifie
 
 Numele Aplicatiei: Simplifique
 
