@@ -292,7 +292,7 @@
                     source: 'images/h_chatgpt.png'
         MDFloatLayout:
             size_hint: None,None
-            size: dp(Window.height * 0.4), dp(Window.height * 0.07)
+            size: dp(Window.width * 0.87), dp(Window.height * 0.075)
             pos_hint: {"center_x": .515, "center_y": .56}
             elevation: 0
             canvas:
@@ -316,14 +316,17 @@
                 font_size: dp(Window.height * 0.02)
                 cursor_color: (0.5, 0.5, 0.5, 1)
                 cursor_width: 2
-            MDIconButton:
-                id: search_icon
-                icon: "images/h_search_icon.png"
-                pos_hint: {"center_x": .92, "center_y": .5}
-                theme_text_color: "Custom"
-                text_color: rgba(0, 0, 0, 0.3)
-                icon_size: sp(Window.height * 0.058)
-                on_release: print("Searched !")
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.06),dp(Window.height * 0.06)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/h_search_icon.png'
         MDCard:
             size_hint: None, None
             size: dp(Window.width * 0.87), dp(Window.height * 0.17)
@@ -1248,7 +1251,7 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: print('hi')
+                on_press: app.working()
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
@@ -1268,10 +1271,21 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: print('hi')
+                on_press: app.working()
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
+            MDCard:
+                pos_hint: {"center_x": .13, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
                 size_hint: None, None
@@ -1279,10 +1293,21 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: print('hi')
+                on_press: app.working()
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
+            MDCard:
+                pos_hint: {"center_x": .13, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .82}
                 size_hint: None, None
@@ -1290,10 +1315,21 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: print('hi')
+                on_press: app.working()
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
+            MDCard:
+                pos_hint: {"center_x": .13, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/s_moon.png'
         MDFloatLayout:
             orientation: "vertical"
             size_hint: None, None
@@ -1310,7 +1346,7 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: print('hi')
+                on_press: app.working()
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
@@ -1321,7 +1357,7 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: print('hi')
+                on_press: app.working()
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
@@ -1332,7 +1368,7 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: print('hi')
+                on_press: app.working()
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
@@ -1345,23 +1381,56 @@
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .13, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/s_moon.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .17}
-                ripple_behavior: False
+                ripple_duration_in_slow: 0
                 thumb_color_inactive: rgba(200,200,200,255)
                 width: dp(Window.width * 0.1)
                 height: dp(Window.height * 0.005)
                 on_active: app.working()
+            MDCard:
+                pos_hint: {"center_x": .13, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/s_moon.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .5}
-                ripple_behavior: False
+                ripple_duration_in_slow: 0
                 thumb_color_inactive: rgba(200,200,200,255)
                 width: dp(Window.width * 0.1)
                 height: dp(Window.height * 0.005)
                 on_active: app.working()
+            MDCard:
+                pos_hint: {"center_x": .13, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/s_moon.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .82}
-                ripple_behavior: False
+                ripple_duration_in_slow: 0
                 thumb_color_inactive: rgba(200,200,200,255)
                 width: dp(Window.width * 0.1)
                 height: dp(Window.height * 0.005)
@@ -1546,14 +1615,14 @@
                 font_size: dp(Window.height * 0.02)
                 cursor_color: (0.5, 0.5, 0.5, 1)
                 cursor_width: 2
-            MDIconButton:
-                id: search_icon
-                icon: "send"
-                pos_hint: {"center_x": 1.1, "center_y": .48}
-                theme_text_color: "Custom"
-                text_color: 1,1,1,1
-                icon_size: dp(Window.height * 0.03)
-                allow_stretch: True
-                keep_ratio: True
-                md_bg_color: rgba(100,60,240)
-                on_release: app.send()
+            MDCard:
+                pos_hint: {"center_x": 1.1, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.055),dp(Window.height * 0.055)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/h_send.png'
