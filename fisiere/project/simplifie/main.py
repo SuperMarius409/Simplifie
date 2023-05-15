@@ -670,6 +670,8 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         sm.add_widget(Screen14(name='screen14')) # Image
         sm.add_widget(Screen15(name='screen15')) # Chat 
         return sm
+    def working(self):
+        toast("Still in developement")
     def rate_us(self):
         self.r_dialog = MDDialog(type="custom",content_cls=RateUs(),size_hint=(None, None), width=350)
         self.r_dialog.open()

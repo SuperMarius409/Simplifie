@@ -1002,7 +1002,7 @@
         MDBoxLayout:
             orientation: "vertical"
             size_hint: None, None
-            size: dp(Window.height * 0.40),dp(Window.height * 0.45)
+            size: dp(Window.width * 0.9),dp(Window.height * 0.45)
             pos_hint: {"center_x": .505, "center_y": .25}
             radius: [20, 20, 20, 20]
             md_bg_color: 1,1,1,1
@@ -1213,30 +1213,159 @@
             opacity: 0.5
             on_release: app.select5()
 <Screen13>:
-    MDFloatLayout: 
-        md_bg_color: rgba(33, 148, 240, 255)
-        MDTopAppBar:
-            pos_hint: {"top": 1}
-            left_action_items: [["arrow-left", lambda x: root.callback()]]
-            specific_text_color: 1, 1, 1, 1
-            md_bg_color: rgba(33, 148, 240, 255)
-            elevation: 0
+    MDFloatLayout:
+        md_bg_color: rgba(237, 233, 252)
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
         MDLabel:
-            text: "13"
+            text: "Settings"
+            pos_hint: {"center_x": .55, "center_y": .95}
             halign: "center"
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            font_size: "16sp"
             font_name: "Poppins-Bold"
-            pos_hint: {"center_x": .5, "center_y": .90}
-        MDLabel:
-            text: "13"
-            halign: "center"
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            font_size: "45sp"
-            font_name: "Poppins-Bold"
-            pos_hint: {"center_x": .5, "center_y": .83}
+            font_size:  dp(Window.height * 0.035)
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.09)
+            pos_hint: {"center_x": .505, "center_y": .085}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: print('hi')
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            pos_hint: {"center_x": .505, "center_y": .27}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: print('hi')
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: print('hi')
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: print('hi')
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            pos_hint: {"center_x": .505, "center_y": .53}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: print('hi')
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: print('hi')
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: print('hi')
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            pos_hint: {"center_x": .505, "center_y": .79}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            MDSwitch:
+                pos_hint: {"center_x": .85, "center_y": .17}
+                ripple_behavior: False
+                thumb_color_inactive: rgba(200,200,200,255)
+                width: dp(Window.width * 0.1)
+                height: dp(Window.height * 0.005)
+                on_active: app.working()
+            MDSwitch:
+                pos_hint: {"center_x": .85, "center_y": .5}
+                ripple_behavior: False
+                thumb_color_inactive: rgba(200,200,200,255)
+                width: dp(Window.width * 0.1)
+                height: dp(Window.height * 0.005)
+                on_active: app.working()
+            MDSwitch:
+                pos_hint: {"center_x": .85, "center_y": .82}
+                ripple_behavior: False
+                thumb_color_inactive: rgba(200,200,200,255)
+                width: dp(Window.width * 0.1)
+                height: dp(Window.height * 0.005)
+                on_active: app.working()
 <Screen14>:
     MDFloatLayout:
         md_bg_color: rgba(33, 148, 240, 255)
