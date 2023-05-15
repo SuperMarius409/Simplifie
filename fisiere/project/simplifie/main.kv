@@ -831,7 +831,7 @@
             pos_hint: {"center_x": .5, "center_y": .16}
             canvas:
                 Color:
-                    rgb: rgba(33, 148, 240, 255) # BackgroundColor
+                    rgb: rgba(160, 160,230,255) # BackgroundColor
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -842,7 +842,7 @@
                 size_hint: .9, .32
                 canvas.before:
                     Color:
-                        rgb: rgba(67,37,164,255) # TextInputColor
+                        rgb: rgba(100,80,220,255) # TextInputColor
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
@@ -869,111 +869,114 @@
                 size_hint: .9, .32
                 pos_hint: {"center_x": .5, "center_y": .29}
                 background_color: 1, 1, 1, 0
-                color: rgba(25, 118, 210, 255) # ButtonColor
+                color: rgba(100,80,220,255) # ButtonColor
                 on_release: app.search_weather()
                 canvas.before:
                     Color:
-                        rgb: 1, 1, 1, 1
+                        rgb: rgba(254,254,255,255)
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
                         radius: [6] 
 <Screen7>:
-    MDCard:
-        pos_hint: {"center_x": .1, "center_y": .95}
-        size_hint: None, None
-        size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-        radius: dp(13)
-        md_bg_color: get_color_from_hex("CBC8FF")
-        ripple_behavior: False
-        on_press: root.callback()
-        Image:
-            pos_hint: {"center_x": .5, "center_y": .5}
-            source: 'images/l_arrow.png'
-    MDLabel:
-        text: "Essay Helper"
-        pos_hint: {"center_x": .35, "center_y": .87}
-        size_hint_x: .42
-        haling: "left"
-        font_name: "Poppins-Bold"
-        font_size:"28sp"
     MDFloatLayout:
-        md_bg_color: get_color_from_hex("E8E8F9")
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .67}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: wiki_name
-            hint_text: "Your Name"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
+        md_bg_color: get_color_from_hex("F0E6FA")
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(13)
+            md_bg_color: 1,1,1,1
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                source: 'images/l_arrow.png'
+        MDLabel:
+            text: "Essay Helper"
+            pos_hint: {"center_x": .35, "center_y": .85}
+            size_hint_x: .42
+            haling: "left"
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.04)
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("E8E8F9")
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .67}
+            canvas:
+                Color:
+                    rgb: rgba(245,245,245,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: wiki_name
+                hint_text: "Your Name"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: "20sp"
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .55}
+            canvas:
+                Color:
+                    rgb: rgba(245,245,245,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: wiki_language
+                hint_text: "Language"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: "20sp"
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .43}
+            canvas:
+                Color:
+                    rgb: rgba(245,245,245,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: wiki_title
+                hint_text: "Essay Title"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: "20sp"
+        
+        MDFillRoundFlatButton:
+            text:"START"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
             background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .55}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: wiki_language
-            hint_text: "Language"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
-            background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .43}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: wiki_title
-            hint_text: "Essay Title"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
-            background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    
-    MDFillRoundFlatButton:
-        text:"Start"
-        font_name: "Poppins"
-        size_hint: .8, .09
-        font_size: "20sp"
-        pos_hint: {"center_x": .5, "center_y": .15}
-        background_color: 0, 0, 0, 0
-        md_bg_color: app.theme_cls.primary_dark
-        on_release: root.essay_helper()
+            letter_spacing: 5
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.essay_helper()
 <Screen8>:
     name: "screen8"
     MDFloatLayout:
