@@ -79,7 +79,14 @@ if platform_name == "android":
     request_permissions([Permission.INTERNET])
 else:
     pass
-
+global internet_connection
+internet_connection = False
+try:
+    response = requests.get("http://www.google.com")
+    if response.status_code == 200:
+        internet_connection = True
+except requests.ConnectionError:
+    pass  
 #Internet Libraries
 
 '''
@@ -417,6 +424,7 @@ class Screen11(Screen):
         super(Screen11, self).__init__(**kwargs)
         self.description = kwargs.get('description', '')
         self.url_link = kwargs.get('url_link', '')
+        global internet_connection
         try:
             art = "school"
             api_key = '283533136981441da324ba7c1b5d0cc5'
@@ -745,32 +753,30 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
 
         self.task_list_dialog.open()
     def on_start(self):
-        try:
-            completed_tasks, uncomplete_tasks = db.get_tasks()
-            screen5 = self.root.get_screen("screen5")
-            url = "http://ipinfo.io/json"
-            response = urlopen(url)
-            data = json.load(response)
-            city = (data["city"])
-            self.get_weather(city)
-
-            if uncomplete_tasks != []:
-                for task in uncomplete_tasks:
-                    add_task = ListItemWithCheckbox(pk=task[0],text=task[1], secondary_text=task[2])
-                    screen5.ids.container.add_widget(add_task)
-
-            if completed_tasks != []:
-                for task in completed_tasks:
-                    add_task = ListItemWithCheckbox(pk=task[0],text='[s]'+task[1]+'[/s]', secondary_text=task[2])
-                    add_task.ids.check.active = True
-                    screen5.ids.container.add_widget(add_task)
-
-        except requests.ConnectionError:
+        global internet_connection
+        completed_tasks, uncomplete_tasks = db.get_tasks()
+        screen5 = self.root.get_screen("screen5")
+        if uncomplete_tasks != []:
+            for task in uncomplete_tasks:
+                add_task = ListItemWithCheckbox(pk=task[0],text=task[1], secondary_text=task[2])
+                screen5.ids.container.add_widget(add_task)
+        if completed_tasks != []:
+            for task in completed_tasks:
+                add_task = ListItemWithCheckbox(pk=task[0],text='[s]'+task[1]+'[/s]', secondary_text=task[2])
+                add_task.ids.check.active = True
+                screen5.ids.container.add_widget(add_task)
+        if internet_connection:
+            try:
+                url = "http://ipinfo.io/json"
+                response = urlopen(url)
+                data = json.load(response)
+                city = (data["city"])
+                self.get_weather(city)
+            except Exception as e :
+                print(e)
+                pass
+        else:
             toast("No Internet Connection! - MAIN")
-            exit()
-        except Exception as e :
-            toast(e)
-            pass
     def close_dialog(self, *args):
         self.task_list_dialog.dismiss()
     def add_task(self, task, task_date):
@@ -781,57 +787,61 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         screen5.ids['container'].add_widget(ListItemWithCheckbox(pk=created_task[0], text='[b]'+created_task[1]+'[/b]', secondary_text=created_task[2]))# Here
         task.text = ''
     def get_weather(self, city_name):
-        try:
-            url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
+        global internet_connection
+        if internet_connection:
             try:
-                x = requests.get(url).json()
-                print(x)
-            except:
-                proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                r1 = proxy.request('GET', url)
-                x = json.loads(r1.data.decode('utf-8'))
-                #print(x)
-            screen6 = self.root.get_screen("screen6")
-            screen4 = self.root.get_screen("screen4")
-            
-            if x["cod"] != "404":
-                temperature = str(round(x["main"]["temp"]-273.15))
-                temperature = f"[b]{temperature}[/b]°"
-                print(temperature)
-                humidity = x["main"]["humidity"]
-                weather = x["weather"][0]["main"]
-                id = str(x["weather"][0]["id"])
-                wind_speed = round(x["wind"]["speed"]*18/5)
-                location = x["name"] + ", " + x["sys"]["country"]
-                screen6.ids.temperature.text = str(temperature)
-                #screen4.ids.temperature.text = str(temperature)
-                screen6.ids.weather.text = str(weather)
-                screen6.ids.humidity.text = str(f"{humidity}%")
-                screen6.ids.wind_speed.text = str(f"{wind_speed} km/h")
-                screen6.ids.location.text = str(location)
-                #screen4.ids.location.text = str(location)
-                if id == "800":
-                    screen6.ids.weather_image.source = "images/w_sun.png"
-                    #screen4.ids.weather_image.source = "images/w_sun.png"
-                elif "200" <= id <= "232":
-                    screen6.ids.weather_image.source = "images/w_storm.png"
-                    #screen4.ids.weather_image.source = "images/w_storm.png"
-                elif "300" <= id <= "321" and "500"<= id <= "531":
-                    screen6.ids.weather_image.source = "images/w_rain.png"
-                    #screen4.ids.weather_image.source = "images/w_rain.png"
-                elif "600" <= id <= "622" :
-                    screen6.ids.weather_image.source = "images/w_snow.png"
-                    #screen4.ids.weather_image.source = "images/w_snow.png"
-                elif "701" <= id <= "781":
-                    screen6.ids.weather_image.source = "images/w_haze.png"
-                    #screen4.ids.weather_image.source = "images/w_haze.png"
-                elif "801" <= id <=  "804":
-                    screen6.ids.weather_image.source = "images/w_clouds.png"
-                    #screen4.ids.weather_image.source = "images/w_clouds.png"
-            else:
-                toast("City Not Found")
-
-        except requests.ConnectionError:
+                url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
+                try:
+                    x = requests.get(url).json()
+                    print(x)
+                except:
+                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
+                    r1 = proxy.request('GET', url)
+                    x = json.loads(r1.data.decode('utf-8'))
+                    #print(x)
+                screen6 = self.root.get_screen("screen6")
+                #screen4 = self.root.get_screen("screen4")
+                
+                if x["cod"] != "404":
+                    temperature = str(round(x["main"]["temp"]-273.15))
+                    temperature = f"[b]{temperature}[/b]°"
+                    print(temperature)
+                    humidity = x["main"]["humidity"]
+                    weather = x["weather"][0]["main"]
+                    id = str(x["weather"][0]["id"])
+                    wind_speed = round(x["wind"]["speed"]*18/5)
+                    location = x["name"] + ", " + x["sys"]["country"]
+                    screen6.ids.temperature.text = str(temperature)
+                    #screen4.ids.temperature.text = str(temperature)
+                    screen6.ids.weather.text = str(weather)
+                    screen6.ids.humidity.text = str(f"{humidity}%")
+                    screen6.ids.wind_speed.text = str(f"{wind_speed} km/h")
+                    screen6.ids.location.text = str(location)
+                    #screen4.ids.location.text = str(location)
+                    if id == "800":
+                        screen6.ids.weather_image.source = "images/w_sun.png"
+                        #screen4.ids.weather_image.source = "images/w_sun.png"
+                    elif "200" <= id <= "232":
+                        screen6.ids.weather_image.source = "images/w_storm.png"
+                        #screen4.ids.weather_image.source = "images/w_storm.png"
+                    elif "300" <= id <= "321" and "500"<= id <= "531":
+                        screen6.ids.weather_image.source = "images/w_rain.png"
+                        #screen4.ids.weather_image.source = "images/w_rain.png"
+                    elif "600" <= id <= "622" :
+                        screen6.ids.weather_image.source = "images/w_snow.png"
+                        #screen4.ids.weather_image.source = "images/w_snow.png"
+                    elif "701" <= id <= "781":
+                        screen6.ids.weather_image.source = "images/w_haze.png"
+                        #screen4.ids.weather_image.source = "images/w_haze.png"
+                    elif "801" <= id <=  "804":
+                        screen6.ids.weather_image.source = "images/w_clouds.png"
+                        #screen4.ids.weather_image.source = "images/w_clouds.png"
+                else:
+                    toast("City Not Found")
+            except Exception as e :
+                toast(e)
+                pass
+        else:
             toast("No Internet Connection! - W")
     def search_weather(self):
         screen6 = self.root.get_screen("screen6")
@@ -849,7 +859,6 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         screen4.ids.drawer_text.text = name1
         screen4.ids.drawer_email.text = email1
         close
-   
 if __name__ == '__main__':
     LabelBase.register(name='Poppins', fn_regular='fonts/r_Poppins.ttf')
     LabelBase.register(name='Poppins-Bold', fn_regular='fonts/r_Poppins-Bold.ttf')
