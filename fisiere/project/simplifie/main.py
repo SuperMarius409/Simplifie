@@ -79,14 +79,16 @@ if platform_name == "android":
     request_permissions([Permission.INTERNET])
 else:
     pass
+
 global internet_connection
 internet_connection = False
 try:
     response = requests.get("http://www.google.com")
     if response.status_code == 200:
-        internet_connection = True
+        internet_connection = False
 except requests.ConnectionError:
     pass  
+
 #Internet Libraries
 
 '''
@@ -345,70 +347,74 @@ class Screen7(Screen):
         paragraph.alignment = 2
         document.save(title + ".docx")
 class Screen8(Screen):
-    image_source = StringProperty('https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg')
+    global internet_connection
+    image_source = StringProperty()
     def callback(self, *args):
         app = MDApp.get_running_app()
         app.root.transition = SlideTransition(direction="right")
         app.root.current = "screen4"
     def  meal_text(self, *args):
-        try:
-            url = 'https://www.themealdb.com/api/json/v1/1/random.php'
+        if internet_connection:
             try:
-                meal = requests.get(url).json()
-            except:
-                proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                r1 = proxy.request('GET', url)
-                meal = json.loads(r1.data.decode('utf-8'))
-
-            meals = meal["meals"]
-            ingredients = []
-            measures = []
-            links = []
-            meal_ingredients = ""
-            global image_link
-            for i in range(20):
-                for ingredient in meals:
-                    if 1==1:
-                        ingredients.append(ingredient[f"strIngredient{i+1}"])
-                    else:
-                        break
-                for measure in meals:
-                    if 1==1:
-                        measures.append(measure[f"strMeasure{i+1}"])
-                    else:
-                        break
-            for j in range(20):
-                try: 
-                    meal_ingredients = meal_ingredients + "• " + ingredients[j] + " - " + measures[j] + "\n"
+                url = 'https://www.themealdb.com/api/json/v1/1/random.php'
+                try:
+                    meal = requests.get(url).json()
                 except:
-                    toast('Try again')
+                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
+                    r1 = proxy.request('GET', url)
+                    meal = json.loads(r1.data.decode('utf-8'))
+
+                meals = meal["meals"]
+                ingredients = []
+                measures = []
+                links = []
+                meal_ingredients = ""
+                global image_link
+                for i in range(20):
+                    for ingredient in meals:
+                        if 1==1:
+                            ingredients.append(ingredient[f"strIngredient{i+1}"])
+                        else:
+                            break
+                    for measure in meals:
+                        if 1==1:
+                            measures.append(measure[f"strMeasure{i+1}"])
+                        else:
+                            break
+                for j in range(20):
+                    try: 
+                        meal_ingredients = meal_ingredients + "• " + ingredients[j] + " - " + measures[j] + "\n"
+                    except:
+                        toast('Try again')
+                        pass
+                for link in meals:
+                    links.append(link)
+                    image_link = link["strMealThumb"]
+                    yt_link = link["strYoutube"]
+                    meal_name = link['strMeal']
+                    meal_type = link['strCategory']
+                    meal_area = link['strArea']
+                    meal_instructions = link['strInstructions']
+                try:
+                    meal_description = meal_name +'\n\n' + 'Category: ' + meal_type +'\n' + 'Area: ' + meal_area +'\n\n' + 'Instructions: \n\n' + meal_instructions +'\n'
+                    meal_ingredients_text = "Ingredients: \n\n" + meal_ingredients +  '\n' + "•  -" 
+                    meal_text = meal_description +'\n' + meal_ingredients_text.replace("•  -", "")
+                    self.ids.meal_text.text = meal_text
+                    self.image_source = image_link
+                except:
+                    toast('Try Again')
                     pass
-            for link in meals:
-                links.append(link)
-                image_link = link["strMealThumb"]
-                yt_link = link["strYoutube"]
-                meal_name = link['strMeal']
-                meal_type = link['strCategory']
-                meal_area = link['strArea']
-                meal_instructions = link['strInstructions']
-            try:
-                meal_description = meal_name +'\n\n' + 'Category: ' + meal_type +'\n' + 'Area: ' + meal_area +'\n\n' + 'Instructions: \n\n' + meal_instructions +'\n'
-                meal_ingredients_text = "Ingredients: \n\n" + meal_ingredients +  '\n' + "•  -" 
-                meal_text = meal_description +'\n' + meal_ingredients_text.replace("•  -", "")
-                self.ids.meal_text.text = meal_text
-                self.image_source = image_link
-            except:
-                toast('Try Again')
-                pass
-            try:
-                Clipboard.copy(yt_link)
-                MDApp.get_running_app().open_url(yt_link)
-            except:
-                toast('Try Again')
-                pass
-            toast("Meal Found")
-        except :
-            toast("An error occurred")
+                try:
+                    Clipboard.copy(yt_link)
+                    MDApp.get_running_app().open_url(yt_link)
+                except:
+                    toast('Try Again')
+                    pass
+                toast("Meal Found")
+            except :
+                toast("An error occurred")
+        else:
+            toast("No internet connection - R")
 class Screen9(Screen):
     def callback(self, *args):
         app = MDApp.get_running_app()
@@ -425,30 +431,33 @@ class Screen11(Screen):
         self.description = kwargs.get('description', '')
         self.url_link = kwargs.get('url_link', '')
         global internet_connection
-        try:
-            art = "school"
-            api_key = '283533136981441da324ba7c1b5d0cc5'
-            url = f'https://newsapi.org/v2/everything?q={art}&apikey='+api_key
+        if internet_connection:
             try:
-                news = requests.get(url).json()
-            except:
-                proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                r1 = proxy.request('GET', url)
-                news = json.loads(r1.data.decode('utf-8'))
+                art = "school"
+                api_key = '283533136981441da324ba7c1b5d0cc5'
+                url = f'https://newsapi.org/v2/everything?q={art}&apikey='+api_key
+                try:
+                    news = requests.get(url).json()
+                except:
+                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
+                    r1 = proxy.request('GET', url)
+                    news = json.loads(r1.data.decode('utf-8'))
 
-            articles = news["articles"]
-            for i in range(10): # Print the first five articles
-                url_link = articles[i]["url"]
-                description = articles[i]["description"]
-                words = description.split()[:40]
-                description = ' '.join(words) + '...'
-                img_link = articles[i]["urlToImage"]
-                card = NewsCard(source=img_link, description=description, url_link=url_link,padding=15, radius=15,elevation=3)
-                self.ids.news_list.add_widget(card)
-            toast("Reload Succesfull")
-        except Exception as e:
-            toast("An error occurred")
-            print(e)
+                articles = news["articles"]
+                for i in range(10): # Print the first five articles
+                    url_link = articles[i]["url"]
+                    description = articles[i]["description"]
+                    words = description.split()[:40]
+                    description = ' '.join(words) + '...'
+                    img_link = articles[i]["urlToImage"]
+                    card = NewsCard(source=img_link, description=description, url_link=url_link,padding=15, radius=15,elevation=3)
+                    self.ids.news_list.add_widget(card)
+                toast("Reload Succesfull")
+            except Exception as e:
+                toast("An error occurred")
+                print(e)
+        else: 
+            toast("No internet connection - N")
     def callback(self, *args):
         app = MDApp.get_running_app()
         app.root.transition = SlideTransition(direction="right")
@@ -638,6 +647,7 @@ class Feedback(BoxLayout):
 class Report(BoxLayout):
     def send(self):
         toast("Thanks for your contribution!")
+
 #Main
 
 class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
@@ -709,8 +719,12 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
 
         dialog.open()
     def open_browser(self, url):
-        import webbrowser
-        webbrowser.open(url)
+        global internet_connection
+        if internet_connection:
+            import webbrowser
+            webbrowser.open(url)
+        else:
+            toast("No internet connection!")
     def send(self):
         global size, halign, value, color, screen15
         screen15 = sm.get_screen("screen15")
@@ -776,7 +790,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
                 print(e)
                 pass
         else:
-            toast("No Internet Connection! - MAIN")
+            toast("No Internet Connection! - M")
     def close_dialog(self, *args):
         self.task_list_dialog.dismiss()
     def add_task(self, task, task_date):
@@ -859,6 +873,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         screen4.ids.drawer_text.text = name1
         screen4.ids.drawer_email.text = email1
         close
+
 if __name__ == '__main__':
     LabelBase.register(name='Poppins', fn_regular='fonts/r_Poppins.ttf')
     LabelBase.register(name='Poppins-Bold', fn_regular='fonts/r_Poppins-Bold.ttf')
