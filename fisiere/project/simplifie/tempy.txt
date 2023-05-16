@@ -1,5 +1,12 @@
 veeery imp garden install reloadspinner
 
+MDSwitch:
+                pos_hint: {"center_x": .85, "center_y": .17}
+                ripple_duration_in_slow: 0
+                thumb_color_inactive: rgba(200,200,200,255)
+                width: dp(Window.width * 0.1)
+                height: dp(Window.height * 0.005)
+                on_active: app.working()
 
 
 global size, halign, value, color

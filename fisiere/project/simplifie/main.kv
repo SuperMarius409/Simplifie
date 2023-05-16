@@ -1245,6 +1245,19 @@
             elevation: 10
             padding: dp(10)
             MDCard:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.width * 0.87),dp(Window.height * 0.1)
+                radius: dp(20)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
+            MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
                 size_hint: None, None
                 size: dp(Window.height * 0.045),dp(Window.height * 0.045)
@@ -1264,6 +1277,21 @@
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
+
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [0,0,20,20]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .17}
                 size_hint: None, None
@@ -1275,17 +1303,21 @@
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
+
+
             MDCard:
-                pos_hint: {"center_x": .13, "center_y": .17}
+                pos_hint: {"center_x": .5, "center_y": .5}
                 size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-                radius: dp(50)
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: dp(0)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
-                Image:
-                    halign: "center"
-                    source: 'images/s_moon.png'
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
                 size_hint: None, None
@@ -1297,17 +1329,21 @@
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
+
+
             MDCard:
-                pos_hint: {"center_x": .13, "center_y": .5}
+                pos_hint: {"center_x": .5, "center_y": .82}
                 size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-                radius: dp(50)
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [20,20,0,0]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
-                Image:
-                    halign: "center"
-                    source: 'images/s_moon.png'
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .82}
                 size_hint: None, None
@@ -1319,17 +1355,6 @@
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
-            MDCard:
-                pos_hint: {"center_x": .13, "center_y": .82}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-                radius: dp(50)
-                md_bg_color: get_color_from_hex("FFFFFF")
-                ripple_behavior: True
-                on_press: app.working()
-                Image:
-                    halign: "center"
-                    source: 'images/s_moon.png'
         MDFloatLayout:
             orientation: "vertical"
             size_hint: None, None
@@ -1339,6 +1364,19 @@
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [0,0,20,20]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .17}
                 size_hint: None, None
@@ -1350,6 +1388,21 @@
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
+
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: dp(0)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
                 size_hint: None, None
@@ -1361,6 +1414,21 @@
                 Image:
                     halign: "center"
                     source: 'images/l_arrow_2.png'
+
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [20,20,0,0]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .82}
                 size_hint: None, None
@@ -1382,16 +1450,18 @@
             elevation: 10
             padding: dp(10)
             MDCard:
-                pos_hint: {"center_x": .13, "center_y": .17}
+                pos_hint: {"center_x": .5, "center_y": .17}
                 size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-                radius: dp(50)
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [0,0,20,20]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
-                Image:
-                    halign: "center"
-                    source: 'images/s_moon.png'
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .17}
                 ripple_duration_in_slow: 0
@@ -1399,17 +1469,21 @@
                 width: dp(Window.width * 0.1)
                 height: dp(Window.height * 0.005)
                 on_active: app.working()
+
+
             MDCard:
-                pos_hint: {"center_x": .13, "center_y": .5}
+                pos_hint: {"center_x": .5, "center_y": .5}
                 size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-                radius: dp(50)
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: dp(0)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
-                Image:
-                    halign: "center"
-                    source: 'images/s_moon.png'
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .5}
                 ripple_duration_in_slow: 0
@@ -1417,17 +1491,21 @@
                 width: dp(Window.width * 0.1)
                 height: dp(Window.height * 0.005)
                 on_active: app.working()
+
+
             MDCard:
-                pos_hint: {"center_x": .13, "center_y": .82}
+                pos_hint: {"center_x": .5, "center_y": .82}
                 size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-                radius: dp(50)
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [20,20,0,0]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
-                Image:
-                    halign: "center"
-                    source: 'images/s_moon.png'
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                source: 'images/s_moon.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .82}
                 ripple_duration_in_slow: 0
@@ -1622,7 +1700,7 @@
                 radius: dp(50)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: app.working()
+                on_press: app.send()
                 Image:
                     halign: "center"
                     source: 'images/h_send.png'
