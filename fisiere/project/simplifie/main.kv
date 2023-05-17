@@ -924,7 +924,7 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Poppins-Bold"
-                font_size: "20sp"
+                font_size: sp(Window.height * 0.023)
         MDFloatLayout:
             size_hint: .8, .09
             pos_hint: {"center_x": .5, "center_y": .55}
@@ -946,7 +946,7 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Poppins-Bold"
-                font_size: "20sp"
+                font_size: sp(Window.height * 0.023)
         MDFloatLayout:
             size_hint: .8, .09
             pos_hint: {"center_x": .5, "center_y": .43}
@@ -968,7 +968,8 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Poppins-Bold"
-                font_size: "20sp"
+                font_size: sp(Window.height * 0.023)
+
         
         MDFillRoundFlatButton:
             text:"START"
@@ -1570,29 +1571,77 @@
                 font_size:  dp(Window.height * 0.025)
 <Screen14>:
     MDFloatLayout:
-        md_bg_color: get_color_from_hex("616CEC")
+        md_bg_color: get_color_from_hex("E8E8F9")
         MDLabel:
             text: "Select\nSign"
             halign: "center"
             theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            font_size: sp(Window.height * 0.06)
+            text_color: 0,0,0, 1
+            font_size: sp(Window.height * 0.08)
             font_name: "LG"
-            pos_hint: {"center_x": .5, "center_y": .75}
-        MDGridLayout:
-            rows: 2
-            cols: 2
-            size_hint: .6, .3
+            pos_hint: {"center_x": .5, "center_y": .85}
+        MDFloatLayout:
+            size_hint: .6, .2
             pos_hint: {"center_x": .5, "center_y": .47}
-            spacing: 15
-            #SignButton:
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_plus.png'
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_minus.png'
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_divide.png'
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_multiply.png'
         MDFillRoundFlatButton:
-            text: "Back"
+            text: "BACK"
             font_name: "LG"
             size_hint: .55, .11
             font_size: sp(Window.height * 0.04)
             pos_hint: {"center_x": .5, "center_y": .15}
-            md_bg_color: get_color_from_hex("8895FD")
+            md_bg_color: app.theme_cls.primary_dark
             on_release: root.callback()
 <Command>:
     size_hint_y: None

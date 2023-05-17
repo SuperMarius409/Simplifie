@@ -647,7 +647,6 @@ class Feedback(BoxLayout):
 class Report(BoxLayout):
     def send(self):
         toast("Thanks for your contribution!")
-
 #Main
 
 class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
