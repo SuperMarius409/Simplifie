@@ -1,6 +1,7 @@
 # pyright: reportMissingImports=false
 
 import json
+import random
 import time
 import re
 import sys
@@ -466,7 +467,7 @@ class Screen12(Screen):
     def callback(self, *args):
         app = MDApp.get_running_app()
         app.root.transition = SlideTransition(direction="right")
-        app.root.current = "screen4"
+        app.root.current = "screen14"
 class Screen13(Screen):
     def callback(self, *args):
         app = MDApp.get_running_app()
@@ -653,6 +654,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
     global sm
     api_key = "60aae825eb1705b59a97532605cbae66"
     sm = ScreenManager()
+    select_sign = ""
     task_list_dialog = r_dialog = f_dialog = None
     dropdown = ObjectProperty
     def build(self):
@@ -687,6 +689,34 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         sm.add_widget(Screen14(name='screen14')) # Image
         sm.add_widget(Screen15(name='screen15')) # Chat 
         return sm
+    def select_sign(self, sign):
+        self.selected_sign = sign
+        num1 = random.randint(1,10)
+        num2 = random.randint(1,10)
+        sm.get_screen("screen12").ids.question.text = f"{num1} {sign} {num2} = ?"
+        if sign == "+":
+            self.answer = str(num1+num2)
+        elif sign == "-":
+            self.answer = str(num1-num2)
+        elif sign == "÷":
+            self.answer = str(round((num1/num2),1))
+        elif sign == "×":
+            self.answer = str(num1*num2)
+        option_list = [self.answer]
+        option_len = 1
+        while option_len < 4:
+            option = 0
+            if sign == "+":
+                self.answer = str(random.randint(1,20))
+            elif sign == "-":
+                self.answer = str(random.randint(-10,10))
+            elif sign == "÷":
+                self.answer = str(round(random.uniform(1,20),1))
+            elif sign == "×":
+                self.answer = str(random.randint(1,100))
+            if option not in option_list:
+                option_list = 1
+        sm.current = "screen12"
     def working(self):
         toast("Still in developement")
     def rate_us(self):

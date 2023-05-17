@@ -1152,72 +1152,96 @@
                 size_hint_y: None
                 height: self.minimum_height
 <Screen12>:
+    question: question
+    name: 'screen12'
     MDFloatLayout:
         md_bg_color: get_color_from_hex("E8E8F9")
-        MDCard:
-            pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(13)
-            md_bg_color: get_color_from_hex("CBC8FF")
-            ripple_behavior: False
-            on_press: root.callback()
-            Image:
-                pos_hint: {"center_x": .5, "center_y": .5}
-                source: 'images/l_arrow.png'
         MDLabel:
-            text: "RATE YOUR EXPERIENCE"
+            id: question
+            text: "49 + 49 = ?"
             halign: "center"
             theme_text_color: "Custom"
-            text_color: 0, 0, 0, 1
-            font_size: "25sp"
-            font_name: "Roboto-Bold"
-            pos_hint: {"center_x": .5, "center_y": .70}
-        MDIconButton:
-            id: 'star1'
-            icon: 'images/r_star.png'
-            pos_hint: {"center_x": .2, "center_y": .55}
-            theme_text_color: "Custom"
-            text_color: 1, 215/255, 0, 1
-            icon_size: "50sp"
-            opacity: 0.5
-            on_release: app.select1()
-        MDIconButton:
-            id: 'star2'
-            icon: 'images/r_star.png'
-            pos_hint: {"center_x": .35, "center_y": .55}
-            theme_text_color: "Custom"
-            text_color: 1, 215/255, 0, 1
-            icon_size: "50sp"
-            opacity: 0.5
-            on_release: app.select2()
-        MDIconButton:
-            id: 'star3'
-            icon: 'images/r_star.png'
-            pos_hint: {"center_x": .5, "center_y": .55}
-            theme_text_color: "Custom"
-            text_color: 1, 215/255, 0, 1
-            icon_size: "50sp"
-            opacity: 0.5
-            on_release: app.select3()
-        MDIconButton:
-            id: 'star4'
-            icon: 'images/r_star.png'
-            pos_hint: {"center_x": .65, "center_y": .55}
-            theme_text_color: "Custom"
-            text_color: 1, 215/255, 0, 1
-            icon_size: "50sp"
-            opacity: 0.5
-            on_release: app.select4()
-        MDIconButton:
-            id: 'star5'
-            icon: 'images/r_star.png'
-            pos_hint: {"center_x": .8, "center_y": .55}
-            theme_text_color: "Custom"
-            text_color: 1, 215/255, 0, 1
-            icon_size: "50sp"
-            opacity: 0.5
-            on_release: app.select5()
+            text_color: 0,0,0, 1
+            font_size: sp(Window.height * 0.08)
+            font_name: "LG"
+            pos_hint: {"center_x": .5, "center_y": .85}
+        MDFloatLayout:
+            size_hint: .6, .2
+            pos_hint: {"center_x": .5, "center_y": .47}
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.select_sign("+")
+                MDLabel:
+                    text: "49"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("643cf0")
+                    font_size: sp(Window.height * 0.08)
+                    font_name: "LG"
+                    pos_hint: {"center_x": .5, "center_y": .45}
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.select_sign("-")
+                MDLabel:
+                    text: "49"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("643cf0")
+                    font_size: sp(Window.height * 0.08)
+                    font_name: "LG"
+                    pos_hint: {"center_x": .5, "center_y": .45}
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.select_sign("÷")
+                MDLabel:
+                    text: "49"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("643cf0")
+                    font_size: sp(Window.height * 0.08)
+                    font_name: "LG"
+                    pos_hint: {"center_x": .5, "center_y": .45}
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.select_sign("×")
+                MDLabel:
+                    text: "49"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("643cf0")
+                    font_size: sp(Window.height * 0.08)
+                    font_name: "LG"
+                    pos_hint: {"center_x": .5, "center_y": .45}
+                
+        MDFillRoundFlatButton:
+            text: "BACK"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            md_bg_color: app.theme_cls.primary_dark
+            radius: [1]
+            on_release: root.callback()
 <Screen13>:
     MDFloatLayout:
         md_bg_color: rgba(237, 233, 252)
@@ -1590,7 +1614,7 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: app.working()
+                on_press: app.select_sign("+")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
                     size_hint: None, None
@@ -1603,7 +1627,7 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: app.working()
+                on_press: app.select_sign("-")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
                     size_hint: None, None
@@ -1616,7 +1640,7 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: app.working()
+                on_press: app.select_sign("÷")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
                     size_hint: None, None
@@ -1629,12 +1653,13 @@
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: app.working()
+                on_press: app.select_sign("×")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
                     size_hint: None, None
                     size: dp(Window.height * 0.15),dp(Window.height * 0.15)
                     source: 'images/l_multiply.png'
+                
         MDFillRoundFlatButton:
             text: "BACK"
             font_name: "LG"
