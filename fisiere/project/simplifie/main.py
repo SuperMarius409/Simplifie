@@ -574,6 +574,18 @@ class NewsCard(MDCard):
     source = StringProperty()
     url_link = StringProperty()
 class ScreenSwitcher:
+    def switch_screen1(self, *args):
+        self.root.transition = SlideTransition(direction="left")
+        self.root.current = "screen1"
+        
+    def switch_screen2(self, *args):
+        self.root.transition = SlideTransition(direction="left")
+        self.root.current = "screen2"
+
+    def switch_screen3(self, *args):
+        self.root.transition = SlideTransition(direction="left")
+        self.root.current = "screen3"
+
     def switch_screen4(self, *args):
         self.root.transition = SlideTransition(direction="left")
         self.root.current = "screen4"
@@ -781,7 +793,6 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
             sm.get_screen("quiz").ids[f"option{i}"].disabled = False
             sm.get_screen("quiz").ids[f"option{i}"].bg_color = (87/255, 23/255, 216/255, 1)
             sm.get_screen("quiz").ids[f"option{i}"].disabled_color = (1, 1, 1, 0.3)
-
     def working(self):
         toast("Still in developement")
     def rate_us(self):
@@ -965,6 +976,24 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
             pass
         screen4 = self.root.get_screen("screen4")
         screen4.ids.home_text.text = str(name)
+    def final_score(self):
+        if self.correct == 0 and self.wrong == 0:
+            sm.current = "screen4"
+        else: 
+            for i in range(1, 5):
+                sm.get_screen("quiz").ids[f"option{i}"].disabled = False
+                sm.get_screen("quiz").ids[f"option{i}"].bg_color = (87/255, 23/255, 216/255, 1)
+                sm.get_screen("quiz").ids[f"option{i}"].disabled_color = (1, 1, 1, 0.3)
+            success_rate = round((self.correct/(self.correct+self.wrong))*100)
+            sm.get_screen("screen10").correct.text = f"{self.correct} - Correct!"
+            sm.get_screen("screen10").wrong.text = f"{self.wrong} - Wrong!"
+            sm.get_screen("screen10").success_rate.text = f"{success_rate}% - Success!"
+            sm.current = "screen10"
+    def replay(self):
+        self.correct = 0
+        self.wrong = 0
+        sm.current = "screen4"
+ 
 
 if __name__ == '__main__':
     LabelBase.register(name='Poppins', fn_regular='fonts/r_Poppins.ttf')

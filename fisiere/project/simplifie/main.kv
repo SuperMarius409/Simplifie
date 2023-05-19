@@ -345,7 +345,7 @@
             md_bg_color: get_color_from_hex("603BF1")
             ripple_behavior: True
             pos_hint: {"center_x": .515, "center_y": .41}
-            on_release: app.open_url("https://youtube.com")
+            on_release: app.open_url("https://github.com/SuperMarius409")
             MDLabel:
                 text: "To Get Unlimited \n Upgrade Your Account"   
                 font_name: "Roboto-Bold"
@@ -907,12 +907,12 @@
                 pos_hint: {"center_x": .5, "center_y": .5}
                 source: 'images/l_arrow.png'
         MDLabel:
-            text: "Essay Helper"
-            pos_hint: {"center_x": .35, "center_y": .85}
+            text: "Doki"
+            pos_hint: {"center_x": .32, "center_y": .85}
             size_hint_x: .42
             haling: "left"
             font_name: "Poppins-Bold"
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(Window.height * 0.075)
         MDFloatLayout:
             md_bg_color: get_color_from_hex("E8E8F9")
             size_hint: .8, .09
@@ -1098,6 +1098,8 @@
             
 <Screen10>:
     correct: correct
+    wrong: wrong
+    success_rate: success_rate
     MDFloatLayout:
         md_bg_color: get_color_from_hex("E8E8F9")
         MDLabel:
@@ -1110,7 +1112,7 @@
             pos_hint: {"center_x": .5, "center_y": .85}
         MDLabel:
             id: correct
-            text: "15 - Correct!"
+            text: ""
             halign: "center"
             theme_text_color: "Custom"
             text_color: 1,1,1, 1
@@ -1128,7 +1130,7 @@
                     radius: [10]
         MDLabel:
             id: wrong
-            text: "15 - Wrong!"
+            text: ""
             halign: "center"
             theme_text_color: "Custom"
             text_color: 1,1,1, 1
@@ -1145,8 +1147,8 @@
                     pos: self.x, self.y +5
                     radius: [10]
         MDLabel:
-            id: wrong
-            text: "15% - Succes!"
+            id: success_rate
+            text: ""
             halign: "center"
             theme_text_color: "Custom"
             text_color: 1,1,1, 1
@@ -1167,20 +1169,20 @@
             size_hint: .6, .2
             pos_hint: {"center_x": .5, "center_y": .47}
         Button:
-            text: "START"
+            text: "EXIT"
             font_name: "LG"
             size_hint: .55, .11
             font_size: sp(Window.height * 0.04)
             pos_hint: {"center_x": .5, "center_y": .15}
             background_color: 1,1,1,0
-            on_release: root.callback()
+            on_release: app.replay()
             canvas.before:
                 Color:
-                    rgb: rgba(251,187,29,255)
+                    rgb: rgba(95,60,240,255)
                 RoundedRectangle:
                     size: self.size
                     pos: self.x, self.y +5
-                    radius: [10]
+                    radius: [15]
 <Screen11>:
     MDFloatLayout:
         md_bg_color: get_color_from_hex("E8E8F9")
@@ -1221,7 +1223,7 @@
                 height: self.minimum_height
 <OptionButton>:
     font_name: "LG"
-    font_size: "40sp"
+    font_size: sp(Window.height * 0.05)
     background_color: 1,1,1,0
     bg_color: 87/255, 23/255, 216/255, 1
     on_release:app.quiz(self.text, self)
@@ -1231,7 +1233,7 @@
         RoundedRectangle:
             size: self.size
             pos: self.x, self.y + 5
-            radius: [10]
+            radius: [Window.height * 0.025]
 <Screen12>:
     question: question
     name: 'quiz'
@@ -1239,7 +1241,7 @@
         md_bg_color: get_color_from_hex("E8E8F9")
         MDLabel:
             id: question
-            text: "49 + 49 = ?"
+            text: ""
             halign: "center"
             theme_text_color: "Custom"
             text_color: 0,0,0, 1
@@ -1249,39 +1251,51 @@
         MDGridLayout:
             rows: 2
             cols: 2
-            size_hint: .6, .3
-            pos_hint: {"center_x": .5, "center_y": .59}
-            spacing: 15
+            size_hint: .75, .33
+            pos_hint: {"center_x": .5, "center_y": .55}
+            spacing: 18
             OptionButton:
                 id: option1
-                text: "49"
+                text: ""
             OptionButton:
                 id: option2
-                text: "49"
+                text: ""
             OptionButton:
                 id: option3
-                text: "49"
+                text: ""
             OptionButton:
                 id: option4
-                text: "49"     
-        MDFillRoundFlatButton:
+                text: ""   
+        Button:
             text: "NEXT"
             font_name: "LG"
             size_hint: .55, .11
             font_size: sp(Window.height * 0.04)
-            pos_hint: {"center_x": .5, "center_y": .2}
-            md_bg_color: app.theme_cls.primary_dark
-            radius: [1]
+            pos_hint: {"center_x": .5, "center_y": .25}
+            background_color: 1,1,1,0
             on_release: app.next_question()
-        MDFillRoundFlatButton:
-            text: "BACK"
+            canvas.before:
+                Color:
+                    rgb: rgba(95,60,240,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [15]
+        Button:
+            text: "QUIT"
             font_name: "LG"
             size_hint: .55, .11
             font_size: sp(Window.height * 0.04)
-            pos_hint: {"center_x": .5, "center_y": .05}
-            md_bg_color: app.theme_cls.primary_dark
-            radius: [1]
-            on_release: root.callback()
+            pos_hint: {"center_x": .5, "center_y": .1}
+            background_color: 1,1,1,0
+            on_release: app.final_score()
+            canvas.before:
+                Color:
+                    rgb: rgba(95,60,240,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [15]
 <Screen13>:
     MDFloatLayout:
         md_bg_color: rgba(237, 233, 252)
@@ -1318,7 +1332,7 @@
                 radius: dp(20)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
-                on_press: app.working()
+                on_press: app.switch_screen1()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .5}
                 size_hint: None, None
@@ -1803,7 +1817,7 @@
             size_hint_y: .11
             pos_hint: {"center_y": .95}
             MDLabel:
-                text: "CHAT GPT"
+                text: "INTELLIQUE"
                 font_name: "Poppins-Bold"
                 halign: "center"
                 pos_hint: {"center_y": .5}
