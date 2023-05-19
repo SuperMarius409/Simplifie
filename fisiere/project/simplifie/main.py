@@ -472,7 +472,7 @@ class Screen11(Screen):
                 for i in range(10): # Print the first five articles
                     url_link = articles[i]["url"]
                     description = articles[i]["description"]
-                    words = description.split()[:40]
+                    words = description.split()[:30]
                     description = ' '.join(words) + '...'
                     img_link = articles[i]["urlToImage"]
                     card = NewsCard(source=img_link, description=description, url_link=url_link,padding=15, radius=15,elevation=3)
@@ -577,7 +577,7 @@ class ScreenSwitcher:
     def switch_screen1(self, *args):
         self.root.transition = SlideTransition(direction="left")
         self.root.current = "screen1"
-        
+
     def switch_screen2(self, *args):
         self.root.transition = SlideTransition(direction="left")
         self.root.current = "screen2"
@@ -707,9 +707,9 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.theme_cls.primary_hue = "500"
         
         #Internet Screen
-        sm.add_widget(Screen1(name='screen1')) # Login Page
-        sm.add_widget(Screen2(name='screen2')) # SignUp Page
-        sm.add_widget(Screen3(name='screen3')) # Reset Password
+        #sm.add_widget(Screen1(name='screen1')) # Login Page
+        #sm.add_widget(Screen2(name='screen2')) # SignUp Page
+        #sm.add_widget(Screen3(name='screen3')) # Reset Password
         
         #Window settings
         width, height = 405, 900 # 20*9

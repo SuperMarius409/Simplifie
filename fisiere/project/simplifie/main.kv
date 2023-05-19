@@ -394,8 +394,8 @@
 
             ElementCard:
                 image: "images/ic_6.png"
-                text: "Report"
-                on_release: app.report()
+                text: "Notes"
+                on_release: app.switch_screen9()
 
             ElementCard:
                 image: "images/ic_7.png"
@@ -430,7 +430,7 @@
                 font_size: sp(Window.height * 0.015) 
             MDLabel:
                 halign:"center"
-                text:'ToDu' # (a play on the French word "tout" which means "all" and "to do")
+                text:'Tasks' # ToDu (a play on the French word "tout" which means "all" and "to do")
                 font_name: "Roboto-Bold"
                 font_size: sp(Window.height * 0.015) 
             MDLabel:
@@ -440,7 +440,7 @@
                 font_size: sp(Window.height * 0.015)
             MDLabel:
                 halign:"center"
-                text:'Report'
+                text:'Notes'
                 font_name: "Roboto-Bold"
                 font_size: sp(Window.height * 0.015) 
             MDLabel:
@@ -1010,7 +1010,7 @@
         MDTextButton:
             size_hint: None, None
             size: dp(Window.width * 0.7),dp(Window.height * 0.05)
-            text: "Meal Planner"
+            text: "Recipique"
             pos_hint: {"center_x": .55, "center_y": .95}
             halign: "center"
             font_name: "Poppins-Bold"
@@ -1071,30 +1071,79 @@
                 StencilUnUse
                 StencilPop   
 <Screen9>:
-    MDFloatLayout: 
-        md_bg_color: rgba(33, 148, 240, 255)
-        MDTopAppBar:
-            pos_hint: {"top": 1}
-            left_action_items: [["arrow-left", lambda x: root.callback()]]
-            specific_text_color: 1, 1, 1, 1
-            md_bg_color: rgba(33, 148, 240, 255)
-            elevation: 0
-        MDLabel:
-            text: "9"
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDTextButton:
+            text: "My Notes"
+            pos_hint: {"center_x": .55, "center_y": .95}
             halign: "center"
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            font_size: "16sp"
             font_name: "Poppins-Bold"
-            pos_hint: {"center_x": .5, "center_y": .90}
-        MDLabel:
-            text: "9"
-            halign: "center"
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            font_size: "45sp"
-            font_name: "Poppins-Bold"
-            pos_hint: {"center_x": .5, "center_y": .83}
+            font_size:  dp(Window.height * 0.04)
+        MDFloatLayout:
+            size_hint: None, None
+            size: dp(Window.width * 0.83), dp(Window.height * 0.9)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.2)
+                pos_hint: {'center_x': .22, 'center_y': .83}
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: root.callback()
+
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.2)
+                pos_hint: {'center_x': .78, 'center_y': .83}
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: root.callback()
+
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.92), dp(Window.height * 0.18)
+                pos_hint: {'center_x': .5, 'center_y': .603}
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: root.callback()
+
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.35)
+                pos_hint: {'center_x': .22, 'center_y': .295}
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: root.callback()
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.23)
+                pos_hint: {'center_x': .78, 'center_y': .36}
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: root.callback()
+
+        MDFloatingActionButton:
+            icon: 'plus-thick'
+            on_release: app.show_task_dialog()
+            size_hint: None, None
+            size: dp(Window.height * 0.06),dp(Window.height * 0.06)
+            pos_hint: {'x': .8, 'y':.05}
             
 <Screen10>:
     correct: correct
