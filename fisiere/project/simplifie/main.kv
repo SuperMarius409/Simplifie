@@ -1,223 +1,233 @@
 #:kivy 1.1.1
 #:import get_color_from_hex kivy.utils.get_color_from_hex
-
 <Screen1>:
-    MDLabel:
-        text: "Hey, Login Now."
-        pos_hint: {"center_x": .35, "center_y": .75}
-        size_hint_x: .42
-        haling: "left"
-        font_name: "Poppins-Bold"
-        font_size:"28sp"
-
     MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .55}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: l_email
-            hint_text: "Email"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
-            background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
+        md_bg_color: get_color_from_hex("E8E8F9")
+        Image:
+            pos_hint: {"center_x": .5, "center_y": .85}
+            source: "images/l_bkg_1.png"
+        MDLabel:
+            text: "Welcome\nBack"
+            pos_hint: {"center_x": .4, "center_y": .6}
+            size_hint_x: .6
+            haling: "left"
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex("646efa")
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.05)
 
-    MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .43}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: l_password
-            hint_text: "Password"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            password: True
-            hint_text_color: rgba(168, 168, 168, 255)
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("E8E8F9")
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .45}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: l_email
+                hint_text: "Email"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.025)
+
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .33}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: l_password
+                hint_text: "Password"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                password: True
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.025)
+        MDTextButton:
+            text: "Are you a new user? Register"     
+            halign: "center"
+            theme_text_color: 'Custom'
+            text_color: rgba(145,145,145, 255)
+            font_size: sp(Window.height * 0.02)
+            pos_hint: {"center_x": .5, "center_y": .065}
+            on_press: root.manager.current = 'screen2'
+        MDFillRoundFlatButton:
+            text:"LOGIN"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
             background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    MDTextButton:
-        text: "Sign Up!                     "
-        font_name: "Poppins"
-        theme_text_color: "Custom"
-        text_color: rgba(168, 168, 168, 225)
-        font_size: "13sp"
-        pos_hint: {"center_x": .3, "center_y": .33}
-        on_press: root.manager.current = 'screen2'
-    
-    MDFillRoundFlatButton:
-        text:"Login"
-        font_name: "Poppins"
-        size_hint: .8, .09
-        font_size: "20sp"
-        pos_hint: {"center_x": .5, "center_y": .15}
-        background_color: 0, 0, 0, 0
-        md_bg_color: app.theme_cls.primary_dark
-        on_release: root.try_sign_in()
+            letter_spacing: 5
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.try_sign_in()
 
 <Screen2>:
-    MDTopAppBar:
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: root.callback()]]
-        specific_text_color: app.theme_cls.primary_dark
-        md_bg_color: 1, 1, 1, 1
-    MDLabel:
-        text: "Sign Up Now."
-        pos_hint: {"center_x": .35, "center_y": .87}
-        size_hint_x: .42
-        haling: "left"
-        font_name: "Poppins-Bold"
-        font_size:"28sp"
-        id: label_register
     MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .67}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: s_email
-            hint_text: "Email"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
+        md_bg_color: get_color_from_hex("E8E8F9")
+        Image:
+            pos_hint: {"center_x": .5, "center_y": .87}
+            source: "images/l_bkg_2.png"
+        MDLabel:
+            text: "Create\nAccount"
+            pos_hint: {"center_x": .4, "center_y": .6}
+            size_hint_x: .6
+            haling: "left"
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex("646efa")
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.05)
+        MDFloatLayout:
+            size_hint: .8, .075
+            pos_hint: {"center_x": .5, "center_y": .47}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: s_email
+                hint_text: "Email"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.02)
+        MDFloatLayout:
+            size_hint: .8, .075
+            pos_hint: {"center_x": .5, "center_y": .37}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: s_password
+                hint_text: "Password"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.02)
+        MDFloatLayout:
+            size_hint: .8, .075
+            pos_hint: {"center_x": .5, "center_y": .27}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: s_name
+                hint_text: "Name"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.02)
+        MDTextButton:
+            text: "Forgot Password?"     
+            halign: "center"
+            theme_text_color: 'Custom'
+            text_color: rgba(145,145,145, 255)
+            font_size: sp(Window.height * 0.02)
+            pos_hint: {"center_x": .5, "center_y": .065}
+            on_press: root.manager.current = 'screen3'
+        
+        MDFillRoundFlatButton:
+            text:"CREATE"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
             background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .55}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: s_password
-            hint_text: "Password"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
-            background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .43}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: s_name
-            hint_text: "Name"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
-            background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    MDTextButton:
-        text: "Forgot Password?"
-        font_name: "Poppins"
-        theme_text_color: "Custom"
-        text_color: rgba(168, 168, 168, 225)
-        font_size: "13sp"
-        pos_hint: {"center_x": .3, "center_y": .33}
-        on_press: app.root.curent = "screen3"
-    
-    MDFillRoundFlatButton:
-        text:"Sign Up"
-        font_name: "Poppins"
-        size_hint: .8, .09
-        font_size: "20sp"
-        pos_hint: {"center_x": .5, "center_y": .15}
-        background_color: 0, 0, 0, 0
-        md_bg_color: app.theme_cls.primary_dark
-        on_release: root.validate_info()
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.validate_info()
 <Screen3>:
-    MDTopAppBar:
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: root.callback()]]
-        specific_text_color: app.theme_cls.primary_dark
-        md_bg_color: 1, 1, 1, 1
-    MDLabel:
-        text: "Recover Password Now."
-        pos_hint: {"center_x": .35, "center_y": .75}
-        size_hint_x: .42
-        haling: "left"
-        font_name: "Poppins-Bold"
-        font_size:"28sp"
-        id: text_redefined
-
     MDFloatLayout:
-        size_hint: .8, .09
-        pos_hint: {"center_x": .5, "center_y": .55}
-        canvas:
-            Color:
-                rgb: rgba(245, 245, 245, 255)
-            RoundedRectangle:
-                size: self.size
-                pos: self.pos
-                radius: [8]
-        TextInput:
-            id: r_email
-            hint_text: "Email"
-            size_hint: 1, None
-            pos_hint: {"center_x": .5, "center_y": .5}
-            height: self.minimum_height
-            multiline: False
-            hint_text_color: rgba(168, 168, 168, 255)
+        md_bg_color: get_color_from_hex("E8E8F9")
+        Image:
+            pos_hint: {"center_x": .5, "center_y": .85}
+            source: "images/l_bkg_1.png"
+        MDLabel:
+            text: "Recover\nPassword"
+            pos_hint: {"center_x": .4, "center_y": .6}
+            size_hint_x: .6
+            haling: "left"
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex("646efa")
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.05)
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .4}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: r_email
+                hint_text: "Email"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.025)    
+        MDFillRoundFlatButton:
+            text:"RECOVER"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
             background_color: 0, 0, 0, 0
-            padding: 18
-            font_name: "Poppins"
-            font_size: "16sp"
-    MDFillRoundFlatButton:
-        text:"Recover"
-        font_name: "Poppins"
-        size_hint: .8, .09
-        font_size: "20sp"
-        pos_hint: {"center_x": .5, "center_y": .15}
-        md_bg_color: app.theme_cls.primary_dark
-        on_release: root.send_email_confirm()
+            letter_spacing: 5
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.send_email_confirm()
 
 
 <Screen4>:
@@ -231,8 +241,9 @@
             source: 'images/h_profile.png'
             size_hint: .24, .24
         MDLabel:
+            id: home_text
             markup: True
-            text: "Marius Gabriel"
+            text: ""
             font_name: "Poppins-Bold"
             font_size: sp(Window.height * 0.03)
             pos_hint: {'y': .365,'x': .075}
@@ -1086,33 +1097,90 @@
             pos_hint: {"center_x": .5, "center_y": .83}
             
 <Screen10>:
-    MDCard:
-        pos_hint: {"center_x": .1, "center_y": .95}
-        size_hint: None, None
-        size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-        radius: dp(13)
-        md_bg_color: get_color_from_hex("CBC8FF")
-        ripple_behavior: False
-        on_press: root.callback()
-        Image:
-            pos_hint: {"center_x": .5, "center_y": .5}
-            source: 'images/l_arrow.png'
-    MDLabel:
-        text: "Today News"
-        pos_hint: {"center_x": .5, "center_y": .95}
-        size_hint_x: .5
-        haling: "right"
-        font_name: "Poppins-Bold"
-        font_size:"28sp"
-    MDFillRoundFlatButton:
-        text:"Reload"
-        font_name: "Poppins"
-        size_hint: .8, .09
-        font_size: "20sp"
-        pos_hint: {"center_x": .5, "center_y": .1}
-        background_color: 0, 0, 0, 0
-        md_bg_color: app.theme_cls.primary_dark
-        on_release: print("hi")
+    correct: correct
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDLabel:
+            text: "Final\nScore"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0,0,0, 1
+            font_size: sp(Window.height * 0.08)
+            font_name: "LG"
+            pos_hint: {"center_x": .5, "center_y": .85}
+        MDLabel:
+            id: correct
+            text: "15 - Correct!"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1,1,1, 1
+            font_size: sp(Window.height * 0.04)
+            font_name: "LG"
+            size_hint: .8, .12
+            pos_hint: {"center_x": .5, "center_y": .6}
+            line_height: 1.1
+            canvas.before:
+                Color:
+                    rgb: 0,1,0,1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [10]
+        MDLabel:
+            id: wrong
+            text: "15 - Wrong!"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1,1,1, 1
+            font_size: sp(Window.height * 0.04)
+            font_name: "LG"
+            size_hint: .8, .12
+            pos_hint: {"center_x": .5, "center_y": .46}
+            line_height: 1.1
+            canvas.before:
+                Color:
+                    rgb: 1,0,0,1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [10]
+        MDLabel:
+            id: wrong
+            text: "15% - Succes!"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1,1,1, 1
+            font_size: sp(Window.height * 0.04)
+            font_name: "LG"
+            size_hint: .8, .12
+            pos_hint: {"center_x": .5, "center_y": .32}
+            line_height: 1.1
+            canvas.before:
+                Color:
+                    rgb: rgba(87,23,216,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [10]
+
+        MDFloatLayout:
+            size_hint: .6, .2
+            pos_hint: {"center_x": .5, "center_y": .47}
+        Button:
+            text: "START"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            background_color: 1,1,1,0
+            on_release: root.callback()
+            canvas.before:
+                Color:
+                    rgb: rgba(251,187,29,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [10]
 <Screen11>:
     MDFloatLayout:
         md_bg_color: get_color_from_hex("E8E8F9")
@@ -1151,9 +1219,22 @@
                 padding: "25dp"
                 size_hint_y: None
                 height: self.minimum_height
+<OptionButton>:
+    font_name: "LG"
+    font_size: "40sp"
+    background_color: 1,1,1,0
+    bg_color: 87/255, 23/255, 216/255, 1
+    on_release:app.quiz(self.text, self)
+    canvas.before:
+        Color:
+            rgb: root.bg_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.x, self.y + 5
+            radius: [10]
 <Screen12>:
     question: question
-    name: 'screen12'
+    name: 'quiz'
     MDFloatLayout:
         md_bg_color: get_color_from_hex("E8E8F9")
         MDLabel:
@@ -1165,80 +1246,39 @@
             font_size: sp(Window.height * 0.08)
             font_name: "LG"
             pos_hint: {"center_x": .5, "center_y": .85}
-        MDFloatLayout:
-            size_hint: .6, .2
-            pos_hint: {"center_x": .5, "center_y": .47}
-            MDCard:
-                pos_hint: {"center_x": .17, "center_y": .95}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
-                ripple_behavior: True
-                on_press: app.select_sign("+")
-                MDLabel:
-                    text: "49"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: get_color_from_hex("643cf0")
-                    font_size: sp(Window.height * 0.08)
-                    font_name: "LG"
-                    pos_hint: {"center_x": .5, "center_y": .45}
-            MDCard:
-                pos_hint: {"center_x": .83, "center_y": .95}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
-                ripple_behavior: True
-                on_press: app.select_sign("-")
-                MDLabel:
-                    text: "49"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: get_color_from_hex("643cf0")
-                    font_size: sp(Window.height * 0.08)
-                    font_name: "LG"
-                    pos_hint: {"center_x": .5, "center_y": .45}
-            MDCard:
-                pos_hint: {"center_x": .17, "center_y": .05}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
-                ripple_behavior: True
-                on_press: app.select_sign("÷")
-                MDLabel:
-                    text: "49"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: get_color_from_hex("643cf0")
-                    font_size: sp(Window.height * 0.08)
-                    font_name: "LG"
-                    pos_hint: {"center_x": .5, "center_y": .45}
-            MDCard:
-                pos_hint: {"center_x": .83, "center_y": .05}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
-                ripple_behavior: True
-                on_press: app.select_sign("×")
-                MDLabel:
-                    text: "49"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: get_color_from_hex("643cf0")
-                    font_size: sp(Window.height * 0.08)
-                    font_name: "LG"
-                    pos_hint: {"center_x": .5, "center_y": .45}
-                
+        MDGridLayout:
+            rows: 2
+            cols: 2
+            size_hint: .6, .3
+            pos_hint: {"center_x": .5, "center_y": .59}
+            spacing: 15
+            OptionButton:
+                id: option1
+                text: "49"
+            OptionButton:
+                id: option2
+                text: "49"
+            OptionButton:
+                id: option3
+                text: "49"
+            OptionButton:
+                id: option4
+                text: "49"     
+        MDFillRoundFlatButton:
+            text: "NEXT"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .2}
+            md_bg_color: app.theme_cls.primary_dark
+            radius: [1]
+            on_release: app.next_question()
         MDFillRoundFlatButton:
             text: "BACK"
             font_name: "LG"
             size_hint: .55, .11
             font_size: sp(Window.height * 0.04)
-            pos_hint: {"center_x": .5, "center_y": .15}
+            pos_hint: {"center_x": .5, "center_y": .05}
             md_bg_color: app.theme_cls.primary_dark
             radius: [1]
             on_release: root.callback()
@@ -1600,18 +1640,73 @@
             text: "Select\nSign"
             halign: "center"
             theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            font_size: "16sp"
-            font_name: "Poppins-Bold"
-            pos_hint: {"center_x": .5, "center_y": .90}
-        MDLabel:
-            text: "14"
-            halign: "center"
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            font_size: "45sp"
-            font_name: "Poppins-Bold"
-            pos_hint: {"center_x": .5, "center_y": .83}
+            text_color: 0,0,0, 1
+            font_size: sp(Window.height * 0.08)
+            font_name: "LG"
+            pos_hint: {"center_x": .5, "center_y": .85}
+        MDFloatLayout:
+            size_hint: .6, .2
+            pos_hint: {"center_x": .5, "center_y": .47}
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("+")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_plus.png'
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("-")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_minus.png'
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("÷")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_divide.png'
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("×")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_multiply.png'
+        MDFillRoundFlatButton:
+            text: "BACK"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.callback()
 <Command>:
     size_hint_y: None
     pos_hint: {"right": .98}

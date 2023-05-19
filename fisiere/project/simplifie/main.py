@@ -86,13 +86,13 @@ internet_connection = False
 try:
     response = requests.get("http://www.google.com")
     if response.status_code == 200:
-        internet_connection = False
+        internet_connection = True
 except requests.ConnectionError:
     pass  
 
 #Internet Libraries
 
-'''
+
 cred = credentials.Certificate({
     "type": "service_account",
     "project_id": "simplifique-c881d",
@@ -106,7 +106,7 @@ cred = credentials.Certificate({
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-arl0m%40simplifique-c881d.iam.gserviceaccount.com"
     })
 firebase_admin.initialize_app(cred)
-'''
+
 
 class Accont:
     def __init__(self):
@@ -124,32 +124,41 @@ class Accont:
         self.auth = firebase.auth()
 
     def sign_in(self, email, password):
-        try:
-            self.auth.sign_in_with_email_and_password(email, password)
-            return True
+        if internet_connection:
+            try:
+                self.auth.sign_in_with_email_and_password(email, password)
+                return True
 
-        except:
-            return False
+            except:
+                return False
+        else:
+            toast('No Internet!')
     def sing_up(self, email, password, name):
-        try:
-            auth1.create_user(email = email, email_verified = False, password = password, display_name = name, disabled = False)
-            email = email
-            user = auth1.get_user_by_email(email)
-            user_id = user.uid
-            display_name = user.display_name
-            data = {'name': str(display_name), 'email': str(email)}
-            db1 = firestore.client()
-            db1.collection('users').document(user_id).set(data)
-            return True
-        except:
-            return False
+        if internet_connection:
+            try:
+                auth1.create_user(email = email, email_verified = False, password = password, display_name = name, disabled = False)
+                email = email
+                user = auth1.get_user_by_email(email)
+                user_id = user.uid
+                display_name = user.display_name
+                data = {'name': str(display_name), 'email': str(email)}
+                db1 = firestore.client()
+                db1.collection('users').document(user_id).set(data)
+                return True
+            except:
+                return False
+        else:
+            toast("No Internet")
     def reset_password(self, email):
-        try:
-            self.auth.send_password_reset_email(email)
-            return True
+        if internet_connection:
+            try:
+                self.auth.send_password_reset_email(email)
+                return True
 
-        except:
-            return False
+            except:
+                return False
+        else:
+            toast("No Internet")
 class Database:
     def __init__(self):
         self.con = sqlite3.connect('data.db')
@@ -207,10 +216,25 @@ class Database:
 class Screen1(Screen):
     def on_pre_enter(self, *args):
         try:
+            conn = sqlite3.connect('data.db')
+            cursor = conn.cursor()
+            cursor.execute('SELECT email, password FROM users')
+            result = cursor.fetchone()
+            conn.close()
+            if result:
+                email, password = result
+                self.ids.l_email.text = email
+                self.ids.l_password.text = password
+            else:
+                self.ids.l_email.text = ""
+                self.ids.l_password.text = ""
+        except sqlite3.Error:
             self.ids.l_email.text = ""
             self.ids.l_password.text = ""
-
-        except:
+        except Exception:
+            self.ids.l_email.text = ""
+            self.ids.l_password.text = ""
+        else:
             pass
 
     def try_sign_in(self):
@@ -223,22 +247,18 @@ class Screen1(Screen):
         if accont.sign_in(email, password):
             thing = MDApp.get_running_app()
             thing.root.current = "screen4"
-            toast("Logged In Successfully!")
             user = auth1.get_user_by_email(email)
             user_id = user.uid
             name = user.display_name
-            data = {
-                'email': str(email),
-                'password': str(password),
-                'name': str(name),
-                'uid': str(user_id)
-                }
-            json_object = json.dumps(data, indent = 4)
-            
-            # Writing to sample.json
-            with open("cache.json", "w") as outfile:
-                outfile.write(json_object)
+            conn = sqlite3.connect('data.db')
+            cursor = conn.cursor()
+            cursor.execute('DROP TABLE IF EXISTS users')
+            cursor.execute('''CREATE TABLE IF NOT EXISTS users (email TEXT, password TEXT, name TEXT, uid TEXT)''')
+            cursor.execute('INSERT OR REPLACE INTO users VALUES (?, ?, ?, ?)', (email, password, name, user_id))
+            conn.commit()
+            conn.close()
             thing.press()
+            toast("Logged In Successfully!")
         else:
             if email and password:
                 self.ids.l_password.text = ""
@@ -273,9 +293,6 @@ class Screen2(Screen):
             if accont.sing_up(email, password, name):
                 toast("Registration Created Successfully!")
                 Clock.schedule_once(self.callback, 3)
-
-
-
             else:
                 toast("Failed to create record.")
 
@@ -326,13 +343,19 @@ class Screen7(Screen):
         language = self.ids.wiki_language.text
         title = self.ids.wiki_title.text
         wikipedia.set_lang(language)
-        while True:
-            try:
+        try:
+            if title:
                 wiki = wikipedia.page(title)
-                break
-            except:
-                print("Project name invalid")
-                title = input("Enter another project name: \n")
+            else:
+                self.ids.wiki_title.text = ""
+                self.ids.wiki_title.focus = True
+                toast("Project name invalid")
+                return
+        except wikipedia.exceptions.PageError:
+            self.ids.wiki_title.text = ""
+            self.ids.wiki_title.focus = True
+            toast(" Project name not found \n Please enter another title ")
+            return
         text = wiki.content
         text = re.sub(r'==', '', text)
         text = re.sub(r'=', '', text)
@@ -347,6 +370,7 @@ class Screen7(Screen):
         paragraph = document.add_paragraph(w_name)
         paragraph.alignment = 2
         document.save(title + ".docx")
+        toast(" Project saved in local directory ")
 class Screen8(Screen):
     global internet_connection
     image_source = StringProperty()
@@ -467,7 +491,7 @@ class Screen12(Screen):
     def callback(self, *args):
         app = MDApp.get_running_app()
         app.root.transition = SlideTransition(direction="right")
-        app.root.current = "screen14"
+        app.root.current = "screen10"
 class Screen13(Screen):
     def callback(self, *args):
         app = MDApp.get_running_app()
@@ -648,13 +672,19 @@ class Feedback(BoxLayout):
 class Report(BoxLayout):
     def send(self):
         toast("Thanks for your contribution!")
-#Main
+class OptionButton(Button):
+    bg_color = ListProperty([1,1,1,1])
+
+#Main 
 
 class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
     global sm
     api_key = "60aae825eb1705b59a97532605cbae66"
     sm = ScreenManager()
     select_sign = ""
+    answer = ""
+    correct = 0
+    wrong = 0
     task_list_dialog = r_dialog = f_dialog = None
     dropdown = ObjectProperty
     def build(self):
@@ -665,9 +695,9 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.theme_cls.primary_hue = "500"
         
         #Internet Screen
-        #sm.add_widget(Screen1(name='screen1')) # Login Page
-        #sm.add_widget(Screen2(name='screen2')) # SignUp Page
-        #sm.add_widget(Screen3(name='screen3')) # Reset Password
+        sm.add_widget(Screen1(name='screen1')) # Login Page
+        sm.add_widget(Screen2(name='screen2')) # SignUp Page
+        sm.add_widget(Screen3(name='screen3')) # Reset Password
         
         #Window settings
         width, height = 405, 900 # 20*9
@@ -684,7 +714,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         sm.add_widget(Screen9(name='screen9')) # Contact 
         sm.add_widget(Screen10(name='screen10')) # Math
         sm.add_widget(Screen11(name='screen11')) # News
-        sm.add_widget(Screen12(name='screen12')) # 
+        sm.add_widget(Screen12(name='quiz')) # 
         sm.add_widget(Screen13(name='screen13')) # Setings
         sm.add_widget(Screen14(name='screen14')) # Image
         sm.add_widget(Screen15(name='screen15')) # Chat 
@@ -693,7 +723,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.selected_sign = sign
         num1 = random.randint(1,10)
         num2 = random.randint(1,10)
-        sm.get_screen("screen12").ids.question.text = f"{num1} {sign} {num2} = ?"
+        sm.get_screen("quiz").ids.question.text = f"{num1} {sign} {num2} = ?"
         if sign == "+":
             self.answer = str(num1+num2)
         elif sign == "-":
@@ -707,16 +737,51 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         while option_len < 4:
             option = 0
             if sign == "+":
-                self.answer = str(random.randint(1,20))
+                option = str(random.randint(1,20))
             elif sign == "-":
-                self.answer = str(random.randint(-10,10))
+                option = str(random.randint(-10,10))
             elif sign == "÷":
-                self.answer = str(round(random.uniform(1,20),1))
+                option = str(round(random.uniform(1,20),1))
             elif sign == "×":
-                self.answer = str(random.randint(1,100))
+                option = str(random.randint(1,100))
             if option not in option_list:
-                option_list = 1
-        sm.current = "screen12"
+                option_list.append(option)
+            else:
+                option_len -= 1
+            option_len  += 1
+        random.shuffle(option_list)
+        for i in range(1, 5):
+            sm.get_screen("quiz").ids[f"option{i}"].text = str(option_list[i-1])
+        sm.current = "quiz"
+    def get_id(self,instance):
+        for id, widget in instance.parent.parent.parent.ids.items():
+            if widget.__self__ == instance:
+                return id
+    def quiz(self,option,instance):
+        if option == self.answer:
+            self.correct += 1
+            sm.get_screen("quiz").ids[self.get_id(instance)].bg_color = (0,1,0,1)
+            option_id_list = ["option1", "option2", "option3", "option4"]
+            option_id_list.remove(self.get_id(instance))
+            for i in range(0,3):
+                sm.get_screen("quiz").ids[f"{option_id_list[i]}"].disabled = True
+                sm.get_screen("quiz").ids[self.get_id(instance)].bg_color = (0,1,0,1)
+        else:
+            self.wrong += 1
+            for i in range(1,5):
+                if sm.get_screen("quiz").ids[f"option{i}"].text == self.answer:
+                    sm.get_screen("quiz").ids[f"option{i}"].bg_color = (0,1,0,1)
+                else:
+                    sm.get_screen("quiz").ids[f"option{i}"].disabled = True
+            sm.get_screen("quiz").ids[self.get_id(instance)].bg_color = (1,0,0,1)
+            sm.get_screen("quiz").ids[self.get_id(instance)].disabled_color = (1,1,1,1)
+    def next_question(self):
+        self.select_sign(self.selected_sign)
+        for i in range(1, 5):
+            sm.get_screen("quiz").ids[f"option{i}"].disabled = False
+            sm.get_screen("quiz").ids[f"option{i}"].bg_color = (87/255, 23/255, 216/255, 1)
+            sm.get_screen("quiz").ids[f"option{i}"].disabled_color = (1, 1, 1, 0.3)
+
     def working(self):
         toast("Still in developement")
     def rate_us(self):
@@ -836,19 +901,16 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
                 url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
                 try:
                     x = requests.get(url).json()
-                    print(x)
                 except:
                     proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
                     r1 = proxy.request('GET', url)
                     x = json.loads(r1.data.decode('utf-8'))
-                    #print(x)
                 screen6 = self.root.get_screen("screen6")
                 #screen4 = self.root.get_screen("screen4")
                 
                 if x["cod"] != "404":
                     temperature = str(round(x["main"]["temp"]-273.15))
                     temperature = f"[b]{temperature}[/b]°"
-                    print(temperature)
                     humidity = x["main"]["humidity"]
                     weather = x["weather"][0]["main"]
                     id = str(x["weather"][0]["id"])
@@ -892,16 +954,17 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         if city_name != "":
             self.get_weather(city_name)   
     def press(self):
-        with open('cache.json', 'r') as openfile:
-            data = json.load(openfile)
-        
-        name1 = data["name"]
-        email1 = data["email"]
+        conn = sqlite3.connect('data.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT name FROM users')
+        result = cursor.fetchone()
+        conn.close()
+        if result:
+            name = result[0]
+        else:
+            pass
         screen4 = self.root.get_screen("screen4")
-        screen4.ids.home_text.text = f'Hello {name1}!'
-        screen4.ids.drawer_text.text = name1
-        screen4.ids.drawer_email.text = email1
-        close
+        screen4.ids.home_text.text = str(name)
 
 if __name__ == '__main__':
     LabelBase.register(name='Poppins', fn_regular='fonts/r_Poppins.ttf')
