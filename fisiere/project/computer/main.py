@@ -727,9 +727,10 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.theme_cls.primary_hue = "500"
         
         #Internet Screen
-        #sm.add_widget(Screen1(name='screen1')) # Login Page
-        #sm.add_widget(Screen2(name='screen2')) # SignUp Page
-        #sm.add_widget(Screen3(name='screen3')) # Reset Password
+
+        sm.add_widget(Screen1(name='screen1')) # Login Page
+        sm.add_widget(Screen2(name='screen2')) # SignUp Page
+        sm.add_widget(Screen3(name='screen3')) # Reset Password
         
         #Window settings
         width, height = 405, 900 # 20*9
@@ -987,7 +988,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
                 else:
                     toast("City Not Found")
             except Exception as e :
-                toast(e)
+                print(e)
                 pass
         else:
             toast("No Internet Connection! - W")

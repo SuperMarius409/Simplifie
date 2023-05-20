@@ -2,55 +2,25 @@
 
 import json
 import random
-import time
 import re
 import sys
 import sqlite3
 import requests
 import wikipedia
-import webbrowser
-import smtplib
-from email.utils import formataddr
-import urllib3.exceptions
 from datetime import datetime
 from docx import Document
 from urllib.request import urlopen
-from fileinput import close
-from urllib3 import ProxyManager, make_headers
-from email.message import EmailMessage
-
-
-#web
-
-import pyrebase
-import firebase_admin
-from firebase_admin import auth as auth1
-from firebase_admin import credentials, firestore
 
 #kivy
 
 from kivy.uix.screenmanager import SlideTransition
-from kivy.uix.screenmanager import FadeTransition
-from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.modalview import ModalView
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.image import AsyncImage
 from kivy.uix.image import Image
 from kivy.uix.button import Button
-from kivy.uix.label import Label
-
-from kivy.graphics.transformation import Matrix
-from kivy.graphics import StencilPush, StencilPop, RoundedRectangle, Color, Ellipse
-from kivy.utils import platform
 from kivy.core.text import LabelBase
 from kivy.core.clipboard import Clipboard
-from kivy.clock import Clock
-from kivy.properties import ColorProperty, ListProperty, ObjectProperty, BooleanProperty, StringProperty, NumericProperty
-from kivy.core.window import Window
+from kivy.properties import ListProperty, ObjectProperty,StringProperty, NumericProperty
 from kivy.core.text import LabelBase
 from kivy.metrics import dp
 from kivy.uix.image import Image
@@ -65,10 +35,8 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.card import MDCard
 from kivymd.uix.dialog import MDDialog
-from kivymd.uix.button import MDFlatButton,MDIconButton
+from kivymd.uix.button import MDFlatButton
 from kivymd.uix.label import MDLabel
-from kivymd.uix.progressbar import MDProgressBar
-
 from kivymd.app import MDApp
 from kivymd.toast import toast
 
@@ -90,75 +58,6 @@ try:
 except requests.ConnectionError:
     pass  
 
-#Internet Libraries
-
-
-cred = credentials.Certificate({
-    "type": "service_account",
-    "project_id": "simplifique-c881d",
-    "private_key_id": "83f7f7868abc181d033a4d5e2c8ffe1c8af26688",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDTi/op1fBF7Sx1\nv4+XkScBR42e31isc0olzMB/+ypswa4W7DmDywAxn30TASjWtCQeTdIBeiUeJstc\n7QGXku165kFnrUq6QdyOf6O/aGJibKHpuwY91NiFEO5/XkxwgmKbhUnjlWuNe8f1\nRB+o0Jiv833T8nfyiygtSaaDLgzlw0/lZ47NNfC9/kXprZrRFMDUhxlSB8wpHNQp\nbzQMLryYQx8/NfC4xr6NWI+v+aO32v65wGaXqpRpW7Tq81YBnXccND68EqKBJNTi\nfNIjmhbXj+DzFtgavK4oXPtHm4SSNq0q85jzc1e9oW6yS7gVpscrsXstOOdeunhm\nhTJ00qJnAgMBAAECggEAWTMirtVI1RNmtdeqQmywF7gGHUFr8HtEfp/RY6WSg/0+\n3OeKcOn+EO6BHKxWfgHDYQvLS1gnookVIv/Ethb8D+BbH85QPi1bRLLJZwIqyfmo\nZBe6UAQZsDItfoNSk/ZGgfE38MCmcygIboDlIJekajyvh9krfpfyvvXZQmL+iTqH\nZuqkqHLubfFaKEvL9jcrcYm1Z0ZLoGx4h9rLjc/0X8MMndkhuZYYn0CCn4i5fop8\nwxxsuACcIk1ug7ZiVJb6qMN2FSMEO7csghoCPHl0dP2RaaGpg2ILsDQhgGIWjRw3\nhdBj5sLXDdD/ZHlSburs5PjzxYPls9GRUfGQ8i5GMQKBgQDxtPwBob0uqM338LZN\niEcAMP5V70hGU8ryLXRRz3SCKmMxKJPeFsajVchfrNxexIQ/5MuWBSm9BO/g/qTN\nJDeFaQVPRIgTtT0xITNHcMUdT8rBwB32I7SwSkryIxsLUnaUAqA11WurUQk0cURb\nuFBZ3f6fDbQonl4oWwK2wR3+4wKBgQDgDmvHGLAve19A26fCXLE0Q87065RYLILh\nVTK2umNi4NPA8jWmxncI9F7eEBcEEph4aTlemmvBX2d3WNp5t/DyiTwszqrzTbeA\nikqrOqTxGJV24WvDehVI5zTVdqiKc0my+dJOUX5dbwV09I63nL77TWKXELfCemfw\nCbRL5v+BrQKBgGbLceG/x5VwdShdVyriKlAKhiBGA5blTApzCmVAtWwmWsktWLW7\nOf99HBqUiaREL3p885h52aZp0xr9MVmNbY9verKbksPO8JdUZ1qauzocFT8RVay4\nwr+22OjhxT6rc4K/GyPKAGB7tk53XXskiAewQfmi+lvL/n9rNVxEBV3BAoGAeEXF\nfT63dQWZAEvpJeB0D0ZHFhpPq3VZXHRLoOM07qMZiH18Z2YqB9iGBFZGxJzm09xI\nO4xRQ6Be/iXoQWaIJOmeL79Q7QJO+uVBZ+E3IWS89u/S1T/3pQbXya7Ekm2IplaM\nmhYM60Lpfvq4kb/GlUfZIJaMzgy/No8/BW+ewJECgYEArd8O6vFKY5y26zaMy6zN\nVi/3SdN2mXs96a0N6h+qhTcly53+P9Xpa/8xOZxypc26gf38JB/7VUaWX7FYDz20\n5GqleRXVSxmosaL9Hib9zGyaVlMlV/ytgIc150+C6SXJg5onwTZ+DKCuY7kBwIk6\nrx38QKyJd/+p5XbmTJcFPUo=\n-----END PRIVATE KEY-----\n",
-    "client_email": "firebase-adminsdk-arl0m@simplifique-c881d.iam.gserviceaccount.com",
-    "client_id": "110928610409474987418",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-arl0m%40simplifique-c881d.iam.gserviceaccount.com"
-    })
-firebase_admin.initialize_app(cred)
-
-
-class Accont:
-    def __init__(self):
-        firebaseConfig = {
-            "apiKey": "AIzaSyCC_WAxsEv_GA99LBhucJ33_cWWy2aENCo",
-            "authDomain": "simplifique-c881d.firebaseapp.com",
-            "projectId": "simplifique-c881d",
-            "databaseURL": "https://simplifique-c881d-default-rtdb.firebaseio.com",
-            "storageBucket": "simplifique-c881d.appspot.com",
-            "messagingSenderId": "413832219747",
-            "appId": "1:413832219747:web:8108fd5f8557737180bc56",
-            "measurementId": "G-2M4RF2PBPP"
-        }
-        firebase = pyrebase.initialize_app(firebaseConfig)
-        self.auth = firebase.auth()
-
-    def sign_in(self, email, password):
-        if internet_connection:
-            try:
-                self.auth.sign_in_with_email_and_password(email, password)
-                return True
-
-            except:
-                return False
-        else:
-            toast('No Internet!')
-    def sing_up(self, email, password, name):
-        if internet_connection:
-            try:
-                auth1.create_user(email = email, email_verified = False, password = password, display_name = name, disabled = False)
-                email = email
-                user = auth1.get_user_by_email(email)
-                user_id = user.uid
-                display_name = user.display_name
-                data = {'name': str(display_name), 'email': str(email)}
-                db1 = firestore.client()
-                db1.collection('users').document(user_id).set(data)
-                return True
-            except:
-                return False
-        else:
-            toast("No Internet")
-    def reset_password(self, email):
-        if internet_connection:
-            try:
-                self.auth.send_password_reset_email(email)
-                return True
-
-            except:
-                return False
-        else:
-            toast("No Internet")
 class Database:
     def __init__(self):
         self.con = sqlite3.connect('data.db')
@@ -213,113 +112,6 @@ class Database:
 
 #Screens
 
-class Screen1(Screen):
-    def on_pre_enter(self, *args):
-        try:
-            conn = sqlite3.connect('data.db')
-            cursor = conn.cursor()
-            cursor.execute('SELECT email, password FROM users')
-            result = cursor.fetchone()
-            conn.close()
-            if result:
-                email, password = result
-                self.ids.l_email.text = email
-                self.ids.l_password.text = password
-            else:
-                self.ids.l_email.text = ""
-                self.ids.l_password.text = ""
-        except sqlite3.Error:
-            self.ids.l_email.text = ""
-            self.ids.l_password.text = ""
-        except Exception:
-            self.ids.l_email.text = ""
-            self.ids.l_password.text = ""
-        else:
-            pass
-
-    def try_sign_in(self):
-        Clock.schedule_once(self.start_sign_in, .5)
-
-    def start_sign_in(self, *args):
-        email = self.ids.l_email.text
-        password = self.ids.l_password.text
-
-        if accont.sign_in(email, password):
-            thing = MDApp.get_running_app()
-            thing.root.current = "screen4"
-            user = auth1.get_user_by_email(email)
-            user_id = user.uid
-            name = user.display_name
-            conn = sqlite3.connect('data.db')
-            cursor = conn.cursor()
-            cursor.execute('DROP TABLE IF EXISTS users')
-            cursor.execute('''CREATE TABLE IF NOT EXISTS users (email TEXT, password TEXT, name TEXT, uid TEXT)''')
-            cursor.execute('INSERT OR REPLACE INTO users VALUES (?, ?, ?, ?)', (email, password, name, user_id))
-            conn.commit()
-            conn.close()
-            thing.press()
-            toast("Logged In Successfully!")
-        else:
-            if email and password:
-                self.ids.l_password.text = ""
-                self.ids.l_email.focus = True
-
-            elif email and not password:
-                self.ids.l_password.focus = True
-                toast("This password isn't correct.")
-
-            elif password and not email:
-                self.ids.l_password.text = ""
-                self.ids.l_email.focus = True
-                toast("This email isn't in our database.")
-
-            else:
-                self.ids.l_email.focus = True
-class Screen2(Screen):
-    def on_pre_enter(self, *args):
-        self.ids.s_email.text = ""
-        self.ids.s_password.text = ""
-        self.ids.s_name.text = ""
-
-    def callback(self, *args):
-        MDApp.get_running_app().root.current = "screen1"
-
-    def validate_info(self):
-        email = self.ids.s_email.text
-        password = self.ids.s_password.text
-        name = self.ids.s_name.text
-
-        if password == password and "@" in email and ".com" in email and len(password) >= 6:
-            if accont.sing_up(email, password, name):
-                toast("Registration Created Successfully!")
-                Clock.schedule_once(self.callback, 3)
-            else:
-                toast("Failed to create record.")
-
-        else:
-            if not email or "@" not in email or ".com" not in email:
-                self.ids.s_email.focus = True
-
-            elif len(password) < 6:
-                self.ids.s_name.text = ""
-                self.ids.s_password.text = ""
-                self.ids.s_password.focus = True
-class Screen3(Screen):
-    def callback(self, *args):
-        MDApp.get_running_app().root.current = "screen1"
-    
-    def on_pre_enter(self, *args):
-        self.ids.r_email.text = ""
-
-    def send_email_confirm(self):
-        email = self.ids.r_email.text
-
-        if accont.reset_password(email):
-            toast("Email Succesfully Sended!")
-        else:
-            toast("Failed to send email.")
-
-        Clock.schedule_once(self.callback, 3)
 class Screen4(Screen):
     def callback(self, *args):
         MDApp.get_running_app().root.current = "screen1"
@@ -382,13 +174,7 @@ class Screen8(Screen):
         if internet_connection:
             try:
                 url = 'https://www.themealdb.com/api/json/v1/1/random.php'
-                try:
-                    meal = requests.get(url).json()
-                except:
-                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                    r1 = proxy.request('GET', url)
-                    meal = json.loads(r1.data.decode('utf-8'))
-
+                meal = requests.get(url).json()
                 meals = meal["meals"]
                 ingredients = []
                 measures = []
@@ -461,12 +247,7 @@ class Screen11(Screen):
                 art = "school"
                 api_key = '283533136981441da324ba7c1b5d0cc5'
                 url = f'https://newsapi.org/v2/everything?q={art}&apikey='+api_key
-                try:
-                    news = requests.get(url).json()
-                except:
-                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                    r1 = proxy.request('GET', url)
-                    news = json.loads(r1.data.decode('utf-8'))
+                news = requests.get(url).json()
 
                 articles = news["articles"]
                 for i in range(10): # Print the first five articles
@@ -594,18 +375,6 @@ class NewsCard(MDCard):
     source = StringProperty()
     url_link = StringProperty()
 class ScreenSwitcher:
-    def switch_screen1(self, *args):
-        self.root.transition = SlideTransition(direction="left")
-        self.root.current = "screen1"
-
-    def switch_screen2(self, *args):
-        self.root.transition = SlideTransition(direction="left")
-        self.root.current = "screen2"
-
-    def switch_screen3(self, *args):
-        self.root.transition = SlideTransition(direction="left")
-        self.root.current = "screen3"
-
     def switch_screen4(self, *args):
         self.root.transition = SlideTransition(direction="left")
         self.root.current = "screen4"
@@ -692,14 +461,7 @@ class RateUs(BoxLayout):
         toast("Rated")
 class Feedback(BoxLayout):
     def send_email(self):
-        email = "marius@gmail.com"
-        password = "12345678"
         name = "Marius"
-        message = self.ids.feedback_text.text
-        msg = EmailMessage()
-        msg["Subject"] = "New Feedback!"
-        msg["To"] = "marius.gabryel2017@gmail.com"
-        msg["From"] = str(email)
         toast(f"Hi, {name}, thanks for feedback!")
 class Report(BoxLayout):
     def send(self):
@@ -725,18 +487,6 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "DeepPurple"
         self.theme_cls.primary_hue = "500"
-        
-        #Internet Screen
-        #sm.add_widget(Screen1(name='screen1')) # Login Page
-        #sm.add_widget(Screen2(name='screen2')) # SignUp Page
-        #sm.add_widget(Screen3(name='screen3')) # Reset Password
-        
-        #Window settings
-        width, height = 405, 900 # 20*9
-        Window.size = (width, height)
-        Window.left = 1  
-        Window.top = 100
-
         #Graphic Screen
         sm.add_widget(Screen4(name='screen4')) # Home Screen
         sm.add_widget(Screen5(name='screen5')) # ToDo 
@@ -942,12 +692,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         if internet_connection:
             try:
                 url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
-                try:
-                    x = requests.get(url).json()
-                except:
-                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                    r1 = proxy.request('GET', url)
-                    x = json.loads(r1.data.decode('utf-8'))
+                x = requests.get(url).json()
                 screen6 = self.root.get_screen("screen6")
                 #screen4 = self.root.get_screen("screen4")
                 
@@ -1035,7 +780,6 @@ if __name__ == '__main__':
     LabelBase.register(name='Roboto', fn_regular='fonts/r_Roboto-Regular.ttf')
     LabelBase.register(name='Graublau', fn_regular='fonts/r_Graublau.ttf')
     LabelBase.register(name='LG', fn_regular='fonts/r_LG.ttf')
-    accont = Accont()
     db = Database()
     app = MainApp()
     app.run()
