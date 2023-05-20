@@ -507,6 +507,26 @@ class Screen15(Screen):
         app = MDApp.get_running_app()
         app.root.transition = SlideTransition(direction="right")
         app.root.current = "screen4"
+class Screen16(Screen):  
+    def __init__(self, **kwargs):
+        super(Screen16, self).__init__(**kwargs)
+        note =  """I recently came across an incredibly beautiful UI app that caught my attention. The app features a sleek and modern design with a seamless user experience.
+
+The color scheme of the app is stunning, using a combination of vibrant and complementary colors that create a visually pleasing interface. The use of gradients and subtle shadows adds depth and dimension to the UI elements, making them appear more engaging and interactive.
+
+The typography in the app is carefully chosen, with elegant and legible fonts that enhance the overall aesthetic. The font sizes and styles are consistent throughout the app, creating a sense of harmony and coherence.
+
+The layout and organization of the app are intuitive and user-friendly. The navigation is smooth, and the placement of buttons and interactive elements is thoughtfully designed for easy accessibility. The app's content is well-structured, making it effortless to find information and navigate through different sections.
+
+Furthermore, the app incorporates stunning illustrations, icons, and visual elements that contribute to its overall beauty. The use of animations and transitions adds a touch of dynamism and liveliness, making the app feel dynamic and engaging.
+
+Overall, this beautiful UI app sets a high standard for aesthetic design and user experience. It exemplifies the power of thoughtful design choices and attention to detail, creating an enjoyable and visually captivating experience for its users.
+        """
+        self.ids.note_text.text = note     
+    def callback(self, *args):
+            app = MDApp.get_running_app()
+            app.root.transition = SlideTransition(direction="right")
+            app.root.current = "screen9"
 
 #Functions
 
@@ -730,6 +750,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         sm.add_widget(Screen13(name='screen13')) # Setings
         sm.add_widget(Screen14(name='screen14')) # Image
         sm.add_widget(Screen15(name='screen15')) # Chat 
+        sm.add_widget(Screen16(name='screen16'))
         return sm
     def select_sign(self, sign):
         self.selected_sign = sign
@@ -801,9 +822,6 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
     def feedback(self):
         self.f_dialog = MDDialog(type="custom",content_cls=Feedback(),size_hint=(None, None), width=350)
         self.f_dialog.open()
-    def report(self):
-        self.c_dialog = MDDialog(type="custom",content_cls=Report(),size_hint=(None, None), width=350)
-        self.c_dialog.open()
     def open_url(self, url):
         dialog = MDDialog(
             title="Warning",
@@ -854,11 +872,25 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
                 size = .77
                 halign = "left"
         screen15.chat_list.add_widget(Command(text=str(value), size_hint_x=size, halign=halign, color=(0, 0, 0, 1)))
+        bp = """Our company aims to provide innovative and affordable solutions in the tech industry. We specialize in developing cutting-edge software products for businesses, focusing on efficiency and user experience. With a customer-centric approach and a talented team, we strive to disrupt the market and become a leader in our niche. Our goal is to achieve sustainable growth and deliver exceptional value to our clients."""
         if value.upper() == "HELLO":
             response = "Hello, I am your personal assistant, how can I help you?"
-        elif value.upper() == "IMAGE":
+        elif value.upper() == "THANKS":
+            response = "You're welcome! If you have any more questions or need further assistance, feel free to ask."
+        elif value.upper() == "BUSINESS PLAN":
+            response = bp
+        elif value.upper() == "AI1":
             response = ""
-            screen15.chat_list.add_widget(ResponseImage(source="images/logo.png"))
+            screen15.chat_list.add_widget(ResponseImage(source="images/AI1.png"))
+        elif value.upper() == "AI2":
+            response = ""
+            screen15.chat_list.add_widget(ResponseImage(source="images/AI2.png"))
+        elif value.upper() == "AI3":
+            response = ""
+            screen15.chat_list.add_widget(ResponseImage(source="images/AI3.png"))
+        elif value.upper() == "AI4":
+            response = ""
+            screen15.chat_list.add_widget(ResponseImage(source="images/AI4.png"))
         else:
             response = "Sorry, can you say that again?"
         screen15.chat_list.add_widget(Response(text=str(response), size_hint_x=.75, halign=halign, color=(0, 0, 0, 1)))

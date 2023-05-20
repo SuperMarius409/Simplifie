@@ -243,7 +243,7 @@
         MDLabel:
             id: home_text
             markup: True
-            text: ""
+            text: "Marius Gabriel"
             font_name: "Poppins-Bold"
             font_size: sp(Window.height * 0.03)
             pos_hint: {'y': .365,'x': .075}
@@ -595,60 +595,6 @@
             text_color: rgba(145,145,145)
             pos_hint: {"center_x": .45, "center_y": .08}
             on_release: app.r_dialog.dismiss()
-<Report>:
-    orientation: "vertical"
-    size_hint: None, None
-    height: "500dp"
-    width: "350dp"
-    MDFloatLayout:
-        MDLabel:
-            markup: True
-            text: "Education User Report"
-            font_name: "Poppins-Bold"
-            font_size: 25
-            pos_hint: {'center_x': .53,'center_y': 1.03}
-            theme_text_color: 'Custom'
-            text_color: get_color_from_hex("5048E5")
-        Image:
-            source: "images/h_chart.png"
-            pos_hint: {"center_x": .45, "center_y": .65}
-            size_hint: .8, .8
-        BoxLayout:
-            orientation: 'vertical'
-            spacing: "8dp"
-            padding: "8dp"
-            pos_hint: {"center_x": .45, "center_y": .5}
-            OneLineIconListItem:
-                text: "College student                  15%"
-                on_release: root.send()
-                canvas:
-                    Color:
-                        rgba: get_color_from_hex("FBBF24")
-                    RoundedRectangle:
-                        pos: self.x + 12, self.center_y - 12
-                        size: 24, 24
-                        radius: [8,]
-            OneLineIconListItem:
-                text: "Graduate student               10%"
-                on_release: root.send()
-                canvas:
-                    Color:
-                        rgba: get_color_from_hex("F43F5E")
-                    RoundedRectangle:
-                        pos: self.x + 12, self.center_y - 12
-                        size: 24, 24
-                        radius: [8,]
-            OneLineIconListItem:
-                text: "High school student          75%"
-                on_release: root.send()
-                canvas:
-                    Color:
-                        rgba: get_color_from_hex("5048E5")
-                    RoundedRectangle:
-                        pos: self.x + 12, self.center_y - 12
-                        size: 24, 24
-                        radius: [8,]
-
 <ElementCard@MDCard>:
     md_bg_color:255/255,255/255,255/255,1
     padding:dp(10)
@@ -1088,6 +1034,7 @@
             text: "My Notes"
             pos_hint: {"center_x": .55, "center_y": .95}
             halign: "center"
+            size_hint_x: .7
             font_name: "Poppins-Bold"
             font_size:  dp(Window.height * 0.04)
         MDFloatLayout:
@@ -1098,50 +1045,140 @@
                 size_hint: None, None
                 size: dp(Window.width * 0.44), dp(Window.height * 0.2)
                 pos_hint: {'center_x': .22, 'center_y': .83}
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("ffab91")
                 ripple_behavior: True
-                on_release: root.callback()
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "How to make your personal brand stand out online"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.0235)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
 
             MDCard:
                 size_hint: None, None
                 size: dp(Window.width * 0.44), dp(Window.height * 0.2)
                 pos_hint: {'center_x': .78, 'center_y': .83}
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("ffcc80")
                 ripple_behavior: True
-                on_release: root.callback()
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "Beautiful weather app UI concepts we wish existed"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.0235)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
 
             MDCard:
                 size_hint: None, None
                 size: dp(Window.width * 0.92), dp(Window.height * 0.18)
                 pos_hint: {'center_x': .5, 'center_y': .603}
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("e7ed9b")
                 ripple_behavior: True
-                on_release: root.callback()
-
+                on_release: app.switch_screen16()
+                MDLabel:
+                    text: "10 excellent font pairing tools for designers"
+                    halign: "left"
+                    size_hint_x: .65
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_name: "Roboto"
+                    font_size: dp(Window.height * 0.03)
+                MDLabel:
+                    text: "May 22, 2023"
+                    halign: "right"
+                    pos_hint: {'right': 1, 'y': -0.4}
+                    size_hint_x: .45
+                    theme_text_color: "Secondary"
+                    text_color: 0, 0, 0, 1
+                    font_name: "Roboto"
+                    font_size: dp(Window.height * 0.018)
             MDCard:
                 size_hint: None, None
                 size: dp(Window.width * 0.44), dp(Window.height * 0.35)
                 pos_hint: {'center_x': .22, 'center_y': .295}
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("81deea")
                 ripple_behavior: True
-                on_release: root.callback()
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "Spotify's Reema Bhagat product design, music, and the key to a happy career"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.025)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
             MDCard:
                 size_hint: None, None
                 size: dp(Window.width * 0.44), dp(Window.height * 0.23)
                 pos_hint: {'center_x': .78, 'center_y': .36}
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("cf94da")
                 ripple_behavior: True
-                on_release: root.callback()
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "12 eye-catching mobile wallpaper"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.025)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
 
         MDFloatingActionButton:
             icon: 'plus-thick'
-            on_release: app.show_task_dialog()
+            on_release: app.working()
             size_hint: None, None
+            elevation: 0
             size: dp(Window.height * 0.06),dp(Window.height * 0.06)
             pos_hint: {'x': .8, 'y':.05}
             
@@ -1936,3 +1973,77 @@
                 Image:
                     halign: "center"
                     source: 'images/h_send.png'
+<Screen16>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDCard:
+            pos_hint: {"center_x": .9, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: app.working()
+            Image:
+                halign: "center"
+                source: 'images/l_edit.png'
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.92),dp(Window.height * 0.68)
+            pos_hint: {"center_x": .505, "center_y": .37}
+            radius: [0, 0, 20, 20]
+            md_bg_color: get_color_from_hex("e7ed9b")
+            elevation: 10
+            padding: [15, 20, 10, 30]
+            ScrollView:
+                do_scroll: [False, True]
+                size_hint: (0.92, 0.35)
+                pos_hint: {"center_x": 0.5, "center_y": .25}
+                scroll_type:['bars', 'content']
+                bar_width: 0
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(10)
+                    
+                    MDLabel:
+                        id: note_text
+                        text: '' 
+                        halign: 'left'
+                        font_name: "Roboto"
+                        font_size: sp(Window.height * 0.022)
+                        size_hint_y: None
+                        height: self.texture_size[1]
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.92),dp(Window.height * 0.2)
+            pos_hint: {"center_x": .505, "center_y": .8}
+            radius: [20, 20, 0, 0]
+            md_bg_color: get_color_from_hex("e7ed9b")
+            elevation: 10
+            padding: [30, 50, 10, 0] 
+            MDLabel:
+                text: 'Beautiful weather app UI concepts we wish existed' 
+                halign: 'left'
+                font_name: "Roboto"
+                font_size: sp(Window.height * 0.037)
+            MDLabel:
+                text: "May 22, 2023"
+                halign: "left"
+                theme_text_color: "Secondary"
+                font_name: "Roboto"
+                font_size: dp(Window.height * 0.018)
