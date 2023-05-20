@@ -1,0 +1,1 @@
+"Window resolution: {}x{}".format(

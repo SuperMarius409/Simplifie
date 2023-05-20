@@ -1,14 +1,10 @@
-# pyright: reportMissingImports=false
-
 import json
 import random
-import re
 import sys
+import re
 import sqlite3
 import requests
-import wikipedia
 from datetime import datetime
-from docx import Document
 from urllib.request import urlopen
 
 #kivy
@@ -21,7 +17,7 @@ from kivy.uix.button import Button
 from kivy.core.text import LabelBase
 from kivy.core.clipboard import Clipboard
 from kivy.properties import ListProperty, ObjectProperty,StringProperty, NumericProperty
-from kivy.core.text import LabelBase
+from kivy.core.window import Window
 from kivy.metrics import dp
 from kivy.uix.image import Image
 
@@ -48,7 +44,6 @@ if platform_name == "android":
     request_permissions([Permission.INTERNET])
 else:
     pass
-
 global internet_connection
 internet_connection = False
 try:
@@ -131,37 +126,6 @@ class Screen7(Screen):
         app.root.transition = SlideTransition(direction="right")
         app.root.current = "screen4"
     def essay_helper(self, *args):
-        w_name = self.ids.wiki_name.text
-        language = self.ids.wiki_language.text
-        title = self.ids.wiki_title.text
-        wikipedia.set_lang(language)
-        try:
-            if title:
-                wiki = wikipedia.page(title)
-            else:
-                self.ids.wiki_title.text = ""
-                self.ids.wiki_title.focus = True
-                toast("Project name invalid")
-                return
-        except wikipedia.exceptions.PageError:
-            self.ids.wiki_title.text = ""
-            self.ids.wiki_title.focus = True
-            toast(" Project name not found \n Please enter another title ")
-            return
-        text = wiki.content
-        text = re.sub(r'==', '', text)
-        text = re.sub(r'=', '', text)
-        text = re.sub(r'\n', '\n    ', text)
-        split = text.split('See also', 1)
-        text = split[0]
-        output_text = text   
-        document = Document()
-        paragraph = document.add_heading(title, 0)
-        paragraph.alignment = 1
-        paragraph = document.add_paragraph('    ' + text)
-        paragraph = document.add_paragraph(w_name)
-        paragraph.alignment = 2
-        document.save(title + ".docx")
         toast(" Project saved in local directory ")
 class Screen8(Screen):
     global internet_connection
@@ -487,6 +451,7 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "DeepPurple"
         self.theme_cls.primary_hue = "500"
+        print(("Window resolution: {}x{} \n".format(Window.width, Window.height))*10)
         #Graphic Screen
         sm.add_widget(Screen4(name='screen4')) # Home Screen
         sm.add_widget(Screen5(name='screen5')) # ToDo 

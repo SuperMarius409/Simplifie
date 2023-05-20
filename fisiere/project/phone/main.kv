@@ -16,7 +16,7 @@
             markup: True
             text: "Marius Gabriel"
             font_name: "Poppins-Bold"
-            font_size: sp(Window.height * 0.03)
+            font_size: sp(30)
             pos_hint: {'y': .365,'x': .075}
             theme_text_color: 'Custom'
             text_color: rgba(255, 255, 255)
@@ -24,7 +24,7 @@
             markup: True
             text: "Hello"
             font_name: "Poppins"
-            font_size: sp(Window.height * 0.03)
+            font_size: sp(30)
             pos_hint: {'y': .42, 'x': .075}
             theme_text_color: 'Custom'
             text_color: rgba(255, 255, 255)
@@ -41,8 +41,7 @@
                     radius: [25, 25, 25, 25]
             MDCard:
                 pos_hint: {"center_x": .2, "center_y": .5}
-                size_hint: (None, None)
-                size: dp(Window.width * 0.25), dp(Window.height * 0.12)
+                size_hint: (.27, .8)
                 radius: dp(20)
                 md_bg_color: get_color_from_hex("CBC8FF")
                 ripple_behavior: True
@@ -52,8 +51,7 @@
                     source: 'images/h_document.png'
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .5}
-                size_hint: (None, None)
-                size: dp(Window.width * 0.25), dp(Window.height * 0.12)
+                size_hint: (.27, .8)
                 radius: dp(20)
                 md_bg_color: get_color_from_hex("CBC8FF")
                 ripple_behavior: True
@@ -63,8 +61,7 @@
                     source: 'images/h_image.png'
             MDCard:
                 pos_hint: {"center_x": .8, "center_y": .5}
-                size_hint: (None, None)
-                size: dp(Window.width * 0.25), dp(Window.height * 0.12)
+                size_hint: (.27, .8)
                 radius: dp(20)
                 md_bg_color: get_color_from_hex("CBC8FF")
                 ripple_behavior: True
@@ -73,8 +70,7 @@
                     pos_hint: {"center_x": .5, "center_y": .5}
                     source: 'images/h_chatgpt.png'
         MDFloatLayout:
-            size_hint: None,None
-            size: dp(Window.width * 0.87), dp(Window.height * 0.075)
+            size_hint: (.87, .075)
             pos_hint: {"center_x": .515, "center_y": .56}
             elevation: 0
             canvas:
@@ -83,7 +79,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [dp(Window.height * 0.03)] 
+                    radius: [30] 
             TextInput:
                 id: search_text
                 hint_text: "Search For..."
@@ -95,13 +91,12 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Graublau"
-                font_size: dp(Window.height * 0.02)
+                font_size: sp(20)
                 cursor_color: (0.5, 0.5, 0.5, 1)
                 cursor_width: 2
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.06),dp(Window.height * 0.06)
+                size_hint: (.16, .8)
                 radius: dp(50)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
@@ -110,8 +105,7 @@
                     halign: "center"
                     source: 'images/h_search_icon.png'
         MDCard:
-            size_hint: None, None
-            size: dp(Window.width * 0.87), dp(Window.height * 0.17)
+            size_hint: (.87, .17)
             radius: dp(20)
             md_bg_color: get_color_from_hex("603BF1")
             ripple_behavior: True
@@ -121,7 +115,7 @@
                 text: "To Get Unlimited \n Upgrade Your Account"   
                 font_name: "Roboto-Bold"
                 theme_text_color: 'Custom'
-                font_size: sp(Window.height * 0.023)
+                font_size: sp(18)
                 halign: 'center'
                 text_color: rgba(255, 255, 255)
                 pos_hint: {"center_x": .30, "center_y": .43}
@@ -188,42 +182,42 @@
                 halign:"center"
                 text:'News'
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015) 
+                font_size: sp(13) 
             MDLabel:
                 halign:"center"
                 text:'Recipique'# (a play on the French word "recette" which means "recipe")
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015) 
+                font_size: sp(13) 
             MDLabel:
                 halign:"center"
                 text:'Weather'
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015) 
+                font_size: sp(13) 
             MDLabel:
                 halign:"center"
                 text:'Tasks' # ToDu (a play on the French word "tout" which means "all" and "to do")
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015) 
+                font_size: sp(13) 
             MDLabel:
                 halign:"center"
                 text:'Feedback'
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015)
+                font_size: sp(13)
             MDLabel:
                 halign:"center"
                 text:'Notes'
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015) 
+                font_size: sp(13) 
             MDLabel:
                 halign:"center"
                 text:'Review'
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015) 
+                font_size: sp(13) 
             MDLabel:
                 halign:"center"
                 text:'Settings'
                 font_name: "Roboto-Bold"
-                font_size: sp(Window.height * 0.015) 
+                font_size: sp(13) 
 <Feedback>:
     orientation: "vertical"
     size_hint: None, None
