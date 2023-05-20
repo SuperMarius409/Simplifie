@@ -1,0 +1,2049 @@
+#:kivy 1.1.1
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<Screen1>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        Image:
+            pos_hint: {"center_x": .5, "center_y": .85}
+            source: "images/l_bkg_1.png"
+        MDLabel:
+            text: "Welcome\nBack"
+            pos_hint: {"center_x": .4, "center_y": .6}
+            size_hint_x: .6
+            haling: "left"
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex("646efa")
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.05)
+
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("E8E8F9")
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .45}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: l_email
+                hint_text: "Email"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.025)
+
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .33}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: l_password
+                hint_text: "Password"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                password: True
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.025)
+        MDTextButton:
+            text: "Are you a new user? Register"     
+            halign: "center"
+            theme_text_color: 'Custom'
+            text_color: rgba(145,145,145, 255)
+            font_size: sp(Window.height * 0.02)
+            pos_hint: {"center_x": .5, "center_y": .065}
+            on_press: root.manager.current = 'screen2'
+        MDFillRoundFlatButton:
+            text:"LOGIN"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            background_color: 0, 0, 0, 0
+            letter_spacing: 5
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.try_sign_in()
+
+<Screen2>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        Image:
+            pos_hint: {"center_x": .5, "center_y": .87}
+            source: "images/l_bkg_2.png"
+        MDLabel:
+            text: "Create\nAccount"
+            pos_hint: {"center_x": .4, "center_y": .6}
+            size_hint_x: .6
+            haling: "left"
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex("646efa")
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.05)
+        MDFloatLayout:
+            size_hint: .8, .075
+            pos_hint: {"center_x": .5, "center_y": .47}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: s_email
+                hint_text: "Email"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.02)
+        MDFloatLayout:
+            size_hint: .8, .075
+            pos_hint: {"center_x": .5, "center_y": .37}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: s_password
+                hint_text: "Password"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.02)
+        MDFloatLayout:
+            size_hint: .8, .075
+            pos_hint: {"center_x": .5, "center_y": .27}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: s_name
+                hint_text: "Name"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.02)
+        MDTextButton:
+            text: "Forgot Password?"     
+            halign: "center"
+            theme_text_color: 'Custom'
+            text_color: rgba(145,145,145, 255)
+            font_size: sp(Window.height * 0.02)
+            pos_hint: {"center_x": .5, "center_y": .065}
+            on_press: root.manager.current = 'screen3'
+        
+        MDFillRoundFlatButton:
+            text:"CREATE"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            background_color: 0, 0, 0, 0
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.validate_info()
+<Screen3>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        Image:
+            pos_hint: {"center_x": .5, "center_y": .85}
+            source: "images/l_bkg_1.png"
+        MDLabel:
+            text: "Recover\nPassword"
+            pos_hint: {"center_x": .4, "center_y": .6}
+            size_hint_x: .6
+            haling: "left"
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex("646efa")
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.05)
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .4}
+            canvas:
+                Color:
+                    rgb: rgba(245, 245, 245, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+            TextInput:
+                id: r_email
+                hint_text: "Email"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(168, 168, 168, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.025)    
+        MDFillRoundFlatButton:
+            text:"RECOVER"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            background_color: 0, 0, 0, 0
+            letter_spacing: 5
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.send_email_confirm()
+
+
+<Screen4>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        Image:
+            source: "images/h_top.png"
+            pos_hint: {"center_x": .5, "center_y": .87}        
+        Image:
+            pos_hint: {'y': .78,'x': .66}
+            source: 'images/h_profile.png'
+            size_hint: .24, .24
+        MDLabel:
+            id: home_text
+            markup: True
+            text: "Marius Gabriel"
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.03)
+            pos_hint: {'y': .365,'x': .075}
+            theme_text_color: 'Custom'
+            text_color: rgba(255, 255, 255)
+        MDLabel:
+            markup: True
+            text: "Hello"
+            font_name: "Poppins"
+            font_size: sp(Window.height * 0.03)
+            pos_hint: {'y': .42, 'x': .075}
+            theme_text_color: 'Custom'
+            text_color: rgba(255, 255, 255)
+        MDFloatLayout:
+            size_hint: .87, .15
+            pos_hint: {"center_x": .515, "center_y": .70}
+            spacing: dp(25)
+            canvas:
+                Color:
+                    rgba: get_color_from_hex("FFFFFF")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25, 25, 25, 25]
+            MDCard:
+                pos_hint: {"center_x": .2, "center_y": .5}
+                size_hint: (None, None)
+                size: dp(Window.width * 0.25), dp(Window.height * 0.12)
+                radius: dp(20)
+                md_bg_color: get_color_from_hex("CBC8FF")
+                ripple_behavior: True
+                on_release: app.switch_screen7()
+                Image:
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    source: 'images/h_document.png'
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: (None, None)
+                size: dp(Window.width * 0.25), dp(Window.height * 0.12)
+                radius: dp(20)
+                md_bg_color: get_color_from_hex("CBC8FF")
+                ripple_behavior: True
+                on_release: app.switch_screen14()
+                Image:
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    source: 'images/h_image.png'
+            MDCard:
+                pos_hint: {"center_x": .8, "center_y": .5}
+                size_hint: (None, None)
+                size: dp(Window.width * 0.25), dp(Window.height * 0.12)
+                radius: dp(20)
+                md_bg_color: get_color_from_hex("CBC8FF")
+                ripple_behavior: True
+                on_release: app.switch_screen15()
+                Image:
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    source: 'images/h_chatgpt.png'
+        MDFloatLayout:
+            size_hint: None,None
+            size: dp(Window.width * 0.87), dp(Window.height * 0.075)
+            pos_hint: {"center_x": .515, "center_y": .56}
+            elevation: 0
+            canvas:
+                Color:
+                    rgba: rgba(255, 255, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [dp(Window.height * 0.03)] 
+            TextInput:
+                id: search_text
+                hint_text: "Search For..."
+                size_hint: 1, None
+                pos_hint: {"center_x": .53, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(130, 130, 130, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Graublau"
+                font_size: dp(Window.height * 0.02)
+                cursor_color: (0.5, 0.5, 0.5, 1)
+                cursor_width: 2
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.06),dp(Window.height * 0.06)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/h_search_icon.png'
+        MDCard:
+            size_hint: None, None
+            size: dp(Window.width * 0.87), dp(Window.height * 0.17)
+            radius: dp(20)
+            md_bg_color: get_color_from_hex("603BF1")
+            ripple_behavior: True
+            pos_hint: {"center_x": .515, "center_y": .41}
+            on_release: app.open_url("https://github.com/SuperMarius409")
+            MDLabel:
+                text: "To Get Unlimited \n Upgrade Your Account"   
+                font_name: "Roboto-Bold"
+                theme_text_color: 'Custom'
+                font_size: sp(Window.height * 0.023)
+                halign: 'center'
+                text_color: rgba(255, 255, 255)
+                pos_hint: {"center_x": .30, "center_y": .43}
+                line_height: 1.55
+            Image:
+                size_hint: .6, .6
+                pos_hint: {"center_x": .70, "center_y": .5}
+                source: 'images/h_logo.png'
+        MDGridLayout:
+            size_hint_y: .3
+            pos_hint: {'center_y': .17}
+            cols: 4
+            rows: 2
+            padding: dp(40), dp(35), dp(28), dp(40)
+            spacing: dp(20), dp(60)
+
+            ElementCard:
+                image: "images/ic_1.png"
+                text: "News"
+                on_release: app.switch_screen11()
+
+            ElementCard:
+                image: "images/ic_2.png"
+                text: "Recipique"
+                on_release: app.switch_screen8()
+
+            ElementCard:
+                image: "images/ic_3.png"
+                text: "Weather"
+                on_release: app.switch_screen6()
+
+            ElementCard:
+                image: "images/ic_4.png"
+                text: "ToDu"
+                on_release: app.switch_screen5()
+
+            ElementCard:
+                image: "images/ic_5.png"
+                text: "Contact"
+                on_release: app.feedback()
+
+            ElementCard:
+                image: "images/ic_6.png"
+                text: "Notes"
+                on_release: app.switch_screen9()
+
+            ElementCard:
+                image: "images/ic_7.png"
+                text: "Site"
+                on_release: app.rate_us()
+
+            ElementCard:
+                image: "images/ic_8.png"
+                text: "Settings"
+                on_release: app.switch_screen13()
+        MDGridLayout:
+            size_hint_y: .3
+            pos_hint: {'center_y': .1}
+            cols: 4
+            rows: 2
+            padding: dp(40), dp(35), dp(28), dp(40)
+            spacing: dp(28), dp(50)
+            MDLabel:
+                halign:"center"
+                text:'News'
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015) 
+            MDLabel:
+                halign:"center"
+                text:'Recipique'# (a play on the French word "recette" which means "recipe")
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015) 
+            MDLabel:
+                halign:"center"
+                text:'Weather'
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015) 
+            MDLabel:
+                halign:"center"
+                text:'Tasks' # ToDu (a play on the French word "tout" which means "all" and "to do")
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015) 
+            MDLabel:
+                halign:"center"
+                text:'Feedback'
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015)
+            MDLabel:
+                halign:"center"
+                text:'Notes'
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015) 
+            MDLabel:
+                halign:"center"
+                text:'Review'
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015) 
+            MDLabel:
+                halign:"center"
+                text:'Settings'
+                font_name: "Roboto-Bold"
+                font_size: sp(Window.height * 0.015) 
+<Feedback>:
+    orientation: "vertical"
+    size_hint: None, None
+    height: "600dp"
+    width: "350dp"
+    MDFloatLayout:
+        Image:
+            source: "images/r_contact.png"
+            size_hint: 0.7, 0.7
+            pos_hint: {"center_x": .45, "center_y": .85}
+        MDLabel:
+            markup: True
+            text: "Feedback"
+            font_name: "Poppins-Bold"
+            font_size: 22
+            pos_hint: {'center_x': .8,'center_y': .65}
+            theme_text_color: 'Custom'
+            text_color: rgba(30, 125, 195)
+        MDFloatLayout:
+            md_bg_color: rgba(245, 245, 245, 245)
+            size_hint: .85, .35
+            pos_hint: {"center_x": .45, "center_y": .43}
+            canvas:
+                Color:
+                    rgb: rgba(215, 215, 215, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [10]
+            TextInput:
+                id: feedback_text
+                hint_text: "Write your feedback here..."
+                size_hint: 1, 1
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: True
+                hint_text_color: rgba(160, 160, 160, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins"
+                font_size: "16sp"
+        MDFillRoundFlatButton:
+            text:"Send"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: "20sp"
+            pos_hint: {"center_x": .45, "center_y": .18}
+            background_color: 0, 0, 0, 0
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.send_email()
+        MDTextButton:
+            text: "Maybe later"
+            font_name: "Poppins-Bold"
+            theme_text_color: "Custom"
+            text_color: rgba(145,145,145)
+            pos_hint: {"center_x": .45, "center_y": .08}
+            on_release: app.f_dialog.dismiss()    
+<RateUs>:
+    orientation: "vertical"
+    size_hint: None, None
+    height: "600dp"
+    width: "350dp"
+    MDFloatLayout:
+        Image:
+            source: "images/r_logo.png"
+            pos_hint: {"center_x": .45, "center_y": .85}
+        MDLabel:
+            markup: True
+            text: "Rate us 5 stars"
+            font_name: "Poppins-Bold"
+            font_size: 22
+            pos_hint: {'center_x': .72,'center_y': .59}
+            theme_text_color: 'Custom'
+            text_color: rgba(30, 125, 195)
+        MDLabel:
+            text: "Suport us by giving 5 star  to this \n aplication and  writing your review"
+            halign: "center"
+            size_hint_x: 
+            font_size: "16sp"
+            font_name: "Poppins"
+            pos_hint: {"center_x": .43, "center_y": .5}
+        MDIconButton:
+            id: star1
+            icon: 'images/r_star.png'
+            pos_hint: {"center_x": .07, "center_y": .35}
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            icon_size: "50sp"
+            opacity: 0.15
+            on_release: root.select1()
+        MDIconButton:
+            id: star2
+            icon: 'images/r_star.png'
+            pos_hint: {"center_x": .25, "center_y": .35}
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            icon_size: "50sp"
+            opacity: 0.15
+            on_release: root.select2()
+        MDIconButton:
+            id: star3
+            icon: 'images/r_star.png'
+            pos_hint: {"center_x": .44, "center_y": .35}
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            icon_size: "50sp"
+            opacity: 0.15
+            on_release: root.select3()
+        MDIconButton:
+            id: star4
+            icon: 'images/r_star.png'
+            pos_hint: {"center_x": .62, "center_y": .35}
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            icon_size: "50sp"
+            opacity: 0.15
+            on_release: root.select4()
+        MDIconButton:
+            id: star5
+            icon: 'images/r_star.png'
+            pos_hint: {"center_x": .8, "center_y": .35}
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            icon_size: "50sp"
+            opacity: 0.15
+            on_release: root.select5()
+        MDFillRoundFlatButton:
+            text:"Rate now"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: "20sp"
+            pos_hint: {"center_x": .45, "center_y": .18}
+            background_color: 0, 0, 0, 0
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.send()
+        MDTextButton:
+            text: "Maybe later"
+            font_name: "Poppins-Bold"
+            theme_text_color: "Custom"
+            text_color: rgba(145,145,145)
+            pos_hint: {"center_x": .45, "center_y": .08}
+            on_release: app.r_dialog.dismiss()
+<ElementCard@MDCard>:
+    md_bg_color:255/255,255/255,255/255,1
+    padding:dp(10)
+    spacing:dp(7)
+    radius:dp(7)
+    ripple_behavior: True
+    image:''
+    orientation:'vertical'
+    Image:
+        source:root.image
+
+<Screen5>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDTextButton:
+            text: "My Tasks"
+            pos_hint: {"center_x": .55, "center_y": .95}
+            halign: "center"
+            font_name: "Poppins-Bold"
+            font_size: "35sp"
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: sp(Window.height * 0.4), sp(Window.height * 0.75)
+            pos_hint: {"center_x": .505, "center_y": .5}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            ScrollView:
+                pos_hint: {'center_y': .5, 'center_x': .5}
+                size_hint: 1, .8
+                scroll_type:['bars', 'content']
+                bar_width: 0
+                MDList:
+                    id: container
+        MDFloatingActionButton:
+            icon: 'plus-thick'
+            on_release: app.show_task_dialog()
+            size_hint: None, None
+            elevation: 0
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            pos_hint: {'x': .8, 'y':.05}
+
+<DialogContent>:
+    orientation: "vertical"
+    spacing: "10dp"
+    size_hint: 1, None
+    height: "130dp"
+    GridLayout:
+        rows: 1
+        MDTextField:
+            id: task_text
+            hint_text: "Add Task..."
+            pos_hint: {"center_y": .4}
+            max_text_length: 35
+            on_text_validate: (app.add_task(task_text, date_text.text), app.close_dialog())
+        MDIconButton:
+            icon: 'calendar'
+            on_release: root.show_date_picker()
+            padding: '10dp'
+    MDLabel:
+        spacing: '10dp'
+        id: date_text
+    BoxLayout:
+        orientation: 'horizontal'
+        MDRaisedButton:
+            text: "SAVE"
+            on_release: (app.add_task(task_text, date_text.text), app.close_dialog())
+        MDFlatButton:
+            text: 'CANCEL'
+            on_release: app.close_dialog()
+
+<ListItemWithCheckbox>:
+    id: the_list_item
+    markup: True
+    height: dp(Window.height * 0.08)
+    LeftCheckbox:
+        id: check
+        on_release: 
+            root.mark(check, the_list_item)
+    IconRightWidget:
+        icon: 'trash-can-outline'
+        theme_text_color: "Custom"
+        text_color: 1, 0, 0, 1
+        on_release:
+            root.delete_item(the_list_item)
+
+<Screen6>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDCard:
+            pos_hint: {"center_x": .11, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDLabel:
+            id: location
+            halign: 'center'
+            text: ""
+            font_size: sp(Window.height * 0.035)
+            font_name: "Roboto-Bold"
+            pos_hint: {"center_x": .3, "center_y": .88}
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.9), dp(Window.height * 0.5)
+            pos_hint: {"center_x": .5, "center_y": .58}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            Image:
+                id: weather_image
+                source: "images/w_sun.png"
+                pos_hint: {"center_x": .5, "center_y": .8}
+                allow_stretch: True
+                keep_ratio: True
+                size_hint: .35, .35
+            MDLabel:
+                id: weather
+                halign: 'center'
+                text: ""
+                font_size: sp(Window.height * 0.04)
+                font_name: "Poppins"
+                pos_hint: {"center_x": .5, "center_y": .53}
+            MDLabel:
+                id: temperature
+                halign: 'center'
+                text: ""
+                markup: True
+                font_size: sp(Window.height * 0.06)
+                font_name: "Poppins"
+                pos_hint: {"center_x": .52, "center_y": .36}
+            MDFloatLayout:
+                pos_hint: {"center_x": .25, "center_y": .15}
+                size_hint: .22, .7
+                Image:
+                    source: "images/w_humidity.png"
+                    pos_hint:  {"center_x": .01, "center_y": .5}
+                    allow_stretch: True
+                    keep_ratio: True
+                    size_hint: .9, .9
+                MDLabel:
+                    id: humidity
+                    text: ""
+                    font_size: sp(Window.height * 0.02)
+                    font_name: "Poppins"
+                    pos_hint: {"center_x": 1, "center_y": .55}
+                MDLabel:
+                    text: "Humidity"
+                    font_size: sp(Window.height * 0.02)
+                    font_name: "Poppins"
+                    pos_hint: {"center_x": 1, "center_y": .45} 
+            MDFloatLayout:
+                pos_hint: {"center_x": .72, "center_y": .15}
+                size_hint: .22, .7
+                Image:
+                    source: "images/w_wind.png"
+                    pos_hint:  {"center_x": .1, "center_y": .5}
+                    allow_stretch: True
+                    keep_ratio: True
+                    size_hint: .9, .9
+                MDLabel:
+                    id: wind_speed
+                    text: ""
+                    font_size: sp(Window.height * 0.018)
+                    font_name: "Poppins"
+                    pos_hint: {"center_x": 1.2, "center_y": .55}
+                MDLabel:
+                    text: "Wind"
+                    font_size: sp(Window.height * 0.02)
+                    font_name: "Poppins"
+                    pos_hint: {"center_x": 1.2, "center_y": .45}  
+        #CityFinder
+        MDFloatLayout:
+            size_hint: .9, .25
+            pos_hint: {"center_x": .5, "center_y": .16}
+            canvas:
+                Color:
+                    rgb: rgba(160, 160,230,255) # BackgroundColor
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [20, 20, 20, 20]   
+
+            MDFloatLayout:
+                pos_hint: {"center_x": .5, "center_y": .71}  
+                size_hint: .9, .32
+                canvas.before:
+                    Color:
+                        rgb: rgba(100,80,220,255) # TextInputColor
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [6] 
+                TextInput:
+                    id: city_name
+                    hint_text: "Enter City Name"  
+                    size_hint: 1, None
+                    pos_hint: {"center_x": .5, "center_y": .5} 
+                    height: self.minimum_height
+                    multiline: False
+                    font_name: "Poppins-Bold"
+                    font_size: "20sp"
+                    hint_text_color: 1, 1, 1, 1
+                    foreground_color: 1, 1, 1, 1
+                    background_color: 1, 1, 1, 0
+                    padding: 15
+                    cursor_color: 1, 1, 1, 1
+                    cursor_width: "2sp"
+            Button:
+                text: "Get Weather"
+                font_name: "Poppins-Bold"
+                font_size: "20sp"
+                size_hint: .9, .32
+                pos_hint: {"center_x": .5, "center_y": .29}
+                background_color: 1, 1, 1, 0
+                color: rgba(100,80,220,255) # ButtonColor
+                on_release: app.search_weather()
+                canvas.before:
+                    Color:
+                        rgb: rgba(254,254,255,255)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [6] 
+<Screen7>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("F0E6FA")
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(13)
+            md_bg_color: 1,1,1,1
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                source: 'images/l_arrow.png'
+        MDLabel:
+            text: "Doki"
+            pos_hint: {"center_x": .32, "center_y": .85}
+            size_hint_x: .42
+            haling: "left"
+            font_name: "Poppins-Bold"
+            font_size: sp(Window.height * 0.075)
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("E8E8F9")
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .67}
+            canvas:
+                Color:
+                    rgb: rgba(245,245,245,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: wiki_name
+                hint_text: "Your Name"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.023)
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .55}
+            canvas:
+                Color:
+                    rgb: rgba(245,245,245,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: wiki_language
+                hint_text: "Language"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.023)
+        MDFloatLayout:
+            size_hint: .8, .09
+            pos_hint: {"center_x": .5, "center_y": .43}
+            canvas:
+                Color:
+                    rgb: rgba(245,245,245,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
+            TextInput:
+                id: wiki_title
+                hint_text: "Essay Title"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(145,145,145, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Poppins-Bold"
+                font_size: sp(Window.height * 0.023)
+
+        
+        MDFillRoundFlatButton:
+            text:"START"
+            font_name: "Poppins-Bold"
+            size_hint: .8, .09
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            background_color: 0, 0, 0, 0
+            letter_spacing: 5
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.essay_helper()
+<Screen8>:
+    name: "screen8"
+    MDFloatLayout:
+        md_bg_color: rgba(237, 233, 252)
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDTextButton:
+            size_hint: None, None
+            size: dp(Window.width * 0.7),dp(Window.height * 0.05)
+            text: "Recipique"
+            pos_hint: {"center_x": .55, "center_y": .95}
+            halign: "center"
+            font_name: "Poppins-Bold"
+            font_size:  dp(Window.height * 0.035)
+            on_release: root.meal_text()
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.9),dp(Window.height * 0.45)
+            pos_hint: {"center_x": .505, "center_y": .25}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            ScrollView:
+                do_scroll: [False, True]
+                size_hint: (0.9, 0.35)
+                pos_hint: {"center_x": 0.5, "center_y": .25}
+                scroll_type:['bars', 'content']
+                bar_width: 0
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(10)
+                    
+                    MDLabel:
+                        id: meal_text
+                        text_size: self.width, None
+                        text: '' 
+                        size_hint_y: None
+                        halign: 'left'
+                        height: self.texture_size[1]
+                        font_name: "Poppins"
+        AsyncImage:
+            id: meal_image
+            source: root.image_source
+            size_hint: (.9,.4)
+            pos_hint: {"center_x": .515, "center_y": .7} 
+            stencil_image: True
+            canvas:
+                Color:
+                    rgba: rgba(237, 233, 252)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                StencilPush
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+                StencilUse
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: self.source
+                    texture: self.texture
+                StencilUnUse
+                StencilPop   
+<Screen9>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDTextButton:
+            text: "My Notes"
+            pos_hint: {"center_x": .55, "center_y": .95}
+            halign: "center"
+            size_hint_x: .7
+            font_name: "Poppins-Bold"
+            font_size:  dp(Window.height * 0.04)
+        MDFloatLayout:
+            size_hint: None, None
+            size: dp(Window.width * 0.83), dp(Window.height * 0.9)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.2)
+                pos_hint: {'center_x': .22, 'center_y': .83}
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("ffab91")
+                ripple_behavior: True
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "How to make your personal brand stand out online"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.0235)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
+
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.2)
+                pos_hint: {'center_x': .78, 'center_y': .83}
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("ffcc80")
+                ripple_behavior: True
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "Beautiful weather app UI concepts we wish existed"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.0235)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
+
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.92), dp(Window.height * 0.18)
+                pos_hint: {'center_x': .5, 'center_y': .603}
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("e7ed9b")
+                ripple_behavior: True
+                on_release: app.switch_screen16()
+                MDLabel:
+                    text: "10 excellent font pairing tools for designers"
+                    halign: "left"
+                    size_hint_x: .65
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    font_name: "Roboto"
+                    font_size: dp(Window.height * 0.03)
+                MDLabel:
+                    text: "May 22, 2023"
+                    halign: "right"
+                    pos_hint: {'right': 1, 'y': -0.4}
+                    size_hint_x: .45
+                    theme_text_color: "Secondary"
+                    text_color: 0, 0, 0, 1
+                    font_name: "Roboto"
+                    font_size: dp(Window.height * 0.018)
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.35)
+                pos_hint: {'center_x': .22, 'center_y': .295}
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("81deea")
+                ripple_behavior: True
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "Spotify's Reema Bhagat product design, music, and the key to a happy career"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.025)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
+            MDCard:
+                size_hint: None, None
+                size: dp(Window.width * 0.44), dp(Window.height * 0.23)
+                pos_hint: {'center_x': .78, 'center_y': .36}
+                radius: dp(Window.height * 0.02)
+                padding: dp(Window.height * 0.02)
+                md_bg_color: get_color_from_hex("cf94da")
+                ripple_behavior: True
+                on_release: app.switch_screen16()
+                BoxLayout:
+                    orientation: 'vertical'
+                    pos_hint: {'center_x': .5, 'center_y': .38}
+                    MDLabel:
+                        text: "12 eye-catching mobile wallpaper"  
+                        halign: "left"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.025)
+                    MDLabel:
+                        text: "May 22, 2023"
+                        halign: "left"
+                        theme_text_color: "Secondary"
+                        text_color: 0, 0, 0, 1
+                        font_name: "Roboto"
+                        font_size: dp(Window.height * 0.018)
+
+        MDFloatingActionButton:
+            icon: 'plus-thick'
+            on_release: app.working()
+            size_hint: None, None
+            elevation: 0
+            size: dp(Window.height * 0.06),dp(Window.height * 0.06)
+            pos_hint: {'x': .8, 'y':.05}
+            
+<Screen10>:
+    correct: correct
+    wrong: wrong
+    success_rate: success_rate
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDLabel:
+            text: "Final\nScore"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0,0,0, 1
+            font_size: sp(Window.height * 0.08)
+            font_name: "LG"
+            pos_hint: {"center_x": .5, "center_y": .85}
+        MDLabel:
+            id: correct
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1,1,1, 1
+            font_size: sp(Window.height * 0.04)
+            font_name: "LG"
+            size_hint: .8, .12
+            pos_hint: {"center_x": .5, "center_y": .6}
+            line_height: 1.1
+            canvas.before:
+                Color:
+                    rgb: 0,1,0,1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [10]
+        MDLabel:
+            id: wrong
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1,1,1, 1
+            font_size: sp(Window.height * 0.04)
+            font_name: "LG"
+            size_hint: .8, .12
+            pos_hint: {"center_x": .5, "center_y": .46}
+            line_height: 1.1
+            canvas.before:
+                Color:
+                    rgb: 1,0,0,1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [10]
+        MDLabel:
+            id: success_rate
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1,1,1, 1
+            font_size: sp(Window.height * 0.04)
+            font_name: "LG"
+            size_hint: .8, .12
+            pos_hint: {"center_x": .5, "center_y": .32}
+            line_height: 1.1
+            canvas.before:
+                Color:
+                    rgb: rgba(87,23,216,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [10]
+
+        MDFloatLayout:
+            size_hint: .6, .2
+            pos_hint: {"center_x": .5, "center_y": .47}
+        Button:
+            text: "EXIT"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            background_color: 1,1,1,0
+            on_release: app.replay()
+            canvas.before:
+                Color:
+                    rgb: rgba(95,60,240,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [15]
+<Screen11>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDFloatLayout:
+            md_bg_color: rgba(237, 233, 252)
+            size_hint_y: .11
+            pos_hint: {"center_y": .95}
+            MDCard:
+                pos_hint: {"center_x": .11, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: False
+                on_press: root.callback()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow.png'
+            MDLabel:
+                text: "News"
+                font_name: "Poppins-Bold"
+                halign: "center"
+                pos_hint: {"center_x": .35 , "center_y": .5}
+                font_size: dp(Window.height * 0.035)
+                theme_text_color: "Custom"
+                text_color: 53/255, 56/255, 60/255, 1
+        ScrollView:
+            size_hint_y: .85
+            pos_hint: {"x": 0, "y": .05}
+            do_scroll_x: False
+            do_scroll_y: True
+            MDGridLayout:
+                id: news_list
+                cols: 1
+                spacing: "30dp"
+                padding: "25dp"
+                size_hint_y: None
+                height: self.minimum_height
+<OptionButton>:
+    font_name: "LG"
+    font_size: sp(Window.height * 0.05)
+    background_color: 1,1,1,0
+    bg_color: 87/255, 23/255, 216/255, 1
+    on_release:app.quiz(self.text, self)
+    canvas.before:
+        Color:
+            rgb: root.bg_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.x, self.y + 5
+            radius: [Window.height * 0.025]
+<Screen12>:
+    question: question
+    name: 'quiz'
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDLabel:
+            id: question
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0,0,0, 1
+            font_size: sp(Window.height * 0.08)
+            font_name: "LG"
+            pos_hint: {"center_x": .5, "center_y": .85}
+        MDGridLayout:
+            rows: 2
+            cols: 2
+            size_hint: .75, .33
+            pos_hint: {"center_x": .5, "center_y": .55}
+            spacing: 18
+            OptionButton:
+                id: option1
+                text: ""
+            OptionButton:
+                id: option2
+                text: ""
+            OptionButton:
+                id: option3
+                text: ""
+            OptionButton:
+                id: option4
+                text: ""   
+        Button:
+            text: "NEXT"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .25}
+            background_color: 1,1,1,0
+            on_release: app.next_question()
+            canvas.before:
+                Color:
+                    rgb: rgba(95,60,240,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [15]
+        Button:
+            text: "QUIT"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .1}
+            background_color: 1,1,1,0
+            on_release: app.final_score()
+            canvas.before:
+                Color:
+                    rgb: rgba(95,60,240,255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.x, self.y +5
+                    radius: [15]
+<Screen13>:
+    MDFloatLayout:
+        md_bg_color: rgba(237, 233, 252)
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDLabel:
+            text: "Settings"
+            pos_hint: {"center_x": .55, "center_y": .95}
+            halign: "center"
+            font_name: "Poppins-Bold"
+            font_size:  dp(Window.height * 0.035)
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.09)
+            pos_hint: {"center_x": .505, "center_y": .085}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.width * 0.87),dp(Window.height * 0.1)
+                radius: dp(20)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.switch_screen1()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_ic10.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDLabel:
+                text: "Log Out"
+                pos_hint: {"center_x": .4, "center_y": .5}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            pos_hint: {"center_x": .505, "center_y": .27}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [0,0,20,20]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_ic9.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDLabel:
+                text: "Account"
+                pos_hint: {"center_x": .4, "center_y": .17}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: dp(0)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_ic8.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDLabel:
+                text: "Location"
+                pos_hint: {"center_x": .4, "center_y": .5}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [20,20,0,0]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                source: 'images/s_ic7.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDLabel:
+                text: "About Us"
+                pos_hint: {"center_x": .4, "center_y": .82}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            pos_hint: {"center_x": .505, "center_y": .53}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [0,0,20,20]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_ic6.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDLabel:
+                text: "Text Size"
+                pos_hint: {"center_x": .39, "center_y": .17}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: dp(0)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_ic5.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDLabel:
+                text: "Languages"
+                pos_hint: {"center_x": .43, "center_y": .5}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [20,20,0,0]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                source: 'images/s_ic4.png'
+            MDCard:
+                pos_hint: {"center_x": .9, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+                Image:
+                    halign: "center"
+                    source: 'images/l_arrow_2.png'
+            MDLabel:
+                text: "Security & Privacy"
+                pos_hint: {"center_x": .53, "center_y": .82}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+        MDFloatLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            pos_hint: {"center_x": .505, "center_y": .79}
+            radius: [20, 20, 20, 20]
+            md_bg_color: 1,1,1,1
+            elevation: 10
+            padding: dp(10)
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .17}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [0,0,20,20]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .17}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_ic3.png'
+            MDSwitch:
+                pos_hint: {"center_x": .85, "center_y": .17}
+                ripple_duration_in_slow: 0
+                thumb_color_inactive: rgba(200,200,200,255)
+                size_hint: None, None
+                size: dp(Window.width * 0.1),dp(Window.height * 0.005)
+                on_active: app.working()
+            MDLabel:
+                text: "Notifications"
+                pos_hint: {"center_x": .43, "center_y": .17}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: dp(0)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                source: 'images/s_ic2.png'
+            MDSwitch:
+                pos_hint: {"center_x": .85, "center_y": .5}
+                ripple_duration_in_slow: 0
+                thumb_color_inactive: rgba(200,200,200,255)
+                width: dp(Window.width * 0.1)
+                height: dp(Window.height * 0.005)
+                on_active: app.working()
+            MDLabel:
+                text: "Network"
+                pos_hint: {"center_x": .37, "center_y": .5}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+
+            MDCard:
+                pos_hint: {"center_x": .5, "center_y": .82}
+                size_hint: None, None
+                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                radius: [20,20,0,0]
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.working()
+            Image:
+                pos_hint: {"center_x": .13,"center_y": .82}
+                size_hint: None, None
+                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                source: 'images/s_ic1.png'
+            MDSwitch:
+                pos_hint: {"center_x": .85, "center_y": .82}
+                ripple_duration_in_slow: 0
+                thumb_color_inactive: rgba(200,200,200,255)
+                width: dp(Window.width * 0.1)
+                height: dp(Window.height * 0.005)
+                on_active: app.working()
+            MDLabel:
+                text: "Dark Mode"
+                pos_hint: {"center_x": .4, "center_y": .82}
+                halign: "center"
+                font_name: "Roboto-Regular"
+                font_size:  dp(Window.height * 0.025)
+<Screen14>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDLabel:
+            text: "Select\nSign"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0,0,0, 1
+            font_size: sp(Window.height * 0.08)
+            font_name: "LG"
+            pos_hint: {"center_x": .5, "center_y": .85}
+        MDFloatLayout:
+            size_hint: .6, .2
+            pos_hint: {"center_x": .5, "center_y": .47}
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("+")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_plus.png'
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .95}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("-")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_minus.png'
+            MDCard:
+                pos_hint: {"center_x": .17, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("÷")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_divide.png'
+            MDCard:
+                pos_hint: {"center_x": .83, "center_y": .05}
+                size_hint: None, None
+                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                radius: dp(15)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_release: app.select_sign("×")
+                Image:
+                    pos_hint: {"center_x": .5,"center_y": .5}
+                    size_hint: None, None
+                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    source: 'images/l_multiply.png'
+        MDFillRoundFlatButton:
+            text: "BACK"
+            font_name: "LG"
+            size_hint: .55, .11
+            font_size: sp(Window.height * 0.04)
+            pos_hint: {"center_x": .5, "center_y": .15}
+            md_bg_color: app.theme_cls.primary_dark
+            on_release: root.callback()
+<Command>:
+    size_hint_y: None
+    pos_hint: {"right": .98}
+    height:  self.texture_size[1]
+    padding: 12, 10
+    theme_text_color: "Custom"
+    text_color: 53/255, 56/255, 60/255, 1
+    canvas.before:
+        Color:
+            rgba: rgba(255, 255, 255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [23, 23, 0, 23] 
+<Response>:
+    size_hint_y: None
+    pos_hint: {"x": .02}
+    height:  self.texture_size[1]
+    padding: 12, 10
+    theme_text_color: "Custom"
+    text_color: 53/255, 56/255, 60/255, 1
+    canvas.before:
+        Color:
+            rgba: rgba(255, 255, 255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [0, 23, 23, 23]
+<ResponseImage>:
+    size_hint_x: .7
+    size_hint_y: None
+    height: 200
+    allow_stretch: True
+    pos_hint: {"x": .02}
+    canvas.before:
+        Color:
+            rgba: rgba(255, 255, 255)
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [23, 23, 23, 23]
+<NewsCard>:
+    size_hint_x: .8
+    size_hint_y: None
+    height: 400
+    orientation: "vertical"
+    on_release: app.open_url(root.url_link)
+    BoxLayout:
+        size_hint_y: .8
+        size: self.minimum_size
+        orientation:'vertical'
+        AsyncImage:
+            source: root.source
+            size_hint: (1, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            stencil_image: True
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                StencilPush
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15, 15, 15, 15]
+                StencilUse
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: self.source
+                    texture: self.texture
+                StencilUnUse
+                StencilPop
+        MDLabel:
+            text: root.description
+            font_name: "Roboto-Bold"
+            halign: "left"
+            font_size: "12sp"
+            theme_text_color: "Custom"
+            text_color: 53/255, 56/255, 60/255, 1
+            size_hint_y: .2
+            pos_hint: {"center_x": .5, "y": .30}
+
+<Screen15>:
+    name: "screen15"
+    text_input: text_input
+    chat_list: chat_list
+    MDFloatLayout:
+        md_bg_color: rgba(237, 233, 252)
+        MDFloatLayout:
+            md_bg_color: rgba(237, 233, 252)
+            size_hint_y: .11
+            pos_hint: {"center_y": .95}
+            MDLabel:
+                text: "INTELLIQUE"
+                font_name: "Poppins-Bold"
+                halign: "center"
+                pos_hint: {"center_y": .5}
+                font_size: dp(Window.height * 0.035)
+                theme_text_color: "Custom"
+                text_color: 53/255, 56/255, 60/255, 1
+
+        ScrollView:
+            size_hint_y: .77
+            pos_hint: {"x": 0, "y": .116}
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                id: chat_list
+                orientation:'vertical'
+                size: (root.width, root.height)
+                height: self.minimum_height
+                size_hint: None, None
+                pos_hint: {'top': 10}
+                cols: 1
+                spacing: 7
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDFloatLayout:
+            md_bg_color: rgba(237, 233, 252)
+            size_hint: .8, .058
+            pos_hint: {"center_x": .43, "center_y": .06}
+            elevation_normal: 50
+            canvas:
+                Color:
+                    rgba: rgba(255, 255, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [23, 23, 23, 23] 
+            TextInput:
+                id: text_input
+                hint_text: "Type your message..."
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                hint_text_color: rgba(130, 130, 130, 255)
+                background_color: 0, 0, 0, 0
+                padding: 18
+                font_name: "Graublau"
+                font_size: dp(Window.height * 0.02)
+                cursor_color: (0.5, 0.5, 0.5, 1)
+                cursor_width: 2
+            MDCard:
+                pos_hint: {"center_x": 1.1, "center_y": .5}
+                size_hint: None, None
+                size: dp(Window.height * 0.055),dp(Window.height * 0.055)
+                radius: dp(50)
+                md_bg_color: get_color_from_hex("FFFFFF")
+                ripple_behavior: True
+                on_press: app.send()
+                Image:
+                    halign: "center"
+                    source: 'images/h_send.png'
+<Screen16>:
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("E8E8F9")
+        MDCard:
+            pos_hint: {"center_x": .1, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
+        MDCard:
+            pos_hint: {"center_x": .9, "center_y": .95}
+            size_hint: None, None
+            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+            radius: dp(15)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: app.working()
+            Image:
+                halign: "center"
+                source: 'images/l_edit.png'
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.92),dp(Window.height * 0.68)
+            pos_hint: {"center_x": .505, "center_y": .37}
+            radius: [0, 0, 20, 20]
+            md_bg_color: get_color_from_hex("e7ed9b")
+            elevation: 10
+            padding: [15, 20, 10, 30]
+            ScrollView:
+                do_scroll: [False, True]
+                size_hint: (0.92, 0.35)
+                pos_hint: {"center_x": 0.5, "center_y": .25}
+                scroll_type:['bars', 'content']
+                bar_width: 0
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(10)
+                    
+                    MDLabel:
+                        id: note_text
+                        text: '' 
+                        halign: 'left'
+                        font_name: "Roboto"
+                        font_size: sp(Window.height * 0.022)
+                        size_hint_y: None
+                        height: self.texture_size[1]
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: dp(Window.width * 0.92),dp(Window.height * 0.2)
+            pos_hint: {"center_x": .505, "center_y": .8}
+            radius: [20, 20, 0, 0]
+            md_bg_color: get_color_from_hex("e7ed9b")
+            elevation: 10
+            padding: [30, 50, 10, 0] 
+            MDLabel:
+                text: 'Beautiful weather app UI concepts we wish existed' 
+                halign: 'left'
+                font_name: "Roboto"
+                font_size: sp(Window.height * 0.037)
+            MDLabel:
+                text: "May 22, 2023"
+                halign: "left"
+                theme_text_color: "Secondary"
+                font_name: "Roboto"
+                font_size: dp(Window.height * 0.018)

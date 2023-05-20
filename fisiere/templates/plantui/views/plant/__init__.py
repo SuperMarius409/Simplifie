@@ -1,1 +1,0 @@
-from .plant import PlantView
