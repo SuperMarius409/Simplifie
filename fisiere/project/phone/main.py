@@ -451,6 +451,11 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "DeepPurple"
         self.theme_cls.primary_hue = "500"
+        width = 405
+        height = 900
+        Window.top = 100
+        Window.left = 3
+        Window.size = (width, height)
         print(("Window resolution: {}x{} \n".format(Window.width, Window.height))*10)
         #Graphic Screen
         sm.add_widget(Screen4(name='screen4')) # Home Screen

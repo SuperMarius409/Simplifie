@@ -38,11 +38,11 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [25, 25, 25, 25]
+                    radius: [40, 40, 40, 40]
             MDCard:
                 pos_hint: {"center_x": .2, "center_y": .5}
                 size_hint: (.27, .8)
-                radius: dp(20)
+                radius: dp(40)
                 md_bg_color: get_color_from_hex("CBC8FF")
                 ripple_behavior: True
                 on_release: app.switch_screen7()
@@ -52,7 +52,7 @@
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .5}
                 size_hint: (.27, .8)
-                radius: dp(20)
+                radius: dp(40)
                 md_bg_color: get_color_from_hex("CBC8FF")
                 ripple_behavior: True
                 on_release: app.switch_screen14()
@@ -62,7 +62,7 @@
             MDCard:
                 pos_hint: {"center_x": .8, "center_y": .5}
                 size_hint: (.27, .8)
-                radius: dp(20)
+                radius: dp(40)
                 md_bg_color: get_color_from_hex("CBC8FF")
                 ripple_behavior: True
                 on_release: app.switch_screen15()
@@ -79,7 +79,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [30] 
+                    radius: [50] 
             TextInput:
                 id: search_text
                 hint_text: "Search For..."
@@ -106,7 +106,7 @@
                     source: 'images/h_search_icon.png'
         MDCard:
             size_hint: (.87, .17)
-            radius: dp(20)
+            radius: dp(40)
             md_bg_color: get_color_from_hex("603BF1")
             ripple_behavior: True
             pos_hint: {"center_x": .515, "center_y": .41}
@@ -220,9 +220,8 @@
                 font_size: sp(13) 
 <Feedback>:
     orientation: "vertical"
-    size_hint: None, None
-    height: "600dp"
-    width: "350dp"
+    size_hint: None,None
+    size: 350, 600
     MDFloatLayout:
         Image:
             source: "images/r_contact.png"
@@ -277,9 +276,8 @@
             on_release: app.f_dialog.dismiss()    
 <RateUs>:
     orientation: "vertical"
-    size_hint: None, None
-    height: "600dp"
-    width: "350dp"
+    size_hint: None,None
+    size: 350, 600
     MDFloatLayout:
         Image:
             source: "images/r_logo.png"
@@ -364,7 +362,7 @@
     md_bg_color:255/255,255/255,255/255,1
     padding:dp(10)
     spacing:dp(7)
-    radius:dp(7)
+    radius:dp(25)
     ripple_behavior: True
     image:''
     orientation:'vertical'
@@ -376,9 +374,8 @@
         md_bg_color: get_color_from_hex("E8E8F9")
         MDCard:
             pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: root.callback()
@@ -394,10 +391,9 @@
 
         MDBoxLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: sp(Window.height * 0.4), sp(Window.height * 0.75)
+            size_hint: .85, .75
             pos_hint: {"center_x": .505, "center_y": .5}
-            radius: [20, 20, 20, 20]
+            radius: [30, 30, 30, 30]
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
@@ -411,10 +407,9 @@
         MDFloatingActionButton:
             icon: 'plus-thick'
             on_release: app.show_task_dialog()
-            size_hint: None, None
+            size_hint: .14, .065
             elevation: 0
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            pos_hint: {'x': .8, 'y':.05}
+            pos_hint: {'x': .8, 'y':.035}
 
 <DialogContent>:
     orientation: "vertical"
@@ -465,9 +460,8 @@
         md_bg_color: get_color_from_hex("E8E8F9")
         MDCard:
             pos_hint: {"center_x": .11, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: root.callback()
@@ -478,15 +472,14 @@
             id: location
             halign: 'center'
             text: ""
-            font_size: sp(Window.height * 0.035)
+            font_size: sp(35)
             font_name: "Roboto-Bold"
             pos_hint: {"center_x": .3, "center_y": .88}
         MDFloatLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.9), dp(Window.height * 0.5)
+            size_hint: .9, .5
             pos_hint: {"center_x": .5, "center_y": .58}
-            radius: [20, 20, 20, 20]
+            radius: [30, 30, 30, 30]
             md_bg_color: 1,1,1,1
             Image:
                 id: weather_image
@@ -499,7 +492,7 @@
                 id: weather
                 halign: 'center'
                 text: ""
-                font_size: sp(Window.height * 0.04)
+                font_size: sp(40)
                 font_name: "Poppins"
                 pos_hint: {"center_x": .5, "center_y": .53}
             MDLabel:
@@ -507,7 +500,7 @@
                 halign: 'center'
                 text: ""
                 markup: True
-                font_size: sp(Window.height * 0.06)
+                font_size: sp(60)
                 font_name: "Poppins"
                 pos_hint: {"center_x": .52, "center_y": .36}
             MDFloatLayout:
@@ -522,12 +515,12 @@
                 MDLabel:
                     id: humidity
                     text: ""
-                    font_size: sp(Window.height * 0.02)
+                    font_size: sp(20)
                     font_name: "Poppins"
                     pos_hint: {"center_x": 1, "center_y": .55}
                 MDLabel:
                     text: "Humidity"
-                    font_size: sp(Window.height * 0.02)
+                    font_size: sp(20)
                     font_name: "Poppins"
                     pos_hint: {"center_x": 1, "center_y": .45} 
             MDFloatLayout:
@@ -542,12 +535,12 @@
                 MDLabel:
                     id: wind_speed
                     text: ""
-                    font_size: sp(Window.height * 0.018)
+                    font_size: sp(18)
                     font_name: "Poppins"
                     pos_hint: {"center_x": 1.2, "center_y": .55}
                 MDLabel:
                     text: "Wind"
-                    font_size: sp(Window.height * 0.02)
+                    font_size: sp(20)
                     font_name: "Poppins"
                     pos_hint: {"center_x": 1.2, "center_y": .45}  
         #CityFinder
@@ -560,7 +553,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [20, 20, 20, 20]   
+                    radius: [30, 30, 30, 30]   
 
             MDFloatLayout:
                 pos_hint: {"center_x": .5, "center_y": .71}  
@@ -571,7 +564,7 @@
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
-                        radius: [6] 
+                        radius: [8] 
                 TextInput:
                     id: city_name
                     hint_text: "Enter City Name"  
@@ -602,15 +595,14 @@
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
-                        radius: [6] 
+                        radius: [8] 
 <Screen7>:
     MDFloatLayout:
         md_bg_color: get_color_from_hex("F0E6FA")
         MDCard:
             pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(13)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: 1,1,1,1
             ripple_behavior: False
             on_press: root.callback()
@@ -623,7 +615,7 @@
             size_hint_x: .42
             haling: "left"
             font_name: "Poppins-Bold"
-            font_size: sp(Window.height * 0.075)
+            font_size: sp(75)
         MDFloatLayout:
             md_bg_color: get_color_from_hex("E8E8F9")
             size_hint: .8, .09
@@ -634,7 +626,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [15]
+                    radius: [35]
             TextInput:
                 id: wiki_name
                 hint_text: "Your Name"
@@ -646,7 +638,7 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Poppins-Bold"
-                font_size: sp(Window.height * 0.023)
+                font_size: sp(23)
         MDFloatLayout:
             size_hint: .8, .09
             pos_hint: {"center_x": .5, "center_y": .55}
@@ -656,7 +648,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [15]
+                    radius: [35]
             TextInput:
                 id: wiki_language
                 hint_text: "Language"
@@ -668,7 +660,7 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Poppins-Bold"
-                font_size: sp(Window.height * 0.023)
+                font_size: sp(23)
         MDFloatLayout:
             size_hint: .8, .09
             pos_hint: {"center_x": .5, "center_y": .43}
@@ -678,7 +670,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [15]
+                    radius: [35]
             TextInput:
                 id: wiki_title
                 hint_text: "Essay Title"
@@ -690,14 +682,14 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Poppins-Bold"
-                font_size: sp(Window.height * 0.023)
+                font_size: sp(23)
 
         
         MDFillRoundFlatButton:
             text:"START"
             font_name: "Poppins-Bold"
             size_hint: .8, .09
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             pos_hint: {"center_x": .5, "center_y": .15}
             background_color: 0, 0, 0, 0
             letter_spacing: 5
@@ -709,9 +701,8 @@
         md_bg_color: rgba(237, 233, 252)
         MDCard:
             pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: root.callback()
@@ -719,20 +710,18 @@
                 halign: "center"
                 source: 'images/l_arrow.png'
         MDTextButton:
-            size_hint: None, None
-            size: dp(Window.width * 0.7),dp(Window.height * 0.05)
+            size_hint: .7, .05
             text: "Recipique"
             pos_hint: {"center_x": .55, "center_y": .95}
             halign: "center"
             font_name: "Poppins-Bold"
-            font_size:  dp(Window.height * 0.035)
+            font_size:  sp(35)
             on_release: root.meal_text()
         MDBoxLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.9),dp(Window.height * 0.45)
+            size_hint: .9, .45
             pos_hint: {"center_x": .505, "center_y": .25}
-            radius: [20, 20, 20, 20]
+            radius: [30, 30, 30, 30]
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
@@ -786,9 +775,8 @@
         md_bg_color: get_color_from_hex("E8E8F9")
         MDCard:
             pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: root.callback()
@@ -801,17 +789,15 @@
             halign: "center"
             size_hint_x: .7
             font_name: "Poppins-Bold"
-            font_size:  dp(Window.height * 0.04)
+            font_size:  sp(40)
         MDFloatLayout:
-            size_hint: None, None
-            size: dp(Window.width * 0.83), dp(Window.height * 0.9)
+            size_hint: .83, .9
             pos_hint: {'center_x': .5, 'center_y': .5}
             MDCard:
-                size_hint: None, None
-                size: dp(Window.width * 0.44), dp(Window.height * 0.2)
+                size_hint: .52,.2
                 pos_hint: {'center_x': .22, 'center_y': .83}
-                radius: dp(Window.height * 0.02)
-                padding: dp(Window.height * 0.02)
+                radius: [30]
+                padding: 20
                 md_bg_color: get_color_from_hex("ffab91")
                 ripple_behavior: True
                 on_release: app.switch_screen16()
@@ -824,21 +810,20 @@
                         theme_text_color: "Custom"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.0235)
+                        font_size: sp(20)
                     MDLabel:
                         text: "May 22, 2023"
                         halign: "left"
                         theme_text_color: "Secondary"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.018)
+                        font_size: sp(18)
 
             MDCard:
-                size_hint: None, None
-                size: dp(Window.width * 0.44), dp(Window.height * 0.2)
+                size_hint: .52, .2
                 pos_hint: {'center_x': .78, 'center_y': .83}
-                radius: dp(Window.height * 0.02)
-                padding: dp(Window.height * 0.02)
+                radius: [30]
+                padding: 20
                 md_bg_color: get_color_from_hex("ffcc80")
                 ripple_behavior: True
                 on_release: app.switch_screen16()
@@ -851,21 +836,20 @@
                         theme_text_color: "Custom"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.0235)
+                        font_size: sp(20)
                     MDLabel:
                         text: "May 22, 2023"
                         halign: "left"
                         theme_text_color: "Secondary"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.018)
+                        font_size: sp(18)
 
             MDCard:
-                size_hint: None, None
-                size: dp(Window.width * 0.92), dp(Window.height * 0.18)
-                pos_hint: {'center_x': .5, 'center_y': .603}
-                radius: dp(Window.height * 0.02)
-                padding: dp(Window.height * 0.02)
+                size_hint: 1.1, .2
+                pos_hint: {'center_x': .5, 'center_y': .61}
+                radius: [30]
+                padding: 20
                 md_bg_color: get_color_from_hex("e7ed9b")
                 ripple_behavior: True
                 on_release: app.switch_screen16()
@@ -876,7 +860,7 @@
                     theme_text_color: "Custom"
                     text_color: 0, 0, 0, 1
                     font_name: "Roboto"
-                    font_size: dp(Window.height * 0.03)
+                    font_size: sp(27)
                 MDLabel:
                     text: "May 22, 2023"
                     halign: "right"
@@ -885,13 +869,12 @@
                     theme_text_color: "Secondary"
                     text_color: 0, 0, 0, 1
                     font_name: "Roboto"
-                    font_size: dp(Window.height * 0.018)
+                    font_size: sp(18)
             MDCard:
-                size_hint: None, None
-                size: dp(Window.width * 0.44), dp(Window.height * 0.35)
-                pos_hint: {'center_x': .22, 'center_y': .295}
-                radius: dp(Window.height * 0.02)
-                padding: dp(Window.height * 0.02)
+                size_hint: .52,.4
+                pos_hint: {'center_x': .22, 'center_y': .29}
+                radius: [30]
+                padding: 20
                 md_bg_color: get_color_from_hex("81deea")
                 ripple_behavior: True
                 on_release: app.switch_screen16()
@@ -904,20 +887,19 @@
                         theme_text_color: "Custom"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.025)
+                        font_size: sp(23)
                     MDLabel:
                         text: "May 22, 2023"
                         halign: "left"
                         theme_text_color: "Secondary"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.018)
+                        font_size: sp(18)
             MDCard:
-                size_hint: None, None
-                size: dp(Window.width * 0.44), dp(Window.height * 0.23)
+                size_hint: .52,.25
                 pos_hint: {'center_x': .78, 'center_y': .36}
-                radius: dp(Window.height * 0.02)
-                padding: dp(Window.height * 0.02)
+                radius: [30]
+                padding: 20
                 md_bg_color: get_color_from_hex("cf94da")
                 ripple_behavior: True
                 on_release: app.switch_screen16()
@@ -925,27 +907,26 @@
                     orientation: 'vertical'
                     pos_hint: {'center_x': .5, 'center_y': .38}
                     MDLabel:
-                        text: "12 eye-catching mobile wallpaper"  
+                        text: "12 eye catching mobile wallpaper"  
                         halign: "left"
                         theme_text_color: "Custom"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.025)
+                        font_size: sp(23)
                     MDLabel:
                         text: "May 22, 2023"
                         halign: "left"
                         theme_text_color: "Secondary"
                         text_color: 0, 0, 0, 1
                         font_name: "Roboto"
-                        font_size: dp(Window.height * 0.018)
+                        font_size: sp(15)
 
         MDFloatingActionButton:
             icon: 'plus-thick'
             on_release: app.working()
-            size_hint: None, None
+            size_hint: .14, .065
             elevation: 0
-            size: dp(Window.height * 0.06),dp(Window.height * 0.06)
-            pos_hint: {'x': .8, 'y':.05}
+            pos_hint: {'x': .8, 'y':.035}
             
 <Screen10>:
     correct: correct
@@ -958,7 +939,7 @@
             halign: "center"
             theme_text_color: "Custom"
             text_color: 0,0,0, 1
-            font_size: sp(Window.height * 0.08)
+            font_size: sp(80)
             font_name: "LG"
             pos_hint: {"center_x": .5, "center_y": .85}
         MDLabel:
@@ -967,7 +948,7 @@
             halign: "center"
             theme_text_color: "Custom"
             text_color: 1,1,1, 1
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             font_name: "LG"
             size_hint: .8, .12
             pos_hint: {"center_x": .5, "center_y": .6}
@@ -985,7 +966,7 @@
             halign: "center"
             theme_text_color: "Custom"
             text_color: 1,1,1, 1
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             font_name: "LG"
             size_hint: .8, .12
             pos_hint: {"center_x": .5, "center_y": .46}
@@ -996,14 +977,14 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.x, self.y +5
-                    radius: [10]
+                    radius: [15]
         MDLabel:
             id: success_rate
             text: ""
             halign: "center"
             theme_text_color: "Custom"
             text_color: 1,1,1, 1
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             font_name: "LG"
             size_hint: .8, .12
             pos_hint: {"center_x": .5, "center_y": .32}
@@ -1014,7 +995,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.x, self.y +5
-                    radius: [10]
+                    radius: [15]
 
         MDFloatLayout:
             size_hint: .6, .2
@@ -1023,7 +1004,7 @@
             text: "EXIT"
             font_name: "LG"
             size_hint: .55, .11
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             pos_hint: {"center_x": .5, "center_y": .15}
             background_color: 1,1,1,0
             on_release: app.replay()
@@ -1033,7 +1014,7 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.x, self.y +5
-                    radius: [15]
+                    radius: [20]
 <Screen11>:
     MDFloatLayout:
         md_bg_color: get_color_from_hex("E8E8F9")
@@ -1041,17 +1022,6 @@
             md_bg_color: rgba(237, 233, 252)
             size_hint_y: .11
             pos_hint: {"center_y": .95}
-            MDCard:
-                pos_hint: {"center_x": .11, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-                radius: dp(15)
-                md_bg_color: get_color_from_hex("FFFFFF")
-                ripple_behavior: False
-                on_press: root.callback()
-                Image:
-                    halign: "center"
-                    source: 'images/l_arrow.png'
             MDLabel:
                 text: "News"
                 font_name: "Poppins-Bold"
@@ -1060,6 +1030,16 @@
                 font_size: dp(Window.height * 0.035)
                 theme_text_color: "Custom"
                 text_color: 53/255, 56/255, 60/255, 1
+        MDCard:
+            pos_hint: {"center_x": .11, "center_y": .95}
+            size_hint: .12,.055
+            radius: dp(25)
+            md_bg_color: get_color_from_hex("FFFFFF")
+            ripple_behavior: False
+            on_press: root.callback()
+            Image:
+                halign: "center"
+                source: 'images/l_arrow.png'
         ScrollView:
             size_hint_y: .85
             pos_hint: {"x": 0, "y": .05}
@@ -1074,7 +1054,7 @@
                 height: self.minimum_height
 <OptionButton>:
     font_name: "LG"
-    font_size: sp(Window.height * 0.05)
+    font_size: sp(50)
     background_color: 1,1,1,0
     bg_color: 87/255, 23/255, 216/255, 1
     on_release:app.quiz(self.text, self)
@@ -1084,7 +1064,7 @@
         RoundedRectangle:
             size: self.size
             pos: self.x, self.y + 5
-            radius: [Window.height * 0.025]
+            radius: [35]
 <Screen12>:
     question: question
     name: 'quiz'
@@ -1096,7 +1076,7 @@
             halign: "center"
             theme_text_color: "Custom"
             text_color: 0,0,0, 1
-            font_size: sp(Window.height * 0.08)
+            font_size: sp(80)
             font_name: "LG"
             pos_hint: {"center_x": .5, "center_y": .85}
         MDGridLayout:
@@ -1121,7 +1101,7 @@
             text: "NEXT"
             font_name: "LG"
             size_hint: .55, .11
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             pos_hint: {"center_x": .5, "center_y": .25}
             background_color: 1,1,1,0
             on_release: app.next_question()
@@ -1131,12 +1111,12 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.x, self.y +5
-                    radius: [15]
+                    radius: [25]
         Button:
             text: "QUIT"
             font_name: "LG"
             size_hint: .55, .11
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             pos_hint: {"center_x": .5, "center_y": .1}
             background_color: 1,1,1,0
             on_release: app.final_score()
@@ -1146,15 +1126,14 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.x, self.y +5
-                    radius: [15]
+                    radius: [25]
 <Screen13>:
     MDFloatLayout:
         md_bg_color: rgba(237, 233, 252)
         MDCard:
             pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: root.callback()
@@ -1166,33 +1145,29 @@
             pos_hint: {"center_x": .55, "center_y": .95}
             halign: "center"
             font_name: "Poppins-Bold"
-            font_size:  dp(Window.height * 0.035)
+            font_size:  sp(35)
         MDFloatLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.85),dp(Window.height * 0.09)
+            size_hint: .85, .085
             pos_hint: {"center_x": .505, "center_y": .085}
-            radius: [20, 20, 20, 20]
+            radius: [30, 30, 30, 30]
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.width * 0.87),dp(Window.height * 0.1)
-                radius: dp(20)
+                size_hint: 1, 1
+                radius: dp(30)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                size_hint: .65, .65
                 source: 'images/s_ic10.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
+                size_hint: .125, .55
                 radius: dp(15)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
@@ -1205,36 +1180,31 @@
                 pos_hint: {"center_x": .4, "center_y": .5}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  dp(25)
         MDFloatLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
-            pos_hint: {"center_x": .505, "center_y": .27}
+            size_hint: .85, .23
+            pos_hint: {"center_x": .505, "center_y": .28}
             radius: [20, 20, 20, 20]
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
 
-
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .17}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: [0,0,20,20]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .17}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic9.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .17}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
-                radius: dp(15)
+                size_hint: .13, .22
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
@@ -1246,26 +1216,24 @@
                 pos_hint: {"center_x": .4, "center_y": .17}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
+
 
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: dp(0)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic8.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
-                radius: dp(15)
+                size_hint: .13, .22
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
@@ -1277,26 +1245,24 @@
                 pos_hint: {"center_x": .4, "center_y": .5}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
+
 
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .82}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: [20,20,0,0]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .82}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic7.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .82}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
-                radius: dp(15)
+                size_hint: .13 , .22
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
@@ -1308,34 +1274,31 @@
                 pos_hint: {"center_x": .4, "center_y": .82}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
         MDFloatLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            size_hint: .85, .23
             pos_hint: {"center_x": .505, "center_y": .53}
             radius: [20, 20, 20, 20]
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
+
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .17}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: [0,0,20,20]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .17}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic6.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .17}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
-                radius: dp(15)
+                size_hint: .13 , .22
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
@@ -1347,26 +1310,24 @@
                 pos_hint: {"center_x": .39, "center_y": .17}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
+
 
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: dp(0)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic5.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
-                radius: dp(15)
+                size_hint: .13 , .22
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
@@ -1378,26 +1339,25 @@
                 pos_hint: {"center_x": .43, "center_y": .5}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
+
+
 
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .82}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: [20,20,0,0]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .82}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic4.png'
             MDCard:
                 pos_hint: {"center_x": .9, "center_y": .82}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.045)
-                radius: dp(15)
+                size_hint: .13 , .22
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
@@ -1409,95 +1369,93 @@
                 pos_hint: {"center_x": .53, "center_y": .82}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
         MDFloatLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.85),dp(Window.height * 0.225)
+            size_hint: .85, .23
             pos_hint: {"center_x": .505, "center_y": .79}
             radius: [20, 20, 20, 20]
             md_bg_color: 1,1,1,1
             elevation: 10
             padding: dp(10)
+
+
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .17}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: [0,0,20,20]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .17}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic3.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .17}
                 ripple_duration_in_slow: 0
                 thumb_color_inactive: rgba(200,200,200,255)
-                size_hint: None, None
-                size: dp(Window.width * 0.1),dp(Window.height * 0.005)
+                width: dp(50)
+                height: dp(5)
                 on_active: app.working()
             MDLabel:
                 text: "Notifications"
                 pos_hint: {"center_x": .43, "center_y": .17}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
+
+
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: dp(0)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.05),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic2.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .5}
                 ripple_duration_in_slow: 0
                 thumb_color_inactive: rgba(200,200,200,255)
-                width: dp(Window.width * 0.1)
-                height: dp(Window.height * 0.005)
+                width: dp(50)
+                height: dp(5)
                 on_active: app.working()
             MDLabel:
                 text: "Network"
                 pos_hint: {"center_x": .37, "center_y": .5}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
+
 
             MDCard:
                 pos_hint: {"center_x": .5, "center_y": .82}
-                size_hint: None, None
-                size: dp(Window.width * 0.85),dp(Window.height * 0.08)
+                size_hint: 1, .333
                 radius: [20,20,0,0]
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_press: app.working()
             Image:
                 pos_hint: {"center_x": .13,"center_y": .82}
-                size_hint: None, None
-                size: dp(Window.height * 0.045),dp(Window.height * 0.05)
+                size_hint: .2, .2
                 source: 'images/s_ic1.png'
             MDSwitch:
                 pos_hint: {"center_x": .85, "center_y": .82}
                 ripple_duration_in_slow: 0
                 thumb_color_inactive: rgba(200,200,200,255)
-                width: dp(Window.width * 0.1)
-                height: dp(Window.height * 0.005)
+                width: dp(50)
+                height: dp(5)
                 on_active: app.working()
             MDLabel:
                 text: "Dark Mode"
                 pos_hint: {"center_x": .4, "center_y": .82}
                 halign: "center"
                 font_name: "Roboto-Regular"
-                font_size:  dp(Window.height * 0.025)
+                font_size:  sp(25)
 <Screen14>:
     MDFloatLayout:
         md_bg_color: get_color_from_hex("E8E8F9")
@@ -1506,7 +1464,7 @@
             halign: "center"
             theme_text_color: "Custom"
             text_color: 0,0,0, 1
-            font_size: sp(Window.height * 0.08)
+            font_size: sp(80)
             font_name: "LG"
             pos_hint: {"center_x": .5, "center_y": .85}
         MDFloatLayout:
@@ -1514,61 +1472,53 @@
             pos_hint: {"center_x": .5, "center_y": .47}
             MDCard:
                 pos_hint: {"center_x": .17, "center_y": .95}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
+                size_hint: .55,.75
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_release: app.select_sign("+")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
-                    size_hint: None, None
-                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    size_hint: .75, .75
                     source: 'images/l_plus.png'
             MDCard:
                 pos_hint: {"center_x": .83, "center_y": .95}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
+                size_hint: .55,.75
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_release: app.select_sign("-")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
-                    size_hint: None, None
-                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    size_hint: .75, .75
                     source: 'images/l_minus.png'
             MDCard:
                 pos_hint: {"center_x": .17, "center_y": .05}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
+                size_hint: .55,.75
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_release: app.select_sign("÷")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
-                    size_hint: None, None
-                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    size_hint: .75, .75
                     source: 'images/l_divide.png'
             MDCard:
                 pos_hint: {"center_x": .83, "center_y": .05}
-                size_hint: None, None
-                size: dp(Window.height * 0.15),dp(Window.height * 0.15)
-                radius: dp(15)
+                size_hint: .55,.75
+                radius: dp(25)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
                 on_release: app.select_sign("×")
                 Image:
                     pos_hint: {"center_x": .5,"center_y": .5}
-                    size_hint: None, None
-                    size: dp(Window.height * 0.15),dp(Window.height * 0.15)
+                    size_hint: .75, .75
                     source: 'images/l_multiply.png'
         MDFillRoundFlatButton:
             text: "BACK"
             font_name: "LG"
             size_hint: .55, .11
-            font_size: sp(Window.height * 0.04)
+            font_size: sp(40)
             pos_hint: {"center_x": .5, "center_y": .15}
             md_bg_color: app.theme_cls.primary_dark
             on_release: root.callback()
@@ -1601,18 +1551,10 @@
             pos: self.pos
             radius: [0, 23, 23, 23]
 <ResponseImage>:
-    size_hint_x: .7
-    size_hint_y: None
-    height: 200
+    size_hint: None, None
+    size: 275, 275
     allow_stretch: True
     pos_hint: {"x": .02}
-    canvas.before:
-        Color:
-            rgba: rgba(255, 255, 255)
-        RoundedRectangle:
-            size: self.width, self.height
-            pos: self.pos
-            radius: [23, 23, 23, 23]
 <NewsCard>:
     size_hint_x: .8
     size_hint_y: None
@@ -1672,7 +1614,7 @@
                 font_name: "Poppins-Bold"
                 halign: "center"
                 pos_hint: {"center_y": .5}
-                font_size: dp(Window.height * 0.035)
+                font_size: sp(35)
                 theme_text_color: "Custom"
                 text_color: 53/255, 56/255, 60/255, 1
 
@@ -1692,9 +1634,8 @@
                 spacing: 7
         MDCard:
             pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: root.callback()
@@ -1724,13 +1665,12 @@
                 background_color: 0, 0, 0, 0
                 padding: 18
                 font_name: "Graublau"
-                font_size: dp(Window.height * 0.02)
+                font_size: sp(20)
                 cursor_color: (0.5, 0.5, 0.5, 1)
                 cursor_width: 2
             MDCard:
                 pos_hint: {"center_x": 1.1, "center_y": .5}
-                size_hint: None, None
-                size: dp(Window.height * 0.055),dp(Window.height * 0.055)
+                size_hint: .15, 1
                 radius: dp(50)
                 md_bg_color: get_color_from_hex("FFFFFF")
                 ripple_behavior: True
@@ -1743,9 +1683,8 @@
         md_bg_color: get_color_from_hex("E8E8F9")
         MDCard:
             pos_hint: {"center_x": .1, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: root.callback()
@@ -1754,9 +1693,8 @@
                 source: 'images/l_arrow.png'
         MDCard:
             pos_hint: {"center_x": .9, "center_y": .95}
-            size_hint: None, None
-            size: dp(Window.height * 0.05),dp(Window.height * 0.05)
-            radius: dp(15)
+            size_hint: .12,.055
+            radius: dp(25)
             md_bg_color: get_color_from_hex("FFFFFF")
             ripple_behavior: False
             on_press: app.working()
@@ -1765,10 +1703,9 @@
                 source: 'images/l_edit.png'
         MDBoxLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.92),dp(Window.height * 0.68)
+            size_hint: .92, .68
             pos_hint: {"center_x": .505, "center_y": .37}
-            radius: [0, 0, 20, 20]
+            radius: [0, 0, 30, 30]
             md_bg_color: get_color_from_hex("e7ed9b")
             elevation: 10
             padding: [15, 20, 10, 30]
@@ -1789,15 +1726,14 @@
                         text: '' 
                         halign: 'left'
                         font_name: "Roboto"
-                        font_size: sp(Window.height * 0.022)
+                        font_size: sp(22)
                         size_hint_y: None
                         height: self.texture_size[1]
         MDBoxLayout:
             orientation: "vertical"
-            size_hint: None, None
-            size: dp(Window.width * 0.92),dp(Window.height * 0.2)
+            size_hint: .92, .2
             pos_hint: {"center_x": .505, "center_y": .8}
-            radius: [20, 20, 0, 0]
+            radius: [30, 30, 0, 0]
             md_bg_color: get_color_from_hex("e7ed9b")
             elevation: 10
             padding: [30, 50, 10, 0] 
@@ -1805,10 +1741,10 @@
                 text: 'Beautiful weather app UI concepts we wish existed' 
                 halign: 'left'
                 font_name: "Roboto"
-                font_size: sp(Window.height * 0.037)
+                font_size: sp(35)
             MDLabel:
                 text: "May 22, 2023"
                 halign: "left"
                 theme_text_color: "Secondary"
                 font_name: "Roboto"
-                font_size: dp(Window.height * 0.018)
+                font_size: sp(18)
