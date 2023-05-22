@@ -1,7 +1,5 @@
 import json
 import random
-import sys
-import re
 import sqlite3
 import requests
 from datetime import datetime
@@ -38,12 +36,6 @@ from kivymd.toast import toast
 
 #Permissions
 
-platform_name = sys.platform.lower()
-if platform_name == "android":
-    from android.permissions import request_permissions, Permission
-    request_permissions([Permission.INTERNET])
-else:
-    pass
 global internet_connection
 internet_connection = False
 try:
