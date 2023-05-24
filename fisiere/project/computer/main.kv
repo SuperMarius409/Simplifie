@@ -1836,18 +1836,10 @@
             pos: self.pos
             radius: [0, 23, 23, 23]
 <ResponseImage>:
-    size_hint_x: .7
-    size_hint_y: None
-    height: 200
+    size_hint: None, None
+    size: 285, 285
     allow_stretch: True
     pos_hint: {"x": .02}
-    canvas.before:
-        Color:
-            rgba: rgba(255, 255, 255)
-        RoundedRectangle:
-            size: self.width, self.height
-            pos: self.pos
-            radius: [23, 23, 23, 23]
 <NewsCard>:
     size_hint_x: .8
     size_hint_y: None

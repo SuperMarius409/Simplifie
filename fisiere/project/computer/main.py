@@ -727,16 +727,16 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         self.theme_cls.primary_hue = "500"
         
         #Internet Screen
-
-        sm.add_widget(Screen1(name='screen1')) # Login Page
-        sm.add_widget(Screen2(name='screen2')) # SignUp Page
-        sm.add_widget(Screen3(name='screen3')) # Reset Password
+        if internet_connection:
+            sm.add_widget(Screen1(name='screen1')) # Login Page
+            sm.add_widget(Screen2(name='screen2')) # SignUp Page
+            sm.add_widget(Screen3(name='screen3')) # Reset Password
         
         #Window settings
-        width, height = 405, 900 # 20*9
+        width, height = 450, 1000 # 9*20
         Window.size = (width, height)
         Window.left = 1  
-        Window.top = 100
+        Window.top = 30
 
         #Graphic Screen
         sm.add_widget(Screen4(name='screen4')) # Home Screen
