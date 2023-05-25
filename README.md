@@ -61,7 +61,7 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 - The sites that we used for gething information is [NewsAPI](https://newsapi.org/), [TheMealDB](https://www.themealdb.com/) and [OpenWeatherAPI](https://openweathermap.org/api)
 - We used random tutorials from youtube to make the apps here are some chanels: [KivyMD](https://www.youtube.com/@KivyMD), [Codemy](https://www.youtube.com/@Codemycom) and [BuildWithPython](https://www.youtube.com/@buildwithpython)
 
-## This is a DEMO of the app
+## Watch Our App Demo
 
 <p align="left">
   <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
@@ -73,7 +73,7 @@ git clone https://github.com/SuperMarius409/Simplifie.git
   </a>
 </p>
 
-## A fragment of code that we liked
+## Web-Powered App Integration
 
 ```python
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
