@@ -6,7 +6,8 @@ Does school really expect you to remember when and where every class is, AND wha
 Staying organized is harder now than ever, so even if you were a super computer you’d still struggle.
 Don’t worry, we’ve got an app that will help even the laziest students stay organized, productive, and, dare we say, ON TIME!
 
-This app includes lots of funtionalities like a `Note Taking App`, this organizational app is great for students, for staying organized and on top of your homework or exams, but what about taking the notes themselves? This is the best app for recording notes, lectures, videos, or whatever else you need to do. 
+
+This app includes lots of funtionalities like a `Note Taking App`, this organizational app is great for students, for staying organized and on top of your homework or exams, but what about taking the notes themselves? This is the best app for recording notes, lectures, videos, or whatever else you need to do. This is just one of our amazing apps, so what do you think, you will install it?
 
 If you wish to become a project developer (permission to create branches on the
 project without forking for easier collaboration), have at least one PR
@@ -17,15 +18,15 @@ may be offered to you without asking too.
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/kivymd.svg)](#Installation)
 [![Repository size](https://img.shields.io/github/repo-size/kivymd/kivymd.svg)](https://github.com/SuperMarius409)
 
-## Despre
+## About
 
-Numele Echipei: Simplifie
+Team Name: Simplifie
 
-Numele Aplicatiei: Simplifique
+App Name: Simplifique
 
-Membri Echipei: Radulescu Marius (partea tehnica), Vacaru Stefania (partea de design si ideea aplicatiei)
+Members: Radulescu Marius (tehnical part), Vacaru Stefania (the ideea and the design)
 
-Scoala: Colegiul National Militar "Tudor Vladimirescu" 
+School: Colegiul National Militar "Tudor Vladimirescu" 
 
 ## Installation
 
