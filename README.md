@@ -55,7 +55,7 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 - See documentation at https://kivymd.readthedocs.io
 - Wiki with examples of using KivyMD widgets: https://github.com/kivymd/KivyMD/wiki
 
-### Demos
+
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
@@ -67,4 +67,6 @@ git clone https://github.com/SuperMarius409/Simplifie.git
   </a>
 </p>
 
-[Kivy](https://en.wikipedia.org/wiki/Kivy_(framework)) Kivy is a free and open source Python framework for developing mobile apps
+<p align="center">
+  <a href="https://en.wikipedia.org/wiki/Kivy_(framework)">Kivy</a> is a free and open source Python framework for developing mobile apps.
+</p>
