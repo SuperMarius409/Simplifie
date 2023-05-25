@@ -75,7 +75,7 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 
 ## A fragment of code that we liked
 
-```bash
+```python
     def essay_helper(self, *args):
         w_name = self.ids.wiki_name.text
         language = self.ids.wiki_language.text
