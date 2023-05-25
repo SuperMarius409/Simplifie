@@ -31,22 +31,25 @@ may be offered to you without asking too.
 ```bash
 pip install kivymd==1.1.1
 ```
-## Simplifie
+## Despre
 
 Numele Echipei: Simplifie
 
 Numele Aplicatiei: Simplifique
 
-Membri Echipei: Radulescu Marius (partea tehnica), Vacaru Stefania(partea de design si cu ideea)
+Membri Echipei: Radulescu Marius (partea tehnica), Vacaru Stefania (partea de design si ideea aplicatiei)
 
 Scoala: Colegiul National Militar "Tudor Vladimirescu" 
 
 ### Dependencies:
 
 - [Kivy](https://github.com/kivy/kivy) >= 2.2.0 ([Installation](https://kivy.org/doc/stable/gettingstarted/installation.html))
+- [KivyMD](https://github.com/kivymd/KivyMD) >= 1.1.1 
 - [Python 3.7+](https://www.python.org/)
 - [Pillow](https://github.com/python-pillow/Pillow/)
-- [MaterialColor](https://github.com/T-Dynamos/materialyoucolor-pyhton)
+- [Wikipedia](https://pypi.org/project/wikipedia/)
+- [Python-Docx](https://pypi.org/project/python-docx/)
+- [Urllib3](https://pypi.org/project/urllib3/)
 
 ### How to install
 
