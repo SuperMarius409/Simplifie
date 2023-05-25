@@ -61,8 +61,8 @@ git clone https://github.com/SuperMarius409/Simplifie.git
   <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
     <img 
         width="600" 
-        src="https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/preview-kitchen-sink.png" 
-        title="Click to watch demo application of the KivyMD library widgets"
+        src="https://github.com/SuperMarius409/Simplifie/blob/main/fisiere/project/video.png" 
+        title="Click to watch demo application of our app"
     >
   </a>
 </p>
