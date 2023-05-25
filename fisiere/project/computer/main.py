@@ -933,15 +933,8 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
         if internet_connection:
             try:
                 url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
-                try:
-                    x = requests.get(url).json()
-                except:
-                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                    r1 = proxy.request('GET', url)
-                    x = json.loads(r1.data.decode('utf-8'))
+                x = requests.get(url).json()
                 screen6 = self.root.get_screen("screen6")
-                #screen4 = self.root.get_screen("screen4")
-                
                 if x["cod"] != "404":
                     temperature = str(round(x["main"]["temp"]-273.15))
                     temperature = f"[b]{temperature}[/b]°"

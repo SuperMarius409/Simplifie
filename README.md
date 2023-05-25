@@ -76,35 +76,17 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 ## A fragment of code that we liked
 
 ```python
-    def essay_helper(self, *args):
-        w_name = self.ids.wiki_name.text
-        language = self.ids.wiki_language.text
-        title = self.ids.wiki_title.text
-        wikipedia.set_lang(language)
-        try:
-            if title:
-                wiki = wikipedia.page(title)
-            else:
-                self.ids.wiki_title.text = ""
-                self.ids.wiki_title.focus = True
-                toast("Project name invalid")
-                return
-        except wikipedia.exceptions.PageError:
-            self.ids.wiki_title.text = ""
-            self.ids.wiki_title.focus = True
-            toast(" Project name not found \n Please enter another title ")
-            return
-        text = wiki.content
-        text = re.sub(r'==', '', text)
-        text = re.sub(r'=', '', text)
-        text = re.sub(r'\n', '\n    ', text)
-        split = text.split('See also', 1)
-        text = split[0] 
-        document = Document()
-        paragraph = document.add_heading(title, 0)
-        paragraph.alignment = 1
-        paragraph = document.add_paragraph('    ' + text)
-        paragraph = document.add_paragraph(w_name)
-        paragraph.alignment = 2
-        document.save(title + ".docx")
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
+    x = requests.get(url).json()
+    screen6 = self.root.get_screen("screen6")
+    if x["cod"] != "404":
+      temperature = str(round(x["main"]["temp"]-273.15))
+      temperature = f"[b]{temperature}[/b]°"
+      humidity = x["main"]["humidity"]
+      weather = x["weather"][0]["main"]
+      id = str(x["weather"][0]["id"])
+      wind_speed = round(x["wind"]["speed"]*18/5)
+      location = x["name"] + ", " + x["sys"]["country"]
 ```
+
+This essential function serves as the **backbone** for all our apps. It utilizes an `API` to retrieve `JSON` data and dynamically updates the app's text based on the received information. In this example we use [OpenWeatherAPI](https://openweathermap.org/api) to get the json data and update it to our app. We rely on this function across our apps to seamlessly integrate real-time data and provide users with **up-to-date** and relevant content.
