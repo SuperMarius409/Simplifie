@@ -26,11 +26,6 @@ may be offered to you without asking too.
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/kivymd.svg)](#Installation)
 [![Repository size](https://img.shields.io/github/repo-size/kivymd/kivymd.svg)](https://github.com/SuperMarius409)
 
-## Installation
-
-```bash
-pip install kivymd==1.1.1
-```
 ## Despre
 
 Numele Echipei: Simplifie
@@ -40,6 +35,12 @@ Numele Aplicatiei: Simplifique
 Membri Echipei: Radulescu Marius (partea tehnica), Vacaru Stefania (partea de design si ideea aplicatiei)
 
 Scoala: Colegiul National Militar "Tudor Vladimirescu" 
+
+## Installation
+
+```bash
+git clone https://github.com/kivymd/KivyMD.git
+```
 
 ### Dependencies:
 
