@@ -2,9 +2,7 @@
 
 import json
 import random
-import time
 import re
-import sys
 import sqlite3
 import requests
 import wikipedia
@@ -73,13 +71,6 @@ from kivymd.app import MDApp
 from kivymd.toast import toast
 
 #Permissions
-
-platform_name = sys.platform.lower()
-if platform_name == "android":
-    from android.permissions import request_permissions, Permission
-    request_permissions([Permission.INTERNET])
-else:
-    pass
 
 global internet_connection
 internet_connection = False
