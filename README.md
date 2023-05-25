@@ -1,6 +1,6 @@
 # Simplifique [1.0.0](https://github.com/SuperMarius409/Simplifie)
 
-<img align="right" height="340" src="https://github.com/SuperMarius409/Simplifie/blob/main/fisiere/project/computer/images/icon.png"/>
+<img align="right" height="340" src="https://github.com/SuperMarius409/Simplifie/blob/main/files/project/computer/images/icon.png"/>
 
 Does school really expect you to remember when and where every class is, AND what’s due at what time?
 Staying organized is harder now than ever, so even if you were a super computer you’d still struggle.
@@ -67,7 +67,7 @@ git clone https://github.com/SuperMarius409/Simplifie.git
   <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
     <img 
         width="600" 
-        src="https://github.com/SuperMarius409/Simplifie/blob/main/fisiere/project/video.png" 
+        src="https://github.com/SuperMarius409/Simplifie/blob/main/files/project/video.png" 
         title="Click to watch demo application of our app"
     >
   </a>
