@@ -60,8 +60,8 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 - We used [Buildozer](https://buildozer.readthedocs.io/en/latest/) for converting the app into `.apk` file
 - The sites that we used for gething information is [NewsAPI](https://newsapi.org/), [TheMealDB](https://www.themealdb.com/) and [OpenWeatherAPI](https://openweathermap.org/api)
 - We used random tutorials from youtube to make the apps here are some chanels: [KivyMD](https://www.youtube.com/@KivyMD), [Codemy](https://www.youtube.com/@Codemycom) and [BuildWithPython](https://www.youtube.com/@buildwithpython)
-- The logo and icon of the app is custom-made
 
+## This is a DEMO of the app
 
 <p align="left">
   <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
@@ -73,10 +73,38 @@ git clone https://github.com/SuperMarius409/Simplifie.git
   </a>
 </p>
 
-<p align="left">
-  <a href="https://en.wikipedia.org/wiki/Kivy_(framework)">Kivy</a> is a free and open source Python framework for developing mobile apps.
-</p>
+## A fragment of code that we liked
 
 ```bash
-git clone https://github.com/SuperMarius409/Simplifie.git
+    def essay_helper(self, *args):
+        w_name = self.ids.wiki_name.text
+        language = self.ids.wiki_language.text
+        title = self.ids.wiki_title.text
+        wikipedia.set_lang(language)
+        try:
+            if title:
+                wiki = wikipedia.page(title)
+            else:
+                self.ids.wiki_title.text = ""
+                self.ids.wiki_title.focus = True
+                toast("Project name invalid")
+                return
+        except wikipedia.exceptions.PageError:
+            self.ids.wiki_title.text = ""
+            self.ids.wiki_title.focus = True
+            toast(" Project name not found \n Please enter another title ")
+            return
+        text = wiki.content
+        text = re.sub(r'==', '', text)
+        text = re.sub(r'=', '', text)
+        text = re.sub(r'\n', '\n    ', text)
+        split = text.split('See also', 1)
+        text = split[0] 
+        document = Document()
+        paragraph = document.add_heading(title, 0)
+        paragraph.alignment = 1
+        paragraph = document.add_paragraph('    ' + text)
+        paragraph = document.add_paragraph(w_name)
+        paragraph.alignment = 2
+        document.save(title + ".docx")
 ```

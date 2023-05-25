@@ -352,8 +352,7 @@ class Screen7(Screen):
         text = re.sub(r'=', '', text)
         text = re.sub(r'\n', '\n    ', text)
         split = text.split('See also', 1)
-        text = split[0]
-        output_text = text   
+        text = split[0] 
         document = Document()
         paragraph = document.add_heading(title, 0)
         paragraph.alignment = 1
