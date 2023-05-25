@@ -1,6 +1,6 @@
 # Simplifique [1.0.0](https://github.com/SuperMarius409/Simplifie)
 
-<img align="right" height="310" src="https://github.com/SuperMarius409/Simplifie/blob/main/fisiere/project/computer/images/icon.png"/>
+<img align="right" height="330" src="https://github.com/SuperMarius409/Simplifie/blob/main/fisiere/project/computer/images/icon.png"/>
 
 Does school really expect you to remember when and where every class is, AND what’s due at what time?
 Staying organized is harder now than ever, so even if you were a super computer you’d still struggle.
