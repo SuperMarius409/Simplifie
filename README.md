@@ -37,7 +37,7 @@ School: Colegiul National Militar "Tudor Vladimirescu"
 ## Installation
 
 ```bash
-git clone https://github.com/kivymd/KivyMD.git
+git clone https://github.com/SuperMarius409/Simplifie.git
 ```
 
 ### Dependencies:
@@ -67,5 +67,4 @@ git clone https://github.com/kivymd/KivyMD.git
   </a>
 </p>
 
-[Kitchen sink](https://github.com/kivymd/KitchenSink) app demonstrates every KivyMD widget.
-You can see how to use widget in code of app.
+[Kivy](https://en.wikipedia.org/wiki/Kivy_(framework)) Kivy is a free and open source Python framework for developing mobile apps
