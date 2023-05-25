@@ -2,20 +2,11 @@
 
 <img align="right" height="256" src="https://github.com/SuperMarius409/Simplifie/blob/main/fisiere/project/computer/images/icon.png"/>
 
-KivyMD is a collection of Material Design compliant widgets for use with
-[Kivy](http://kivy.org), a framework for cross-platform, touch-enabled
-graphical applications.
+Does school really expect you to remember when and where every class is, AND what’s due at what time?
+Staying organized is harder now than ever, so even if you were a super computer you’d still struggle.
+Don’t worry, we’ve got an app that will help even the laziest students stay organized, productive, and, dare we say, ON TIME!
 
-The project's goal is to approximate Google's
-[Material Design spec](https://material.io/design/introduction/) as close as
-possible without sacrificing ease of use. This library is a fork of the
-[KivyMD project](https://gitlab.com/kivymd/KivyMD). We found the strength and
-brought this project to a new level.
-
-Join the project! Just fork the project, branch out and submit a pull request
-when your patch is ready. If any changes are necessary, we'll guide you through
-the steps that need to be done via PR comments or access to your for may be
-requested to outright submit them.
+This app includes lots of funtionalities like a `Note Taking App`, this organizational app is great for students, for staying organized and on top of your homework or exams, but what about taking the notes themselves? This is the best app for recording notes, lectures, videos, or whatever else you need to do. 
 
 If you wish to become a project developer (permission to create branches on the
 project without forking for easier collaboration), have at least one PR
