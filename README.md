@@ -50,14 +50,20 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 - [Python-Docx](https://pypi.org/project/python-docx/)
 - [Urllib3](https://pypi.org/project/urllib3/)
 
-## Documentation
+## Documentation & Credits
 
 - See documentation at https://kivymd.readthedocs.io
 - Wiki with examples of using KivyMD widgets: https://github.com/kivymd/KivyMD/wiki
+- All the icons are taken from : https://icons8.com/
+- Some designs of the app are taken from [Dribble](https://dribbble.com/) and stored in `files\ideeas`
+- We are using [PlatformTools](https://developer.android.com/tools/releases/platform-tools) for debugging the app
+- We used [Buildozer](https://buildozer.readthedocs.io/en/latest/) for converting the app into `.apk` file
+- The sites that we used for gething information is [NewsAPI](https://newsapi.org/), [TheMealDB](https://www.themealdb.com/) and [OpenWeatherAPI](https://openweathermap.org/api)
+- We used random tutorials from youtube to make the apps here are some chanels: [KivyMD](https://www.youtube.com/@KivyMD), [Codemy](https://www.youtube.com/@Codemycom) and [BuildWithPython](https://www.youtube.com/@buildwithpython)
+- The logo and icon of the app is custom-made
 
 
-
-<p align="center">
+<p align="left">
   <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
     <img 
         width="600" 
@@ -67,6 +73,10 @@ git clone https://github.com/SuperMarius409/Simplifie.git
   </a>
 </p>
 
-<p align="center">
+<p align="left">
   <a href="https://en.wikipedia.org/wiki/Kivy_(framework)">Kivy</a> is a free and open source Python framework for developing mobile apps.
 </p>
+
+```bash
+git clone https://github.com/SuperMarius409/Simplifie.git
+```
