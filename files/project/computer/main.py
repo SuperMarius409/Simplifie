@@ -14,7 +14,6 @@ from datetime import datetime
 from docx import Document
 from urllib.request import urlopen
 from fileinput import close
-from urllib3 import ProxyManager, make_headers
 from email.message import EmailMessage
 
 
@@ -372,13 +371,7 @@ class Screen8(Screen):
         if internet_connection:
             try:
                 url = 'https://www.themealdb.com/api/json/v1/1/random.php'
-                try:
-                    meal = requests.get(url).json()
-                except:
-                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                    r1 = proxy.request('GET', url)
-                    meal = json.loads(r1.data.decode('utf-8'))
-
+                meal = requests.get(url).json()
                 meals = meal["meals"]
                 ingredients = []
                 measures = []
@@ -451,13 +444,7 @@ class Screen11(Screen):
                 art = "school"
                 api_key = '283533136981441da324ba7c1b5d0cc5'
                 url = f'https://newsapi.org/v2/everything?q={art}&apikey='+api_key
-                try:
-                    news = requests.get(url).json()
-                except:
-                    proxy = urllib3.ProxyManager('http://10.11.4.1:3128/')
-                    r1 = proxy.request('GET', url)
-                    news = json.loads(r1.data.decode('utf-8'))
-
+                news = requests.get(url).json()
                 articles = news["articles"]
                 for i in range(10): # Print the first five articles
                     url_link = articles[i]["url"]

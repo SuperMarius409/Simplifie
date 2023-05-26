@@ -2,45 +2,47 @@
 
 <img align="right" height="340" src="https://github.com/SuperMarius409/Simplifie/blob/main/files/project/computer/images/icon.png"/>
 
-Does school really expect you to remember when and where every class is, AND what’s due at what time?
-Staying organized is harder now than ever, so even if you were a super computer you’d still struggle.
-Don’t worry, we’ve got an app that will help even the laziest students stay organized, productive, and, dare we say, ON TIME!
+Școala chiar se așteaptă ca tu să-ți amintești când și unde este fiecare curs și ce trebuie să faci și când?
 
-Our `all-in-one organizational app` is designed to cater to the diverse needs of students, offering a range of functionalities to keep you on track and productive throughout your academic journey.
+Menținerea organizării este mai grea acum decât oricând, deci chiar dacă ai fi un supercomputer, tot ai avea dificultăți.
 
-First and foremost, our `Note Taking App` provides a seamless and intuitive interface for capturing and organizing your notes, lectures, videos, and other important resources. You can easily create, edit, and categorize your notes into customized notebooks or folders, ensuring that all your academic materials are neatly arranged and easily accessible.
+Nu-ți face griji, avem o aplicație care te va ajuta chiar și pe cei mai leneși elevi să rămână organizați, productivi și, îndrăznesc să spun, LA TIMP!
 
-But the note-taking feature is just the tip of the iceberg. Our app goes beyond that to offer a powerful `AI Assistant`, leveraging the capabilities of artificial intelligence to provide personalized support and guidance. The AI Assistant can help you with a variety of tasks, such as setting reminders for upcoming assignments and exams, suggesting study resources based on your subjects, and even offering study tips and techniques tailored to your learning style.
+Aplicația noastră `all-in-one` este concepută pentru a răspunde nevoilor diverse ale elevilor, oferind o gamă de funcționalități pentru a te menține pe drumul cel bun și productiv pe parcursul călătoriei tale academice.
 
-Furthermore, our app includes a comprehensive task management system. You can create to-do lists, set deadlines, and receive notifications to stay on top of your assignments, projects, and extracurricular activities. The app's intuitive interface allows you to prioritize tasks, track progress, and ensure you never miss a deadline again.
+În primul rând, aplicația noastră de `task-uri` oferă o interfață fluidă și intuitivă pentru capturarea și organizarea notelor tale, a lecturilor, a videoclipurilor și a altor resurse importante. Poți crea, edita și categoriza cu ușurință `notitele` tale în caiete personalizate sau în foldere, asigurându-te că toate materialele tale academice sunt aranjate ordonat și accesibile cu ușurință.
 
-To make studying more engaging and interactive, our app features a `built-in quiz game`. You can create custom quizzes based on your course materials, enabling you to reinforce your learning and assess your knowledge in a fun and gamified manner. Challenge yourself, compete with classmates, or simply use it as a self-assessment tool to gauge your understanding of the subject matter.
+Dar caracteristica de luare a notițelor este doar vârful aisbergului. Aplicația noastră merge dincolo de asta pentru a oferi un `Asistent AI` puternic, valorificând capacitățile inteligenței artificiale pentru a oferi suport și îndrumare personalizate. Asistentul AI te poate ajuta într-o varietate de sarcini, cum ar fi stabilirea de mementouri pentru sarcinile și examenele viitoare, sugestii de resurse de studiu bazate pe materiile tale și chiar oferirea de sfaturi și tehnici de învățare adaptate stilului tău de învățare.
 
-With our app, you'll have a comprehensive suite of tools at your disposal, enabling you to stay organized, manage your tasks effectively, access personalized support, and make learning an enjoyable and engaging experience.
+În plus, aplicația noastră include un sistem cuprinzător de gestionare a sarcinilor. Poți crea liste de sarcini, stabili termene limită și primi notificări pentru a rămâne la curent cu temele, proiectele și activitățile extracurriculare. Interfața intuitivă a aplicației îți permite să prioritizezi sarcinile, să urmărești progresul și să te asiguri că nu mai ratezi niciodată o termen limită.
 
-So, what do you think? Are you ready to install our app and revolutionize the way you stay organized and productive as a student?
+Pentru a face studiul mai captivant și interactiv, aplicația noastră dispune de un `joc de quiz încorporat`. Poți crea teste personalizate pe baza materialelor cursului tău, permițându-ți să-ți consolidezi învățarea și să-ți evaluezi cunoștințele într-un mod distractiv și gamificat. Provocă-te pe tine însuți, concurează cu colegii de clasă sau pur și simplu folosește-l ca un instrument de autoevaluare pentru a măsura înțelegerea ta a materiei.
+
+Cu aplicația noastră, vei avea la dispoziție o suită cuprinzătoare de instrumente, care îți vor permite să rămâi organizat, să-ți gestionezi sarcinile eficient, să beneficiezi de suport personalizat și să faci din învățare o experiență plăcută și captivantă.
+
+Deci, ce părere ai? Ești gata să instalezi aplicația noastră și să revoluționezi modul în care rămâi `organizat și productiv ca student?`
 
 [![PyPI version](https://img.shields.io/pypi/v/kivymd.svg)](https://pypi.org/project/kivymd)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/kivymd.svg)](#Installation)
 [![Repository size](https://img.shields.io/github/repo-size/kivymd/kivymd.svg)](https://github.com/SuperMarius409)
 
-## About
+## Despre
 
-Team Name: Simplifie
+Echipa: Simplifie
 
-App Name: Simplifique
+Numele aplicației: Simplifique
 
-Members: Radulescu Marius (tehnical part), Vacaru Stefania (the ideea and the design)
+Membri: Radulescu Marius (partea tehnică), Vacaru Stefania (ideea și designul)
 
-School: Colegiul National Militar "Tudor Vladimirescu" 
+Școala: Colegiul Național Militar "Tudor Vladimirescu" 
 
-## Installation
+## Instalare
 
 ```bash
 git clone https://github.com/SuperMarius409/Simplifie.git
 ```
 
-### Dependencies:
+### Dependente:
 
 - [Kivy](https://github.com/kivy/kivy) >= 2.2.0 ([Installation](https://kivy.org/doc/stable/gettingstarted/installation.html))
 - [KivyMD](https://github.com/kivymd/KivyMD) >= 1.1.1 
@@ -50,30 +52,29 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 - [Python-Docx](https://pypi.org/project/python-docx/)
 - [Urllib3](https://pypi.org/project/urllib3/)
 
-## Documentation & Credits
+## Documentație și Credite
 
-- See documentation at https://kivymd.readthedocs.io
-- Wiki with examples of using KivyMD widgets: https://github.com/kivymd/KivyMD/wiki
-- All the icons are taken from : https://icons8.com/
-- Some designs of the app are taken from [Dribble](https://dribbble.com/) and stored in `files\ideeas`
-- We are using [PlatformTools](https://developer.android.com/tools/releases/platform-tools) for debugging the app
-- We used [Buildozer](https://buildozer.readthedocs.io/en/latest/) for converting the app into `.apk` file
-- The sites that we used for gething information is [NewsAPI](https://newsapi.org/), [TheMealDB](https://www.themealdb.com/) and [OpenWeatherAPI](https://openweathermap.org/api)
-- We used random tutorials from youtube to make the apps here are some chanels: [KivyMD](https://www.youtube.com/@KivyMD), [Codemy](https://www.youtube.com/@Codemycom) and [BuildWithPython](https://www.youtube.com/@buildwithpython)
+- Vezi documentatia la https://kivymd.readthedocs.io
+- Toate iconitele sunt luate de pe : https://icons8.com/
+- Cateva design-uri sunt luate de pe [Dribble](https://dribbble.com/) si stocate in `files\ideeas`
+- Folosim [PlatformTools](https://developer.android.com/tools/releases/platform-tools) pentru a depana aplicația
+- Folosim [Buildozer](https://buildozer.readthedocs.io/en/latest/) pentru a converti aplicatia intrun fisier `.apk`
+- Site-urile din care am luat datele sunt [NewsAPI](https://newsapi.org/), [TheMealDB](https://www.themealdb.com/) si [OpenWeatherAPI](https://openweathermap.org/api)
+- Am folosit tutorialele si modelele aplicatiilor unora dintre cele mai cunoscute canale de youtube: [KivyMD](https://www.youtube.com/@KivyMD), [Codemy](https://www.youtube.com/@Codemycom) si [BuildWithPython](https://www.youtube.com/@buildwithpython)
 
-## Watch Our App Demo
+## Vizionati Demo-ul
 
 <p align="left">
   <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
     <img 
         width="600" 
         src="https://github.com/SuperMarius409/Simplifie/blob/main/files/project/video.png" 
-        title="Click to watch demo application of our app"
+        title="Da-ti click pentru a viziona demo-ul"
     >
   </a>
 </p>
 
-## Web-Powered App Integration
+## Integrarea aplicației bazate pe web
 
 ```python
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={self.api_key}"
@@ -89,4 +90,4 @@ git clone https://github.com/SuperMarius409/Simplifie.git
       location = x["name"] + ", " + x["sys"]["country"]
 ```
 
-This essential function serves as the **backbone** for all our apps. It utilizes an `API` to retrieve `JSON` data and dynamically updates the app's text based on the received information. In this example we use [OpenWeatherAPI](https://openweathermap.org/api) to get the json data and update it to our app. We rely on this function across our apps to seamlessly integrate real-time data and provide users with **up-to-date** and relevant content.
+Această funcție esențială servește ca model pentru toate aplicațiile noastre. Utilizează un `API` pentru a obține date în format `JSON` și actualizează dinamic textul aplicației pe baza informațiilor primite. În acest exemplu, folosim [OpenWeatherAPI](https://openweathermap.org/api) pentru a obține datele JSON și pentru a le actualiza în aplicația noastră. Ne bazăm pe această funcție în toate aplicațiile noastre pentru a integra fără probleme date în timp real și a oferi utilizatorilor conținut actualizat și relevant.
