@@ -65,7 +65,7 @@ git clone https://github.com/SuperMarius409/Simplifie.git
 ## Vizionati Demo-ul
 
 <p align="left">
-  <a href="https://www.youtube.com/watch?v=4er9b6TH_TA">
+  <a href="https://www.youtube.com/watch?v=Wv9xPJrNvbw">
     <img 
         width="600" 
         src="https://github.com/SuperMarius409/Simplifie/blob/main/files/project/video.png" 
