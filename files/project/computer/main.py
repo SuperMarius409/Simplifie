@@ -6,15 +6,9 @@ import re
 import sqlite3
 import requests
 import wikipedia
-import webbrowser
-import smtplib
-from email.utils import formataddr
-import urllib3.exceptions
 from datetime import datetime
 from docx import Document
 from urllib.request import urlopen
-from fileinput import close
-from email.message import EmailMessage
 
 
 #web
@@ -27,26 +21,15 @@ from firebase_admin import credentials, firestore
 #kivy
 
 from kivy.uix.screenmanager import SlideTransition
-from kivy.uix.screenmanager import FadeTransition
-from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.modalview import ModalView
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.image import AsyncImage
 from kivy.uix.image import Image
 from kivy.uix.button import Button
-from kivy.uix.label import Label
 
-from kivy.graphics.transformation import Matrix
-from kivy.graphics import StencilPush, StencilPop, RoundedRectangle, Color, Ellipse
-from kivy.utils import platform
 from kivy.core.text import LabelBase
 from kivy.core.clipboard import Clipboard
 from kivy.clock import Clock
-from kivy.properties import ColorProperty, ListProperty, ObjectProperty, BooleanProperty, StringProperty, NumericProperty
+from kivy.properties import  ListProperty, ObjectProperty,StringProperty, NumericProperty
 from kivy.core.window import Window
 from kivy.core.text import LabelBase
 from kivy.metrics import dp
@@ -62,9 +45,8 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.card import MDCard
 from kivymd.uix.dialog import MDDialog
-from kivymd.uix.button import MDFlatButton,MDIconButton
+from kivymd.uix.button import MDFlatButton
 from kivymd.uix.label import MDLabel
-from kivymd.uix.progressbar import MDProgressBar
 
 from kivymd.app import MDApp
 from kivymd.toast import toast
@@ -669,14 +651,7 @@ class RateUs(BoxLayout):
         toast("Rated")
 class Feedback(BoxLayout):
     def send_email(self):
-        email = "marius@gmail.com"
-        password = "12345678"
         name = "Marius"
-        message = self.ids.feedback_text.text
-        msg = EmailMessage()
-        msg["Subject"] = "New Feedback!"
-        msg["To"] = "marius.gabryel2017@gmail.com"
-        msg["From"] = str(email)
         toast(f"Hi, {name}, thanks for feedback!")
 class Report(BoxLayout):
     def send(self):
