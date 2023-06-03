@@ -9,6 +9,7 @@ import wikipedia
 from datetime import datetime
 from docx import Document
 from urllib.request import urlopen
+from revChatGPT.V1 import Chatbot
 
 
 #web
@@ -662,8 +663,9 @@ class OptionButton(Button):
 #Main 
 
 class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
-    global sm
+    global sm, chatbot
     api_key = "60aae825eb1705b59a97532605cbae66"
+    chatbot = Chatbot(config={"access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJtYXJpdXMuZ2FicnllbDIwMTdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWV9LCJodHRwczovL2FwaS5vcGVuYWkuY29tL2F1dGgiOnsidXNlcl9pZCI6InVzZXItYkhhenpoOTlCZHlXQ1RNbFdEdWFpWEE0In0sImlzcyI6Imh0dHBzOi8vYXV0aDAub3BlbmFpLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDY2NzIwNTAwMjA2MjA3NjY3MiIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODU3MDg0MzksImV4cCI6MTY4NjkxODAzOSwiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvcmdhbml6YXRpb24ud3JpdGUifQ.IhSC4jCp70082le4Cw-nqJBwgfgBDpqls6qc7dwj2YzcGUMeLFgCMdGZg1aei5HjRztH9xpoN8kqgVoFVyxmlR6V4uegwt7NBcPeWXDJK8fHUHDImGeQMbVbuJH72MSW6e39L-yk9JujHVRF_B2Gv_Yfa6KQzFK6blk3AKlVcq87Ko9m-OJahC0NzWfbE8gf6l9zNCuGL0hBa9LJqGch4XhZQMpUxAzMNIMJravc_nsSC-5WpTo45gt6dpKQQ-lIznRVxY-5PxIVhKWVpZkkOXVzSnNRnqtakjGXw8e6Ii1YcMtEJEK9lZf2ZelbF6GWxHhV6sEF1BX6nwYw1CV9MA"})
     sm = ScreenManager()
     select_sign = ""
     answer = ""
@@ -801,6 +803,10 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
             webbrowser.open(url)
         else:
             toast("No internet connection!")
+    def ask_chatGPT(self, p):
+        for data in chatbot.ask(p):
+            self.message = data["message"]
+        return self.message
     def send(self):
         global size, halign, value, color, screen15
         screen15 = sm.get_screen("screen15")
@@ -824,29 +830,30 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
             else:
                 size = .77
                 halign = "left"
+
         screen15.chat_list.add_widget(Command(text=str(value), size_hint_x=size, halign=halign, color=(0, 0, 0, 1)))
-        bp = """Our company aims to provide innovative and affordable solutions in the tech industry. We specialize in developing cutting-edge software products for businesses, focusing on efficiency and user experience. With a customer-centric approach and a talented team, we strive to disrupt the market and become a leader in our niche. Our goal is to achieve sustainable growth and deliver exceptional value to our clients."""
-        if value.upper() == "HELLO":
-            response = "Hello, I am your personal assistant, how can I help you?"
-        elif value.upper() == "THANKS":
-            response = "You're welcome! If you have any more questions or need further assistance, feel free to ask."
-        elif value.upper() == "BUSINESS PLAN":
-            response = bp
-        elif value.upper() == "AI1":
-            response = ""
-            screen15.chat_list.add_widget(ResponseImage(source="images/AI1.png"))
-        elif value.upper() == "AI2":
-            response = ""
-            screen15.chat_list.add_widget(ResponseImage(source="images/AI2.png"))
-        elif value.upper() == "AI3":
-            response = ""
-            screen15.chat_list.add_widget(ResponseImage(source="images/AI3.png"))
-        elif value.upper() == "AI4":
-            response = ""
-            screen15.chat_list.add_widget(ResponseImage(source="images/AI4.png"))
+        
+        if internet_connection:
+            if value.upper() == "AI1":
+                response = ""
+                screen15.chat_list.add_widget(ResponseImage(source="images/AI1.png"))
+            elif value.upper() == "AI2":
+                response = ""
+                screen15.chat_list.add_widget(ResponseImage(source="images/AI2.png"))
+            elif value.upper() == "AI3":
+                response = ""
+                screen15.chat_list.add_widget(ResponseImage(source="images/AI3.png"))
+            elif value.upper() == "AI4":
+                response = ""
+                screen15.chat_list.add_widget(ResponseImage(source="images/AI4.png"))
+            elif value == value:
+                response = self.ask_chatGPT(value+"under 200 words")
+            else:
+                response = "Sorry, can you say that again?"
         else:
-            response = "Sorry, can you say that again?"
-        screen15.chat_list.add_widget(Response(text=str(response), size_hint_x=.75, halign=halign, color=(0, 0, 0, 1)))
+            toast("No internet conection!")
+            response = ""
+        screen15.chat_list.add_widget(Response(text=str(response), size_hint_x=.8, halign="left", color=(0, 0, 0, 1)))
     def show_task_dialog(self):
         if not self.task_list_dialog:
             self.task_list_dialog = MDDialog(
