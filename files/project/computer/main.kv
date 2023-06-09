@@ -70,7 +70,7 @@
             text_color: rgba(145,145,145, 255)
             font_size: sp(Window.height * 0.02)
             pos_hint: {"center_x": .5, "center_y": .065}
-            on_press: root.manager.current = 'screen2'
+            on_press: app.switch_screen2()
         MDFillRoundFlatButton:
             text:"LOGIN"
             font_name: "Poppins-Bold"
@@ -97,6 +97,15 @@
             text_color: get_color_from_hex("646efa")
             font_name: "Poppins-Bold"
             font_size: sp(Window.height * 0.05)
+        MDFloatLayout:
+            size_hint: None, None
+            size: dp(56), dp(56)
+            pos_hint: {"top": 1, "left": 1}
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                on_release: app.switch_screen1()
         MDFloatLayout:
             size_hint: .8, .075
             pos_hint: {"center_x": .5, "center_y": .47}
@@ -170,7 +179,7 @@
             text_color: rgba(145,145,145, 255)
             font_size: sp(Window.height * 0.02)
             pos_hint: {"center_x": .5, "center_y": .065}
-            on_press: root.manager.current = 'screen3'
+            on_press: app.switch_screen3()
         
         MDFillRoundFlatButton:
             text:"CREATE"
@@ -187,6 +196,15 @@
         Image:
             pos_hint: {"center_x": .5, "center_y": .85}
             source: "images/l_bkg_1.png"
+        MDFloatLayout:
+            size_hint: None, None
+            size: dp(56), dp(56)
+            pos_hint: {"top": 1, "left": 1}
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                on_release: app.switch_screen1()
         MDLabel:
             text: "Recover\nPassword"
             pos_hint: {"center_x": .4, "center_y": .6}
@@ -1902,7 +1920,7 @@
                 halign: "center"
                 font_name: "Poppins-Bold"
                 font_size:  dp(Window.height * 0.035)
-                on_release: app.open_url("https://chat.openai.com/")
+                on_release: app.clear()
 
         ScrollView:
             size_hint_y: .77

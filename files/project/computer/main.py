@@ -555,7 +555,7 @@ class NewsCard(MDCard):
     url_link = StringProperty()
 class ScreenSwitcher:
     def switch_screen1(self, *args):
-        self.root.transition = SlideTransition(direction="left")
+        self.root.transition = SlideTransition(direction="right")
         self.root.current = "screen1"
 
     def switch_screen2(self, *args):
@@ -830,30 +830,32 @@ class MainApp(MDApp, ScreenManager, BoxLayout, Screen10, ScreenSwitcher):
             else:
                 size = .77
                 halign = "left"
-
-        screen15.chat_list.add_widget(Command(text=str(value), size_hint_x=size, halign=halign, color=(0, 0, 0, 1)))
-        
         if internet_connection:
             if value.upper() == "AI1":
-                response = ""
+                value = ""
                 screen15.chat_list.add_widget(ResponseImage(source="images/AI1.png"))
             elif value.upper() == "AI2":
-                response = ""
+                value = ""
                 screen15.chat_list.add_widget(ResponseImage(source="images/AI2.png"))
             elif value.upper() == "AI3":
-                response = ""
+                value = ""
                 screen15.chat_list.add_widget(ResponseImage(source="images/AI3.png"))
             elif value.upper() == "AI4":
-                response = ""
+                value = ""
                 screen15.chat_list.add_widget(ResponseImage(source="images/AI4.png"))
-            elif value == value:
-                response = self.ask_chatGPT(value+"under 200 words")
             else:
-                response = "Sorry, can you say that again?"
+                toast("Generating")
+                Clock.schedule_once(lambda dt: self.generate_message(value), 1)
         else:
             toast("No internet conection!")
-            response = ""
+    def generate_message(self, value):
+        response = self.ask_chatGPT(value)
+        toast("Done")
+        screen15.chat_list.add_widget(Command(text=str(value), size_hint_x=size, halign=halign, color=(0, 0, 0, 1)))
         screen15.chat_list.add_widget(Response(text=str(response), size_hint_x=.8, halign="left", color=(0, 0, 0, 1)))
+        screen15.text_input.text = ""
+    def clear(self):
+        screen15.chat_list.clear_widgets()
     def show_task_dialog(self):
         if not self.task_list_dialog:
             self.task_list_dialog = MDDialog(
