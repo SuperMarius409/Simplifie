@@ -30,10 +30,6 @@ Team Name: Simplifie
 
 App Name: Simplifique
 
-Members: Radulescu Marius (tehnical part), Vacaru Stefania (the ideea and the design)
-
-School: Colegiul National Militar "Tudor Vladimirescu" 
-
 ## Installation
 
 ```bash
